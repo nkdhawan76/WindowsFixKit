@@ -1,0 +1,26 @@
+{
+  "projectName": "WindowsFixKit",
+  "projectOwner": "nkdhawan76",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "nkdhawan76",
+      "name": "Nikil Dhawan",
+      "avatar_url": "https://avatars.githubusercontent.com/nkdhawan76",
+      "profile": "https://github.com/nkdhawan76",
+      "contributions": [
+        "code",
+        "doc",
+        "maintenance",
+        "infra"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}

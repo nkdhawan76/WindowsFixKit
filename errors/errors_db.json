@@ -1,0 +1,150 @@
+{
+  "0x80070005": {
+    "title": "Access Denied / Permission Error",
+    "description": "Access denied - permission issue on WinSxS or SoftwareDistribution directories preventing installation of updates.",
+    "category": "Windows Update",
+    "fix_script": "scripts/fix_0x80070005.ps1",
+    "fallback_script": null,
+    "restart_required": true,
+    "manual_steps": [
+      "Open an elevated Command Prompt (Run as Administrator).",
+      "Take ownership of SoftwareDistribution: takeown /f C:\\Windows\\SoftwareDistribution /r /d y",
+      "Reset Access Control Lists (ACLs): icacls C:\\Windows\\SoftwareDistribution /reset /t /c /l /q",
+      "Reset WinSxS permissions using SubInACL or default TrustedInstaller ACLs.",
+      "Restart the Windows Update service: net start wuauserv"
+    ]
+  },
+  "0x8024402c": {
+    "title": "Update Server Unreachable / Proxy Misconfiguration",
+    "description": "Proxy or firewall misconfiguration or corrupted update cache files preventing connection to Windows Update servers.",
+    "category": "Windows Update",
+    "fix_script": "scripts/fix_0x8024402c.ps1",
+    "fallback_script": null,
+    "restart_required": false,
+    "manual_steps": [
+      "Open an elevated Command Prompt.",
+      "Reset the WinHTTP proxy settings: netsh winhttp reset proxy",
+      "Clear temporary Internet and update files: del /q /s %temp%\\*",
+      "Flush the DNS resolver cache: ipconfig /flushdns",
+      "Check Windows Firewall rules for Windows Update endpoints."
+    ]
+  },
+  "0x8024402f": {
+    "title": "Update Installation Loop Failure",
+    "description": "Windows Update installation repeatedly fails due to corrupted datastore or broken catalog databases.",
+    "category": "Windows Update",
+    "fix_script": "scripts/fix_0x8024402f.ps1",
+    "fallback_script": null,
+    "restart_required": true,
+    "manual_steps": [
+      "Stop core services: net stop wuauserv & net stop cryptSvc & net stop bits & net stop msiserver",
+      "Rename C:\\Windows\\SoftwareDistribution to SoftwareDistribution.old",
+      "Rename C:\\Windows\\System32\\catroot2 to catroot2.old",
+      "Restart services: net start wuauserv & net start cryptSvc & net start bits & net start msiserver",
+      "Retry Windows Update from Settings or Control Panel."
+    ]
+  },
+  "0x80072EFD": {
+    "title": "Update Server Connection Interrupted",
+    "description": "Cannot connect to Windows Update server due to network timeout, TLS cipher mismatch, or security proxy blockage.",
+    "category": "Windows Update",
+    "fix_script": "scripts/fix_0x80072EFD.ps1",
+    "fallback_script": null,
+    "restart_required": false,
+    "manual_steps": [
+      "Verify Internet connectivity by reaching public endpoints.",
+      "Ensure TLS 1.2 and TLS 1.3 are enabled in Internet Options (inetcpl.cpl).",
+      "Reset WinHTTP proxy configuration: netsh winhttp reset proxy",
+      "Add update URLs (update.microsoft.com, windowsupdate.com) to trusted firewall zones.",
+      "Restart BITS and Windows Update services."
+    ]
+  },
+  "0xc1900101": {
+    "title": "Feature Update Rollback / Driver Conflict",
+    "description": "Feature update rollback caused by third-party filter drivers, disk corruption, or incompatible hardware drivers.",
+    "category": "Windows Update",
+    "fix_script": "scripts/fix_0xc1900101.ps1",
+    "fallback_script": null,
+    "restart_required": true,
+    "manual_steps": [
+      "Disconnect all non-essential external peripherals (USB drives, dongles, secondary webcams).",
+      "Run System File Checker: sfc /scannow",
+      "Execute Component Store repair: DISM.exe /Online /Cleanup-image /Restorehealth",
+      "Clean staging drivers and update graphics / chipset drivers from vendor.",
+      "Perform clean boot before initiating feature upgrade."
+    ]
+  },
+  "0x800f0922": {
+    "title": "SSU / .NET / System Partition Space Failure",
+    "description": "Servicing Stack Update or .NET installation failed due to insufficient System Reserved / EFI partition space or active VPN blocking update callbacks.",
+    "category": "Windows Update",
+    "fix_script": "scripts/fix_0x800f0922.ps1",
+    "fallback_script": null,
+    "restart_required": true,
+    "manual_steps": [
+      "Disconnect all active VPN connections and third-party security firewalls.",
+      "Verify that System Reserved or EFI System Partition (ESP) has at least 50MB free space.",
+      "Enable or repair .NET Framework 3.5 and 4.x via DISM /Online /Enable-Feature.",
+      "Clear corrupted CBS servicing logs under C:\\Windows\\Logs\\CBS.",
+      "Re-run Windows Update."
+    ]
+  },
+  "wifi_missing_post_update": {
+    "title": "Wi-Fi Adapter Missing Post-Update",
+    "description": "Wi-Fi adapter or tray icon disappears after a Windows update or driver migration failure.",
+    "category": "Hardware / Wi-Fi",
+    "fix_script": "scripts/fix_wifi_missing.ps1",
+    "fallback_script": "scripts/fix_wifi_missing.bat",
+    "restart_required": false,
+    "manual_steps": [
+      "Open Device Manager (devmgmt.msc).",
+      "Under Network Adapters, look for disabled or hidden wireless devices.",
+      "Right-click the Wi-Fi adapter and select Enable device.",
+      "Restart WLAN AutoConfig service: net start WlanSvc",
+      "Scan for hardware changes via Action -> Scan for hardware changes."
+    ]
+  },
+  "bluetooth_missing_post_update": {
+    "title": "Bluetooth Icon & Service Missing Post-Update",
+    "description": "Bluetooth icon, device settings, or core Bluetooth support service disappears after a Windows update.",
+    "category": "Hardware / Bluetooth",
+    "fix_script": "scripts/fix_bluetooth_missing.ps1",
+    "fallback_script": "scripts/fix_bluetooth_missing.bat",
+    "restart_required": false,
+    "manual_steps": [
+      "Open Services console (services.msc).",
+      "Locate Bluetooth Support Service (bthserv), set Startup type to Automatic, and Start the service.",
+      "Locate Bluetooth Audio Gateway Service (BTAGService) and start it.",
+      "In Device Manager, check Bluetooth radios and reinstall default Microsoft Bluetooth driver if needed."
+    ]
+  },
+  "network_no_internet": {
+    "title": "Network Adapter Connected Without Internet",
+    "description": "Network adapter is connected to local router/switch but cannot route packets or obtain public internet access.",
+    "category": "Networking",
+    "fix_script": "scripts/fix_network_reset.ps1",
+    "fallback_script": "scripts/fix_network_reset.bat",
+    "restart_required": true,
+    "manual_steps": [
+      "Reset Winsock catalog: netsh winsock reset",
+      "Reset TCP/IP stack: netsh int ip reset",
+      "Release and renew DHCP IP addresses: ipconfig /release followed by ipconfig /renew",
+      "Flush and register DNS entries: ipconfig /flushdns && ipconfig /registerdns",
+      "Restart computer to apply socket resets."
+    ]
+  },
+  "dns_not_resolving": {
+    "title": "DNS Lookups Failing / Websites Unreachable",
+    "description": "Domain name resolution fails across browsers and applications while IP-level connectivity remains active.",
+    "category": "Networking / DNS",
+    "fix_script": "scripts/fix_dns.ps1",
+    "fallback_script": "scripts/fix_dns.bat",
+    "restart_required": false,
+    "manual_steps": [
+      "Flush DNS resolver cache: ipconfig /flushdns",
+      "Restart DNS Client service if accessible: net stop dnscache && net start dnscache",
+      "Configure static or fallback DNS servers (Primary: 1.1.1.1, Secondary: 8.8.8.8) on active adapters.",
+      "Verify resolution using: nslookup google.com"
+    ]
+  }
+}
