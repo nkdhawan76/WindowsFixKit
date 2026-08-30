@@ -59,7 +59,7 @@ goto MENU
 :FULL_DIAG
 cls
 echo [>>>] Running Full Hardware and System Health Audit...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dp0scripts\full_system_diagnosis.ps1'"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\full_system_diagnosis.ps1"
 echo.
 echo Press any key to return to menu...
 pause >nul
@@ -68,7 +68,7 @@ goto MENU
 :WU_DIAG
 cls
 echo [>>>] Running Windows Update and Network Diagnostic Engine...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dp0scripts\diagnose.ps1'"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\diagnose.ps1"
 echo.
 echo Press any key to return to menu...
 pause >nul
@@ -77,7 +77,7 @@ goto MENU
 :SCAN_ONLY
 cls
 echo [>>>] Running Scan-Only Diagnostic...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dp0scripts\diagnose.ps1' -ScanOnly"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\diagnose.ps1" -ScanOnly
 echo.
 echo Press any key to return to menu...
 pause >nul
@@ -86,7 +86,7 @@ goto MENU
 :CLEANUP
 cls
 echo [>>>] Running Storage Cleanup and Cache Recovery...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dp0scripts\fix_storage_cleanup.ps1'"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_storage_cleanup.ps1"
 echo.
 echo Press any key to return to menu...
 pause >nul
@@ -95,7 +95,7 @@ goto MENU
 :NET_RESET
 cls
 echo [>>>] Resetting Network Sockets, TCP/IP and DNS...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dp0scripts\fix_network_reset.ps1'"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_network_reset.ps1"
 echo.
 echo Press any key to return to menu...
 pause >nul
@@ -104,7 +104,7 @@ goto MENU
 :WIFI_FIX
 cls
 echo [>>>] Remediating Wi-Fi Adapters and WLAN Services...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dp0scripts\fix_wifi_missing.ps1'"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_wifi_missing.ps1"
 echo.
 echo Press any key to return to menu...
 pause >nul
@@ -113,7 +113,7 @@ goto MENU
 :BT_FIX
 cls
 echo [>>>] Remediating Bluetooth Support Services and Radios...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dp0scripts\fix_bluetooth_missing.ps1'"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_bluetooth_missing.ps1"
 echo.
 echo Press any key to return to menu...
 pause >nul
@@ -122,7 +122,7 @@ goto MENU
 :LINT_CHECK
 cls
 echo [>>>] Running Quality Gate and Lint Suite...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dp0scripts\lint-check.ps1'"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\lint-check.ps1"
 echo.
 echo Press any key to return to menu...
 pause >nul

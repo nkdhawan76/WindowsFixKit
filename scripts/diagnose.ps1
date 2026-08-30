@@ -27,20 +27,28 @@ function Test-IsAdmin {
 }
 
 if (-not (Test-IsAdmin)) {
-    Write-Host "`n[ERROR] Administrative Privileges Required!" -ForegroundColor Red
-    Write-Host "WindowsFixKit needs full administrator rights to inspect and repair system components." -ForegroundColor Yellow
-    Write-Host "`nTo run as administrator:" -ForegroundColor Cyan
-    Write-Host "  1. Right-click PowerShell or Windows Terminal"
-    Write-Host "  2. Select 'Run as administrator'"
-    Write-Host "  3. Re-run: .\scripts\diagnose.ps1`n"
+    Write-Host "`n[!] Requesting Administrator Elevation (UAC)..." -ForegroundColor Yellow
+    $thisScript = if ($PSCommandPath) { $PSCommandPath } elseif ($MyInvocation.MyCommand.Path) { $MyInvocation.MyCommand.Path } else { "$PSScriptRoot\diagnose.ps1" }
+    if (Test-Path $thisScript) {
+        $argList = "-NoProfile -ExecutionPolicy Bypass -File `"$thisScript`""
+        if ($ScanOnly) { $argList += " -ScanOnly" }
+        Start-Process powershell.exe -ArgumentList $argList -Verb RunAs
+        exit 0
+    }
+    Write-Error "[ERROR] Administrative Privileges Required! Please run PowerShell as Administrator."
     exit 1
 }
 
 # -------------------------------------------------------------------------
 # 2. Initialization & Banner
 # -------------------------------------------------------------------------
-$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$rootDir = Split-Path -Parent $scriptDir
+$scriptDir = if ($PSScriptRoot) { $PSScriptRoot } elseif ($MyInvocation.MyCommand.Path) { Split-Path -Parent $MyInvocation.MyCommand.Path } else { (Get-Location).Path }
+if ((Split-Path -Leaf $scriptDir) -ne "scripts" -and (Test-Path (Join-Path $scriptDir "scripts"))) {
+    $rootDir = $scriptDir
+    $scriptDir = Join-Path $rootDir "scripts"
+} else {
+    $rootDir = Split-Path -Parent $scriptDir
+}
 $errorsDbPath = Join-Path $rootDir "errors\errors_db.json"
 
 Clear-Host -ErrorAction SilentlyContinue

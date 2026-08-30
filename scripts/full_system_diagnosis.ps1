@@ -16,14 +16,34 @@ param(
     [bool]$OpenReport = $true
 )
 
+function Test-IsAdmin {
+    $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+    return $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+}
+
+if (-not (Test-IsAdmin)) {
+    Write-Host "`n[!] Requesting Administrator Elevation (UAC)..." -ForegroundColor Yellow
+    $thisScript = if ($PSCommandPath) { $PSCommandPath } elseif ($MyInvocation.MyCommand.Path) { $MyInvocation.MyCommand.Path } else { "$PSScriptRoot\full_system_diagnosis.ps1" }
+    if (Test-Path $thisScript) {
+        $argList = "-NoProfile -ExecutionPolicy Bypass -File `"$thisScript`""
+        Start-Process powershell.exe -ArgumentList $argList -Verb RunAs
+        exit 0
+    }
+}
+
 Clear-Host -ErrorAction SilentlyContinue
 Write-Host "=================================================================" -ForegroundColor Cyan
 Write-Host "         WindowsFixKit - Master Full System Diagnosis            " -ForegroundColor Cyan
 Write-Host "       Owner: nkdhawan76 | Hardware & Subsystem Health Audit    " -ForegroundColor Cyan
 Write-Host "=================================================================`n" -ForegroundColor Cyan
 
-$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$rootDir = Split-Path -Parent $scriptDir
+$scriptDir = if ($PSScriptRoot) { $PSScriptRoot } elseif ($MyInvocation.MyCommand.Path) { Split-Path -Parent $MyInvocation.MyCommand.Path } else { (Get-Location).Path }
+if ((Split-Path -Leaf $scriptDir) -ne "scripts" -and (Test-Path (Join-Path $scriptDir "scripts"))) {
+    $rootDir = $scriptDir
+    $scriptDir = Join-Path $rootDir "scripts"
+} else {
+    $rootDir = Split-Path -Parent $scriptDir
+}
 $diagnosticsDir = Join-Path $scriptDir "diagnostics"
 $templatePath = Join-Path $rootDir "reports\report_template.html"
 
