@@ -7,22 +7,22 @@
 title WindowsFixKit - Wi-Fi Fix
 color 0A
 
-:: Ensure working directory is the script directory
-cd /d "%~dp0"
-
 :: Check for Administrator Privileges and Self-Elevate
 net session >nul 2>&1
-if %errorLevel% neq 0 (
+if %errorlevel% neq 0 (
     echo.
     echo =========================================================
     echo  [!] Requesting Administrator privileges...
     echo =========================================================
-    powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath \"$env:ComSpec\" -ArgumentList '/k \"\"%~f0\"\"' -Verb RunAs"
     exit /b
 )
 
+:: Ensure working directory is the script directory
+cd /d "%~dp0"
+
 echo =========================================================
-echo  [WindowsFixKit] Fixing Missing Wi-Fi Adapter (CMD Fallback)
+echo  [WindowsFixKit] Fixing Missing Wi-Fi Adapter
 echo =========================================================
 
 echo.
@@ -42,7 +42,7 @@ echo [OK] Interface enablement pass completed.
 echo.
 echo [+] Step 3: Triggering Hardware Device Tree Rescan...
 pnputil /scan-devices >nul 2>&1
-if %errorLevel% neq 0 (
+if %errorlevel% neq 0 (
     echo   [-] Falling back to legacy device rescan...
     wmic path win32_networkadapter where "NetConnectionStatus=0 or NetConnectionStatus=7" call enable >nul 2>&1
 )
@@ -58,5 +58,6 @@ echo =========================================================
 echo  [STATUS] Wi-Fi Fix Script Execution Completed.
 echo =========================================================
 echo.
-pause
+echo Press any key to exit...
+pause >nul
 exit /b 0

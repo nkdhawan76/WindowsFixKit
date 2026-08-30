@@ -1,42 +1,42 @@
 @echo off
 :: ============================================================================
 ::  WindowsFixKit - Master One-Click Launcher
-::  Automated Administrator Elevation & Interactive Diagnostic Menu
+::  Target: Windows 7, 8.1, 10, 11
 :: ============================================================================
 
-title WindowsFixKit - System Diagnostic & Auto-Fix Toolkit
+title WindowsFixKit - System Diagnostic and Repair Toolkit
 color 0B
+
+:: Check for Administrator Privileges and Self-Elevate
+net session >nul 2>&1
+if %errorlevel% neq 0 (
+    echo.
+    echo =================================================================
+    echo   [!] Administrative Privileges Required
+    echo   Requesting User Account Control elevation...
+    echo =================================================================
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath \"$env:ComSpec\" -ArgumentList '/k \"\"%~f0\"\"' -Verb RunAs"
+    exit /b
+)
 
 :: Ensure working directory is the script directory
 cd /d "%~dp0"
 
-:: Check for Administrator Privileges and Self-Elevate
-net session >nul 2>&1
-if %errorLevel% neq 0 (
-    echo.
-    echo =================================================================
-    echo   [!] Administrative Privileges Required
-    echo   Requesting User Account Control (UAC) elevation...
-    echo =================================================================
-    powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
-    exit /b
-)
-
 :MENU
 cls
 echo =================================================================
-echo        WindowsFixKit - Windows Diagnostic & Auto-Repair Toolkit
+echo        WindowsFixKit - Windows Diagnostic and Auto-Repair
 echo       Owner: nkdhawan76 ^| Supported: Windows 7, 8.1, 10, 11
 echo =================================================================
 echo.
-echo   [1] Full Hardware & System Health Diagnosis (HTML Report)
-echo   [2] Windows Update & Network Diagnostic + Auto-Fix (diagnose.ps1)
+echo   [1] Full Hardware and System Health Diagnosis (Desktop HTML Report)
+echo   [2] Windows Update and Network Diagnostic + Auto-Fix (diagnose.ps1)
 echo   [3] Scan-Only Mode (Detect issues without making changes)
-echo   [4] Quick Disk Space Cleanup & Cache Recovery (fix_storage_cleanup)
-echo   [5] Full Network & DNS Stack Reset (fix_network_reset)
+echo   [4] Quick Disk Space Cleanup and Cache Recovery (fix_storage_cleanup)
+echo   [5] Full Network and DNS Stack Reset (fix_network_reset)
 echo   [6] Fix Missing Wi-Fi Adapter (fix_wifi_missing)
 echo   [7] Fix Missing Bluetooth Service (fix_bluetooth_missing)
-echo   [8] Run Local CI Lint & Test Check (scripts\lint-check.ps1)
+echo   [8] Run Local CI Lint and Test Check (scripts\lint-check.ps1)
 echo   [9] Exit
 echo.
 echo =================================================================
@@ -58,66 +58,74 @@ goto MENU
 
 :FULL_DIAG
 cls
-echo [>>>] Running Full Hardware & System Health Audit...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\full_system_diagnosis.ps1"
+echo [>>>] Running Full Hardware and System Health Audit...
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dp0scripts\full_system_diagnosis.ps1'"
 echo.
-pause
+echo Press any key to return to menu...
+pause >nul
 goto MENU
 
 :WU_DIAG
 cls
-echo [>>>] Running Windows Update & Network Diagnostic Engine...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\diagnose.ps1"
+echo [>>>] Running Windows Update and Network Diagnostic Engine...
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dp0scripts\diagnose.ps1'"
 echo.
-pause
+echo Press any key to return to menu...
+pause >nul
 goto MENU
 
 :SCAN_ONLY
 cls
 echo [>>>] Running Scan-Only Diagnostic...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\diagnose.ps1" -ScanOnly
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dp0scripts\diagnose.ps1' -ScanOnly"
 echo.
-pause
+echo Press any key to return to menu...
+pause >nul
 goto MENU
 
 :CLEANUP
 cls
-echo [>>>] Running Storage Cleanup & Cache Recovery...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_storage_cleanup.ps1"
+echo [>>>] Running Storage Cleanup and Cache Recovery...
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dp0scripts\fix_storage_cleanup.ps1'"
 echo.
-pause
+echo Press any key to return to menu...
+pause >nul
 goto MENU
 
 :NET_RESET
 cls
-echo [>>>] Resetting Network Sockets, TCP/IP & DNS...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_network_reset.ps1"
+echo [>>>] Resetting Network Sockets, TCP/IP and DNS...
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dp0scripts\fix_network_reset.ps1'"
 echo.
-pause
+echo Press any key to return to menu...
+pause >nul
 goto MENU
 
 :WIFI_FIX
 cls
-echo [>>>] Remediating Wi-Fi Adapters & WLAN Services...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_wifi_missing.ps1"
+echo [>>>] Remediating Wi-Fi Adapters and WLAN Services...
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dp0scripts\fix_wifi_missing.ps1'"
 echo.
-pause
+echo Press any key to return to menu...
+pause >nul
 goto MENU
 
 :BT_FIX
 cls
-echo [>>>] Remediating Bluetooth Support Services & Radios...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_bluetooth_missing.ps1"
+echo [>>>] Remediating Bluetooth Support Services and Radios...
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dp0scripts\fix_bluetooth_missing.ps1'"
 echo.
-pause
+echo Press any key to return to menu...
+pause >nul
 goto MENU
 
 :LINT_CHECK
 cls
-echo [>>>] Running Quality Gate & Lint Suite...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\lint-check.ps1"
+echo [>>>] Running Quality Gate and Lint Suite...
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dp0scripts\lint-check.ps1'"
 echo.
-pause
+echo Press any key to return to menu...
+pause >nul
 goto MENU
 
 :EXIT

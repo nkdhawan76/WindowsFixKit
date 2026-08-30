@@ -7,22 +7,22 @@
 title WindowsFixKit - Network Reset
 color 0A
 
-:: Ensure working directory is the script directory
-cd /d "%~dp0"
-
 :: Check for Administrator Privileges and Self-Elevate
 net session >nul 2>&1
-if %errorLevel% neq 0 (
+if %errorlevel% neq 0 (
     echo.
     echo =========================================================
     echo  [!] Requesting Administrator privileges...
     echo =========================================================
-    powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath \"$env:ComSpec\" -ArgumentList '/k \"\"%~f0\"\"' -Verb RunAs"
     exit /b
 )
 
+:: Ensure working directory is the script directory
+cd /d "%~dp0"
+
 echo =========================================================
-echo  [WindowsFixKit] Resetting Network Stack (CMD Fallback)
+echo  [WindowsFixKit] Resetting Network Stack
 echo =========================================================
 
 echo.
@@ -52,5 +52,6 @@ echo =========================================================
 echo  [STATUS] Network Reset Completed. A system restart is recommended.
 echo =========================================================
 echo.
-pause
+echo Press any key to exit...
+pause >nul
 exit /b 0
