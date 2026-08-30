@@ -1,14 +1,14 @@
-name: CI - PSScriptAnalyzer & Validations
+name: CI - PSScriptAnalyzer, Pester & Validations
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ '**' ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ '**' ]
 
 jobs:
-  lint-powershell:
-    name: PSScriptAnalyzer & JSON Validation
+  test-and-lint:
+    name: Lint, Test & Validate
     runs-on: windows-latest
 
     steps:
@@ -33,11 +33,14 @@ jobs:
             exit 1
           }
 
-      - name: Install PSScriptAnalyzer
+      - name: Install PSScriptAnalyzer & Pester
         shell: pwsh
         run: |
           if (-not (Get-Module -ListAvailable -Name PSScriptAnalyzer)) {
             Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser -Repository PSGallery
+          }
+          if (-not (Get-Module -ListAvailable -Name Pester)) {
+            Install-Module -Name Pester -Force -Scope CurrentUser -Repository PSGallery -SkipPublisherCheck
           }
 
       - name: Run PSScriptAnalyzer
@@ -57,6 +60,17 @@ jobs:
           } else {
             Write-Host "All scripts passed PSScriptAnalyzer cleanly!" -ForegroundColor Green
           }
+
+      - name: Run Pester Automated Tests
+        shell: pwsh
+        run: |
+          Write-Host "Invoking Pester Automated Test Suite..."
+          $pesterResult = Invoke-Pester -Path ./tests -PassThru
+          if ($pesterResult.FailedCount -gt 0) {
+            Write-Error "Pester failed with $($pesterResult.FailedCount) test failure(s)!"
+            exit 1
+          }
+          Write-Host "All $($pesterResult.PassedCount) Pester tests PASSED!" -ForegroundColor Green
 
       - name: Validate Batch Scripts
         shell: cmd

@@ -1,6 +1,19 @@
 # Contributing to WindowsFixKit
 
-Thank you for contributing to **WindowsFixKit**! Our mission is to provide an open-source, reliable, and transparent diagnostic and auto-repair toolkit for Windows Update, networking, and hardware issues across Windows 7, 8.1, 10, and 11.
+Thank you for contributing to **WindowsFixKit**! Our mission is to provide an open-source, reliable, and transparent diagnostic and auto-repair toolkit for Windows Update, networking, hardware health, and OS stability across Windows 7, 8.1, 10, and 11.
+
+---
+
+## 🛡️ Quality Gates & Branch Protection
+
+To maintain high stability and prevent regressions:
+- The **`main` branch is protected**: Direct pushes without PRs are restricted.
+- **Mandatory CI Green Light**: Every Pull Request must pass the automated GitHub Actions CI suite (`ci.yml`):
+  1. JSON validity check on `errors/errors_db.json`.
+  2. PSScriptAnalyzer static analysis with 0 errors across all `.ps1` files.
+  3. Full Pester test suite (`Invoke-Pester ./tests`) with 100% passing tests.
+  4. Batch script syntax validation.
+- **CODEOWNERS Approval**: At least **1 maintainer approval** (`@nkdhawan76`) is required on all changes to `scripts/`, `errors/`, and workflows before merging.
 
 ---
 
@@ -15,7 +28,7 @@ When contributing code, please create a dedicated branch following these pattern
 
 ## 📋 Pull Request Requirements
 
-Every Pull Request must satisfy the following criteria before being considered for review:
+Every Pull Request must satisfy the following criteria:
 
 1. **OS Version Tested On**: Specify the exact Windows OS edition, architecture (x64/ARM64/x86), and build number.
 2. **Error Code / Category**: Clearly identify which error code or hardware/network issue is being addressed.
@@ -26,14 +39,43 @@ Every Pull Request must satisfy the following criteria before being considered f
    - If applicable (for network, Wi-Fi, Bluetooth, or DNS fixes), create the companion CMD fallback script `scripts/fix_<code/name>.bat` for Windows 7/8.1 legacy support.
    - Ensure the script is **idempotent** (can be re-run indefinitely without causing harm or error).
    - Ensure the script enforces administrative elevation checks.
-5. **Code Style & Linting**: All `.ps1` files must pass `PSScriptAnalyzer` with zero errors.
-6. **Review Policy**: At least **1 maintainer approval** (`@nkdhawan76`) is strictly required before any PR can be merged.
+   - Add matching unit/integration tests in `tests/`.
+5. **No Hardcoded Secrets/Paths**: Never commit user-specific directory paths (`C:\Users\username\...`) or API tokens.
+
+---
+
+## 🛠️ Local Development & Testing
+
+### 1. Clone the Repository
+```powershell
+git clone https://github.com/nkdhawan76/WindowsFixKit.git
+Set-Location WindowsFixKit
+```
+
+### 2. Validate JSON Database
+```powershell
+Get-Content .\errors\errors_db.json -Raw | ConvertFrom-Json
+```
+
+### 3. Run PSScriptAnalyzer Linting
+```powershell
+Invoke-ScriptAnalyzer -Path .\scripts -Recurse -Severity Error, Warning
+```
+
+### 4. Run Pester Unit & Integration Test Suite
+```powershell
+Invoke-Pester -Path .\tests
+```
+
+### 5. Test Diagnostic Run in Scan-Only Mode
+```powershell
+.\scripts\diagnose.ps1 -ScanOnly
+.\scripts\full_system_diagnosis.ps1 -OpenReport:$false
+```
 
 ---
 
 ## 🏷️ Issue & PR Labels
-
-We use standard repository labels to categorize tasks and target environments:
 
 | Label | Description |
 | :--- | :--- |
@@ -45,29 +87,3 @@ We use standard repository labels to categorize tasks and target environments:
 | `windows-11` | Specific to Windows 11 updates and modern networking interfaces. |
 | `bug` | Unexpected behavior or script failure during diagnostic runs. |
 | `documentation` | Improvements to guides, schema definitions, and how-it-works docs. |
-
----
-
-## 🛠️ Local Development & Testing
-
-### 1. Fork & Clone
-```bash
-git clone https://github.com/nkdhawan76/WindowsFixKit.git
-cd WindowsFixKit
-```
-
-### 2. Validate JSON Database
-```powershell
-Get-Content .\errors\errors_db.json -Raw | ConvertFrom-Json
-```
-
-### 3. Run PSScriptAnalyzer
-```powershell
-Install-Module -Name PSScriptAnalyzer -Scope CurrentUser -Force
-Invoke-ScriptAnalyzer -Path .\scripts -Recurse
-```
-
-### 4. Test Diagnostic Run in Scan-Only Mode
-```powershell
-.\scripts\diagnose.ps1 -ScanOnly
-```

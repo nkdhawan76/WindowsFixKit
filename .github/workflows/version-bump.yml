@@ -1,0 +1,129 @@
+name: Automated Version Bump & Release Tagging
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'VERSION'
+      - 'CHANGELOG.md'
+      - '.all-contributorsrc'
+
+jobs:
+  version-bump:
+    name: Determine Bump, Update Changelog & Tag
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Code with Full History
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Calculate Next Semantic Version
+        id: semver
+        shell: pwsh
+        run: |
+          # Read current version
+          $currentVersion = if (Test-Path "VERSION") { (Get-Content "VERSION" -Raw).Trim() } else { "1.0.0" }
+          Write-Host "Current Version: $currentVersion"
+          
+          # Parse SemVer components
+          $major, $minor, $patch = $currentVersion.Split('.') | ForEach-Object { [int]$_ }
+
+          # Get commits since previous tag or last 20 commits
+          $latestTag = git describe --tags --abbrev=0 2>$null
+          $commits = if ($latestTag) { git log "$latestTag..HEAD" --oneline } else { git log -n 15 --oneline }
+          Write-Host "Commits analyzed:`n$commits"
+
+          $bumpType = "patch"
+          if ($commits -match "BREAKING CHANGE|!:") {
+            $bumpType = "major"
+            $major++
+            $minor = 0
+            $patch = 0
+          }
+          elseif ($commits -match "feat(\(.*\))?:") {
+            $bumpType = "minor"
+            $minor++
+            $patch = 0
+          }
+          else {
+            $patch++
+          }
+
+          $nextVersion = "$major.$minor.$patch"
+          $nextTag = "v$nextVersion"
+          Write-Host "Next Version: $nextVersion ($bumpType bump)"
+          
+          # Set outputs
+          "NEXT_VERSION=$nextVersion" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "NEXT_TAG=$nextTag" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "BUMP_TYPE=$bumpType" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+      - name: Update VERSION file & CHANGELOG.md
+        shell: pwsh
+        run: |
+          $nextVersion = "${{ steps.semver.outputs.NEXT_VERSION }}"
+          $nextTag = "${{ steps.semver.outputs.NEXT_TAG }}"
+          $today = Get-Date -Format "yyyy-MM-dd"
+
+          # 1. Update VERSION file
+          Set-Content -Path "VERSION" -Value $nextVersion -NoNewline
+
+          # 2. Extract commit logs for release notes
+          $latestTag = git describe --tags --abbrev=0 2>$null
+          $commitList = if ($latestTag) { git log "$latestTag..HEAD" --pretty=format:"* %s (%h)" } else { git log -n 10 --pretty=format:"* %s (%h)" }
+
+          # 3. Update CHANGELOG.md
+          $changelogPath = "CHANGELOG.md"
+          $newChangelogEntry = @"
+          
+## [$nextVersion] - $today
+
+### Changes
+$commitList
+"@
+          if (Test-Path $changelogPath) {
+            $existing = Get-Content $changelogPath -Raw
+            $updated = $existing -replace "## \[(.*?)\]", "$newChangelogEntry`n`n## [`$1]"
+            Set-Content -Path $changelogPath -Value $updated
+          }
+
+          # 4. Save Release Body to file
+          $releaseNotes = @"
+### WindowsFixKit $nextTag Release Notes ($today)
+
+$commitList
+
+#### Direct Download
+- [WindowsFixKit-$nextTag.zip](https://github.com/nkdhawan76/WindowsFixKit/releases/download/$nextTag/WindowsFixKit-$nextTag.zip)
+- [WindowsFixKit-latest.zip](https://github.com/nkdhawan76/WindowsFixKit/releases/latest/download/WindowsFixKit-latest.zip)
+"@
+          Set-Content -Path "release_notes.md" -Value $releaseNotes
+
+      - name: Commit & Push Version Updates
+        shell: pwsh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add VERSION CHANGELOG.md
+          git commit -m "chore(release): bump version to ${{ steps.semver.outputs.NEXT_TAG }} [skip ci]" || Write-Host "No files changed"
+          git push origin main
+          
+          # Create and push git tag
+          git tag -a "${{ steps.semver.outputs.NEXT_TAG }}" -m "Release ${{ steps.semver.outputs.NEXT_TAG }}"
+          git push origin "${{ steps.semver.outputs.NEXT_TAG }}"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.semver.outputs.NEXT_TAG }}
+          name: WindowsFixKit ${{ steps.semver.outputs.NEXT_TAG }}
+          body_path: release_notes.md
+          draft: false
+          prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}

@@ -5,6 +5,7 @@
 **Diagnostic and Auto-Fix Toolkit for Windows Update, Network, Wi-Fi, Bluetooth, DNS Errors, and Hardware System Health**  
 *Supports Windows 7, 8.1, 10, and 11 — Powered by PowerShell 5.1/7+ and CMD Fallbacks*
 
+[![Latest Release](https://img.shields.io/github/v/release/nkdhawan76/WindowsFixKit?color=3b82f6&logo=github)](https://github.com/nkdhawan76/WindowsFixKit/releases/latest)
 [![CI](https://github.com/nkdhawan76/WindowsFixKit/actions/workflows/ci.yml/badge.svg)](https://github.com/nkdhawan76/WindowsFixKit/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![All Contributors](https://img.shields.io/github/all-contributors/nkdhawan76/WindowsFixKit?color=ee8449&style=flat-square)](#-contributors)
@@ -12,6 +13,21 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows%207%20%7C%208.1%20%7C%2010%20%7C%2011-0078D6.svg)](https://www.microsoft.com/windows)
 
 </div>
+
+---
+
+## 💾 Direct Download (No Git Required)
+
+For immediate troubleshooting on any PC without installing Git or cloning repositories:
+
+[![Download Latest Release](https://img.shields.io/badge/Download-WindowsFixKit--latest.zip-success?style=for-the-badge&logo=windows)](https://github.com/nkdhawan76/WindowsFixKit/releases/latest/download/WindowsFixKit-latest.zip)
+
+### How to Use the Downloaded Package:
+1. **Download:** Click the button above to download `WindowsFixKit-latest.zip`.
+2. **Extract:** Right-click the `.zip` file -> select **Extract All...**.
+3. **Run:**
+   - For Windows Update & Network repairs: Right-click `scripts\diagnose.ps1` -> **Run with PowerShell** (or run inside an elevated PowerShell terminal).
+   - For Full Hardware & System Health Audit: Right-click `scripts\full_system_diagnosis.ps1` -> **Run with PowerShell**.
 
 ---
 
@@ -77,7 +93,7 @@ WindowsFixKit includes an extensive system and hardware audit engine in `scripts
 
 ---
 
-## ⚡ Quick Start
+## ⚡ Quick Start (Developers & Power Users)
 
 ### Option 1: Git Clone & Run (Recommended)
 
@@ -150,7 +166,10 @@ WindowsFixKit/
 │   │   ├── bug_report.md
 │   │   └── new_error_request.md
 │   ├── workflows/
-│   │   └── ci.yml
+│   │   ├── ci.yml
+│   │   ├── version-bump.yml
+│   │   └── release-zip.yml
+│   ├── CODEOWNERS
 │   └── PULL_REQUEST_TEMPLATE.md
 ├── docs/
 │   └── how-it-works.md
@@ -184,13 +203,18 @@ WindowsFixKit/
 │   ├── fix_ram_cache.ps1
 │   ├── fix_cpu_thermal.ps1
 │   └── fix_battery_optimization.ps1
+├── tests/
+│   ├── Diagnostics.Tests.ps1
+│   ├── Scripts.Tests.ps1
+│   └── Validate-ErrorsDb.Tests.ps1
 ├── .all-contributorsrc
 ├── .gitignore
 ├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── LICENSE
-└── README.md
+├── README.md
+└── VERSION
 ```
 
 ---

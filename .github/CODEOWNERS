@@ -1,0 +1,7 @@
+# WindowsFixKit Code Owners
+# Requires maintainer review on core script execution and error definitions
+
+*                   @nkdhawan76
+/scripts/           @nkdhawan76
+/errors/            @nkdhawan76
+/.github/workflows/ @nkdhawan76

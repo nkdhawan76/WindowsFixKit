@@ -1,0 +1,77 @@
+name: Package & Attach Release ZIPs
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  package-release:
+    name: Build & Upload Distribution ZIPs
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Tagged Code
+        uses: actions/checkout@v4
+
+      - name: Read Release Version & Prepare Package
+        id: prep
+        shell: pwsh
+        run: |
+          $ver = if (Test-Path "VERSION") { (Get-Content "VERSION" -Raw).Trim() } else { "1.0.0" }
+          $tag = if ($env:GITHUB_REF_NAME) { $env:GITHUB_REF_NAME } else { "v$ver" }
+          Write-Host "Packaging WindowsFixKit for version: $ver ($tag)"
+
+          $versionedZip = "WindowsFixKit-$tag.zip"
+          $latestZip = "WindowsFixKit-latest.zip"
+          $stagingDir = "$env:TEMP\WindowsFixKit-staging"
+
+          if (Test-Path $stagingDir) { Remove-Item $stagingDir -Recurse -Force }
+          New-Item -ItemType Directory -Path $stagingDir | Out-Null
+
+          # Copy project files excluding internal repo tooling
+          $excludeList = @(".git", ".github", "tests", ".all-contributorsrc", "*.zip")
+          Get-ChildItem -Path . | Where-Object { $_.Name -notin $excludeList } | ForEach-Object {
+            Copy-Item -Path $_.FullName -Destination $stagingDir -Recurse -Force
+          }
+
+          # Compress to versioned and latest zip files
+          Compress-Archive -Path "$stagingDir\*" -DestinationPath "./$versionedZip" -Force
+          Compress-Archive -Path "$stagingDir\*" -DestinationPath "./$latestZip" -Force
+
+          Write-Host "Created distribution archives:"
+          Write-Host "  * $versionedZip ($([math]::Round((Get-Item $versionedZip).Length / 1KB, 1)) KB)"
+          Write-Host "  * $latestZip ($([math]::Round((Get-Item $latestZip).Length / 1KB, 1)) KB)"
+
+          "VERSION=$ver" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "TAG=$tag" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "VERSIONED_ZIP=$versionedZip" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "LATEST_ZIP=$latestZip" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+      - name: Attach ZIPs to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.prep.outputs.TAG }}
+          files: |
+            ${{ steps.prep.outputs.VERSIONED_ZIP }}
+            ${{ steps.prep.outputs.LATEST_ZIP }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update 'latest' Release Asset Alias
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: WindowsFixKit Latest Release
+          body: |
+            ### WindowsFixKit Stable Rolling Release
+            This release asset continuously updates to the newest stable build.
+            - **Current Build**: ${{ steps.prep.outputs.TAG }}
+            - **Direct Download**: [WindowsFixKit-latest.zip](https://github.com/nkdhawan76/WindowsFixKit/releases/latest/download/WindowsFixKit-latest.zip)
+          files: |
+            ${{ steps.prep.outputs.LATEST_ZIP }}
+            ${{ steps.prep.outputs.VERSIONED_ZIP }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: false
