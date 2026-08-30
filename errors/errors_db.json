@@ -146,5 +146,89 @@
       "Configure static or fallback DNS servers (Primary: 1.1.1.1, Secondary: 8.8.8.8) on active adapters.",
       "Verify resolution using: nslookup google.com"
     ]
+  },
+  "hdd_ssd_unhealthy": {
+    "title": "Physical Storage Degradation / SMART Failure",
+    "description": "Physical disk SMART counters report excessive wear (>80%), bad sectors, or uncorrected read error spikes.",
+    "category": "Hardware / Storage",
+    "fix_script": "scripts/fix_disk_errors.ps1",
+    "fallback_script": null,
+    "restart_required": true,
+    "manual_steps": [
+      "Immediately backup critical files to external drive or cloud storage.",
+      "Run chkdsk scan: chkdsk C: /scan",
+      "Optimize and re-trim SSD volumes: Optimize-Volume -DriveLetter C -ReTrim",
+      "Check OEM disk management software (Samsung Magician, Crucial Executive, WD Dashboard) for firmware updates."
+    ]
+  },
+  "ram_error_detected": {
+    "title": "RAM Exhaustion / Memory Pool Depletion",
+    "description": "Available physical memory is below 10% or system memory caches are overloaded with non-paged pool leaks.",
+    "category": "Hardware / Memory",
+    "fix_script": "scripts/fix_ram_cache.ps1",
+    "fallback_script": null,
+    "restart_required": false,
+    "manual_steps": [
+      "Run Windows Memory Diagnostic: mdsched.exe",
+      "Close memory-intensive background apps or browser instances.",
+      "Inspect Task Manager -> Performance -> Memory -> Non-paged pool.",
+      "Ensure virtual memory / paging file size is set to system managed."
+    ]
+  },
+  "battery_degraded": {
+    "title": "Battery Capacity Degradation (<60%)",
+    "description": "Battery full charge capacity has degraded significantly below 60% of original factory design capacity.",
+    "category": "Hardware / Power",
+    "fix_script": "scripts/fix_battery_optimization.ps1",
+    "fallback_script": null,
+    "restart_required": false,
+    "manual_steps": [
+      "Generate detailed battery report: powercfg /batteryreport",
+      "Enable Battery Saver threshold at 20% in Windows Settings.",
+      "Lower screen brightness and configure display sleep timeouts to 5 minutes.",
+      "Calibrate battery by charging to 100% and discharging, or replace aged battery pack."
+    ]
+  },
+  "cpu_overheating": {
+    "title": "CPU Overheating / Thermal Throttling",
+    "description": "CPU thermal sensors report elevated core temperatures exceeding 80°C under standard loads.",
+    "category": "Hardware / CPU",
+    "fix_script": "scripts/fix_cpu_thermal.ps1",
+    "fallback_script": null,
+    "restart_required": false,
+    "manual_steps": [
+      "Inspect laptop vents or desktop heatsink fans for dust accumulation.",
+      "Configure power plan Processor Maximum State to 99% to prevent aggressive thermal boosting.",
+      "Ensure active system cooling policy is enabled.",
+      "Reapply high-conductivity thermal paste if hardware is older than 2-3 years."
+    ]
+  },
+  "storage_almost_full": {
+    "title": "Disk Partition Space Critical (>90% Full)",
+    "description": "Primary or system drive partition is above 90% capacity, risking update failures and filesystem fragmentation.",
+    "category": "Storage / Partitions",
+    "fix_script": "scripts/fix_storage_cleanup.ps1",
+    "fallback_script": null,
+    "restart_required": false,
+    "manual_steps": [
+      "Empty the Recycle Bin.",
+      "Run Windows Disk Cleanup: cleanmgr /autoclean /d C",
+      "Purge temporary folders (%temp% and C:\\Windows\\Temp).",
+      "Clear Delivery Optimization cache in Settings -> System -> Storage."
+    ]
+  },
+  "startup_bloat": {
+    "title": "Excessive Startup Programs (>15 Entries)",
+    "description": "High number of startup applications and autostart launchers slowing down Windows boot and consuming idle RAM.",
+    "category": "System / Startup",
+    "fix_script": "scripts/fix_startup_bloat.ps1",
+    "fallback_script": null,
+    "restart_required": false,
+    "manual_steps": [
+      "Open Task Manager (Ctrl + Shift + Esc) and go to the 'Startup apps' tab.",
+      "Right-click and disable non-essential high-impact launchers (Steam, Discord, Spotify, Updaters).",
+      "Clean broken startup registry entries in HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run.",
+      "Use msconfig or Autoruns for advanced autostart service auditing."
+    ]
   }
 }

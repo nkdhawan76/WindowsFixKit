@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-08-30
+
+### Added
+- **Master Full System Diagnosis Engine (`full_system_diagnosis.ps1`)**:
+  - Comprehensive orchestration of hardware telemetry, storage health, RAM buffers, battery degradation, CPU thermals, partition usage, and startup bloat.
+  - Automatically exports a styled, responsive HTML report (`WindowsFixKit-Report.html`) with color-coded status badges directly to the user's Desktop.
+  - Formats real-time summary status tables in console output.
+- **Modular Hardware & Health Diagnostics (`scripts/diagnostics/`)**:
+  - `check_os_info.ps1`: OS edition, build number, architecture, model, manufacturer, and uptime.
+  - `check_disk_health.ps1`: NVMe/SSD/HDD media types, SMART counters (wear %, temperature, read errors), and partition threshold audits.
+  - `check_ram_health.ps1`: Physical memory module vendors, clock speeds, capacities, and active RAM buffer calculation.
+  - `check_battery_health.ps1`: Automated `powercfg /batteryreport` generation, parsing design vs full charge capacity, degradation % tracking, and desktop AC power detection.
+  - `check_cpu_temp.ps1`: ACPI thermal zone temperature polling via WMI with fallback guidance.
+  - `check_startup_apps.ps1`: Startup impact analysis from `Win32_StartupCommand` and Registry Run keys.
+- **New System Health Remediations**:
+  - `fix_storage_cleanup.ps1`: Temp directories, Delivery Optimization, and automated cleanmgr pass.
+  - `fix_startup_bloat.ps1`: Broken startup registry pruning and startup app management.
+  - `fix_disk_errors.ps1`: Filesystem integrity checks and SSD TRIM volume optimization.
+  - `fix_ram_cache.ps1`: Garbage collection, working set trimming, and pagefile verification.
+  - `fix_cpu_thermal.ps1`: CPU power plan processor limits and active cooling policy.
+  - `fix_battery_optimization.ps1`: Battery saver thresholds and sleep/standby timeout alignment.
+- **Expanded Error Catalog (`errors/errors_db.json`)**:
+  - Added mappings for `hdd_ssd_unhealthy`, `ram_error_detected`, `battery_degraded`, `cpu_overheating`, `storage_almost_full`, and `startup_bloat`.
+
 ## [1.0.0] - 2026-08-30
 
 ### Added

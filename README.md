@@ -2,7 +2,7 @@
 
 # 🧰 WindowsFixKit
 
-**Diagnostic and Auto-Fix Toolkit for Windows Update, Network, Wi-Fi, Bluetooth, and DNS Errors**  
+**Diagnostic and Auto-Fix Toolkit for Windows Update, Network, Wi-Fi, Bluetooth, DNS Errors, and Hardware System Health**  
 *Supports Windows 7, 8.1, 10, and 11 — Powered by PowerShell 5.1/7+ and CMD Fallbacks*
 
 [![CI](https://github.com/nkdhawan76/WindowsFixKit/actions/workflows/ci.yml/badge.svg)](https://github.com/nkdhawan76/WindowsFixKit/actions/workflows/ci.yml)
@@ -17,13 +17,63 @@
 
 ## 📖 Overview
 
-**WindowsFixKit** is an open-source, non-destructive toolkit engineered to diagnose and automatically remediate common operating system corruptions, Windows Update failures, adapter disappearances, and networking failures.
+**WindowsFixKit** is an open-source, non-destructive toolkit engineered to diagnose and automatically remediate common operating system corruptions, Windows Update failures, adapter disappearances, networking failures, and hardware bottlenecks.
 
 Unlike generic cleanup utilities, **WindowsFixKit**:
 - 🔍 **Harvests and Regex-Matches** real-time error logs (`WindowsUpdate.log`, `ReportingEvents.log`, Windows Event Viewer).
+- 🩺 **Full System Diagnostic Engine**: Audits OS metadata, SSD/HDD SMART health & wear counters, physical RAM sticks & buffer allocation, battery health degradation, CPU thermal throttling, partition capacities, and startup bloat.
+- 📊 **Generates Visual HTML Reports**: Automatically creates a modern, responsive HTML report saved directly to your Desktop (`WindowsFixKit-Report.html`).
 - ⚙️ **Executes Idempotent Remediations** targeted specifically at the identified root cause.
 - 🌐 **Features Dual-Engine Compatibility**: Uses modern PowerShell cmdlets on Windows 10/11 while providing rock-solid native CMD batch (`.bat`) fallbacks using `netsh`, `sc`, `ipconfig`, and `wmic` for Windows 7 and 8.1.
-- 📊 **Delivers Transparent Reporting**: Produces a clean summary table detailing detected issues, fixes applied, and reboot requirements.
+- 📋 **Delivers Transparent Reporting**: Produces a clean summary table detailing detected issues, fixes applied, and reboot requirements.
+
+---
+
+## 🖥️ Full System Diagnosis
+
+WindowsFixKit includes an extensive system and hardware audit engine in `scripts/full_system_diagnosis.ps1` and modular diagnostic scripts under `scripts/diagnostics/`.
+
+### What It Audits:
+1. **OS & Hardware Info**: OS Edition, Version, Build Number, Architecture, System Model, Manufacturer, and Uptime via `Get-ComputerInfo` (with CIM fallback for Windows 7/8.1).
+2. **Storage Health & SMART Data**: Storage media type (NVMe, SSD, HDD), Drive Wear %, Operating Temperature, and Uncorrected Read Errors via `Get-StorageReliabilityCounter` and `Get-PhysicalDisk`.
+3. **Physical RAM & Allocation**: RAM stick vendors, clock speeds, capacities via `Win32_PhysicalMemory`, and live buffer headroom via `Get-Counter '\Memory\Available MBytes'` (flags when available memory < 10%).
+4. **Battery Health & Capacity Loss**: Parses `powercfg /batteryreport` for Design Capacity vs Full Charge Capacity, calculating lifetime health % (flags when health < 60%).
+5. **CPU Thermal Sensors**: Reads ACPI thermal zone temperatures via `root/wmi:MSAcpi_ThermalZoneTemperature` (flags when temperatures exceed 80°C/90°C).
+6. **Disk Partition Capacity**: Scans all logical drives and flags any volume exceeding 90% utilization.
+7. **Startup Application Bloat**: Enumerates startup apps via `Win32_StartupCommand` and Registry Run keys, alerting when > 15 autostart apps are active.
+
+### Running Full System Diagnosis:
+```powershell
+# Run complete system diagnosis and automatically open Desktop HTML report
+.\scripts\full_system_diagnosis.ps1
+
+# Run individual diagnostic components independently:
+.\scripts\diagnostics\check_os_info.ps1
+.\scripts\diagnostics\check_disk_health.ps1
+.\scripts\diagnostics\check_ram_health.ps1
+.\scripts\diagnostics\check_battery_health.ps1
+.\scripts\diagnostics\check_cpu_temp.ps1
+.\scripts\diagnostics\check_startup_apps.ps1
+```
+
+### HTML Diagnostic Report Preview:
+```text
++-------------------------------------------------------------------------------+
+|  🧰 WindowsFixKit Diagnostic Report                      2026-08-30 23:25:00  |
++---------------------------------------+---------------------------------------+
+|  🖥️ Operating System & Machine         |  🩺 System Health Executive Summary   |
+|  OS Edition: Windows 11 Pro           |  Storage Integrity : Healthy          |
+|  Build: 22631 (x64)                   |  Memory Status     : Healthy          |
+|  Model: Dell XPS 15 / Intel i7        |  Battery Health    : 92.4% (Healthy)  |
+|  Uptime: 2d 4h 15m                    |  CPU Thermals      : 44.2 °C (Normal) |
++---------------------------------------+---------------------------------------+
+|  💾 Storage Health & Partitions       |  🧠 Physical Memory (RAM)             |
+|  Disk #0: NVMe SSD 1024 GB (Wear: 4%) |  Total: 32.0 GB | Available: 22.4 GB  |
+|  C: [====================      ] 72%  |  [============                  ] 30% |
++---------------------------------------+---------------------------------------+
+|  🔋 Battery: 92.4% (Healthy)  |  🌡️ CPU: 44.2 °C  |  🚀 Startup Apps: 8 Items |
++-------------------------------------------------------------------------------+
+```
 
 ---
 
@@ -37,9 +87,13 @@ Unlike generic cleanup utilities, **WindowsFixKit**:
    git clone https://github.com/nkdhawan76/WindowsFixKit.git
    Set-Location WindowsFixKit
    ```
-3. Run the diagnostic engine:
+3. Run the Windows Update & Network diagnostic engine:
    ```powershell
    .\scripts\diagnose.ps1
+   ```
+4. Or run the full hardware & system health diagnostic:
+   ```powershell
+   .\scripts\full_system_diagnosis.ps1
    ```
 
 ### Option 2: Run in Scan-Only Mode (No System Changes)
@@ -48,7 +102,6 @@ Unlike generic cleanup utilities, **WindowsFixKit**:
 ```
 
 ### Option 3: Run Individual Targeted Fixes
-If you already know the specific error code or issue on your machine, you can run its standalone fix directly:
 ```powershell
 # Windows Update permission error
 .\scripts\fix_0x80070005.ps1
@@ -58,6 +111,9 @@ If you already know the specific error code or issue on your machine, you can ru
 
 # Missing Wi-Fi adapter (Command Prompt / Windows 7 fallback)
 .\scripts\fix_wifi_missing.bat
+
+# Storage cleanup / space recovery
+.\scripts\fix_storage_cleanup.ps1
 ```
 
 ---
@@ -76,6 +132,12 @@ If you already know the specific error code or issue on your machine, you can ru
 | **`bluetooth_missing_post_update`** | Hardware / Bluetooth | Bluetooth toggle/service (`bthserv`) missing or disabled post-update | [`fix_bluetooth_missing.ps1`](scripts/fix_bluetooth_missing.ps1) | [`fix_bluetooth_missing.bat`](scripts/fix_bluetooth_missing.bat) | No |
 | **`network_no_internet`** | Networking | Adapter connected to LAN but displays "No Internet Access" | [`fix_network_reset.ps1`](scripts/fix_network_reset.ps1) | [`fix_network_reset.bat`](scripts/fix_network_reset.bat) | Yes |
 | **`dns_not_resolving`** | Networking / DNS | Domain lookups fail, websites do not load, IP ping succeeds | [`fix_dns.ps1`](scripts/fix_dns.ps1) | [`fix_dns.bat`](scripts/fix_dns.bat) | No |
+| **`hdd_ssd_unhealthy`** | Hardware / Storage | Physical disk wear >80%, SMART warnings, or read error spikes | [`fix_disk_errors.ps1`](scripts/fix_disk_errors.ps1) | — | Yes |
+| **`ram_error_detected`** | Hardware / Memory | Available RAM < 10% or memory pool exhaustion | [`fix_ram_cache.ps1`](scripts/fix_ram_cache.ps1) | — | No |
+| **`battery_degraded`** | Hardware / Power | Full charge battery capacity degraded < 60% of original design | [`fix_battery_optimization.ps1`](scripts/fix_battery_optimization.ps1) | — | No |
+| **`cpu_overheating`** | Hardware / CPU | Core temperature > 80°C under load / thermal throttling | [`fix_cpu_thermal.ps1`](scripts/fix_cpu_thermal.ps1) | — | No |
+| **`storage_almost_full`** | Storage / Partitions | Logical drive capacity > 90% full | [`fix_storage_cleanup.ps1`](scripts/fix_storage_cleanup.ps1) | — | No |
+| **`startup_bloat`** | System / Startup | More than 15 startup apps active, causing slow boot times | [`fix_startup_bloat.ps1`](scripts/fix_startup_bloat.ps1) | — | No |
 
 ---
 
@@ -94,22 +156,34 @@ WindowsFixKit/
 │   └── how-it-works.md
 ├── errors/
 │   └── errors_db.json
+├── reports/
+│   └── report_template.html
 ├── scripts/
+│   ├── full_system_diagnosis.ps1
 │   ├── diagnose.ps1
+│   ├── diagnostics/
+│   │   ├── check_os_info.ps1
+│   │   ├── check_disk_health.ps1
+│   │   ├── check_ram_health.ps1
+│   │   ├── check_battery_health.ps1
+│   │   ├── check_cpu_temp.ps1
+│   │   └── check_startup_apps.ps1
 │   ├── fix_0x80070005.ps1
 │   ├── fix_0x8024402c.ps1
 │   ├── fix_0x8024402f.ps1
 │   ├── fix_0x80072EFD.ps1
 │   ├── fix_0xc1900101.ps1
 │   ├── fix_0x800f0922.ps1
-│   ├── fix_wifi_missing.ps1
-│   ├── fix_wifi_missing.bat
-│   ├── fix_bluetooth_missing.ps1
-│   ├── fix_bluetooth_missing.bat
-│   ├── fix_network_reset.ps1
-│   ├── fix_network_reset.bat
-│   ├── fix_dns.ps1
-│   └── fix_dns.bat
+│   ├── fix_wifi_missing.ps1 + fix_wifi_missing.bat
+│   ├── fix_bluetooth_missing.ps1 + fix_bluetooth_missing.bat
+│   ├── fix_network_reset.ps1 + fix_network_reset.bat
+│   ├── fix_dns.ps1 + fix_dns.bat
+│   ├── fix_storage_cleanup.ps1
+│   ├── fix_startup_bloat.ps1
+│   ├── fix_disk_errors.ps1
+│   ├── fix_ram_cache.ps1
+│   ├── fix_cpu_thermal.ps1
+│   └── fix_battery_optimization.ps1
 ├── .all-contributorsrc
 ├── .gitignore
 ├── CHANGELOG.md
@@ -123,7 +197,7 @@ WindowsFixKit/
 
 ## 🔒 Security & Safety Guarantees
 
-1. **100% Native**: Only uses official Windows system binaries (`dism.exe`, `sfc.exe`, `netsh.exe`, `icacls.exe`, `takeown.exe`, `sc.exe`, `pnputil.exe`).
+1. **100% Native**: Only uses official Windows system binaries (`dism.exe`, `sfc.exe`, `netsh.exe`, `icacls.exe`, `takeown.exe`, `sc.exe`, `pnputil.exe`, `powercfg.exe`).
 2. **Safe Re-Runs**: Every script is written to be strictly idempotent.
 3. **No Blind Deletions**: Corrupt datastores are safely backed up with `.bak` extensions rather than erased without trace.
 
