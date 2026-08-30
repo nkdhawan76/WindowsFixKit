@@ -2,135 +2,117 @@
 
 # 🧰 WindowsFixKit
 
-**Diagnostic and Auto-Fix Toolkit for Windows Update, Network, Wi-Fi, Bluetooth, DNS Errors, and Hardware System Health**  
-*Supports Windows 7, 8.1, 10, and 11 — Powered by PowerShell 5.1/7+ and CMD Fallbacks*
+**Diagnostic and repair toolkit for Windows Update, hardware health, Wi-Fi, Bluetooth, network stack, and DNS errors**
+
+*Compatible with Windows 7, 8.1, 10, and 11 — Built with PowerShell, native CMD fallbacks, and automated test coverage*
 
 [![Latest Release](https://img.shields.io/github/v/release/nkdhawan76/WindowsFixKit?color=3b82f6&logo=github)](https://github.com/nkdhawan76/WindowsFixKit/releases/latest)
-[![CI](https://github.com/nkdhawan76/WindowsFixKit/actions/workflows/ci.yml/badge.svg)](https://github.com/nkdhawan76/WindowsFixKit/actions/workflows/ci.yml)
+[![Total Downloads](https://img.shields.io/github/downloads/nkdhawan76/WindowsFixKit/total?color=10b981&logo=windows)](https://github.com/nkdhawan76/WindowsFixKit/releases)
+[![CI Build](https://github.com/nkdhawan76/WindowsFixKit/actions/workflows/ci.yml/badge.svg)](https://github.com/nkdhawan76/WindowsFixKit/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![All Contributors](https://img.shields.io/github/all-contributors/nkdhawan76/WindowsFixKit?color=ee8449&style=flat-square)](#-contributors)
-[![PowerShell](https://img.shields.io/badge/PowerShell-5.1%20%7C%207%2B-blue.svg)](https://github.com/PowerShell/PowerShell)
+[![PowerShell Gallery](https://img.shields.io/badge/PSGallery-WindowsFixKit-blue.svg?logo=powershell)](https://www.powershellgallery.com/packages/WindowsFixKit)
 [![Platform](https://img.shields.io/badge/Platform-Windows%207%20%7C%208.1%20%7C%2010%20%7C%2011-0078D6.svg)](https://www.microsoft.com/windows)
 
 </div>
 
 ---
 
-## 💾 Direct Download (No Git Required)
+## 📦 Download
 
-For immediate troubleshooting on any PC without installing Git or cloning repositories:
+Download the portable zip archive for offline troubleshooting without installing Git or dependencies:
 
-[![Download Latest Release](https://img.shields.io/badge/Download-WindowsFixKit--latest.zip-success?style=for-the-badge&logo=windows)](https://github.com/nkdhawan76/WindowsFixKit/releases/latest/download/WindowsFixKit-latest.zip)
+[![Download WindowsFixKit-latest.zip](https://img.shields.io/badge/Download-WindowsFixKit--latest.zip-success?style=for-the-badge&logo=windows)](https://github.com/nkdhawan76/WindowsFixKit/releases/latest/download/WindowsFixKit-latest.zip)
 
-### How to Use the Downloaded Package:
-1. **Download:** Click the button above to download `WindowsFixKit-latest.zip`.
-2. **Extract:** Right-click the `.zip` file -> select **Extract All...**.
-3. **Run:**
-   - For Windows Update & Network repairs: Right-click `scripts\diagnose.ps1` -> **Run with PowerShell** (or run inside an elevated PowerShell terminal).
-   - For Full Hardware & System Health Audit: Right-click `scripts\full_system_diagnosis.ps1` -> **Run with PowerShell**.
+- **Current Release:** [v1.0.0 Release Notes](https://github.com/nkdhawan76/WindowsFixKit/releases/latest)
+- **Full Release History:** [GitHub Releases](https://github.com/nkdhawan76/WindowsFixKit/releases)
 
 ---
 
-## 📖 Overview
+## ⚡ Quick Start
 
-**WindowsFixKit** is an open-source, non-destructive toolkit engineered to diagnose and automatically remediate common operating system corruptions, Windows Update failures, adapter disappearances, networking failures, and hardware bottlenecks.
+### Option 1: One-Click Menu (Recommended for Most Users)
 
-Unlike generic cleanup utilities, **WindowsFixKit**:
-- 🔍 **Harvests and Regex-Matches** real-time error logs (`WindowsUpdate.log`, `ReportingEvents.log`, Windows Event Viewer).
-- 🩺 **Full System Diagnostic Engine**: Audits OS metadata, SSD/HDD SMART health & wear counters, physical RAM sticks & buffer allocation, battery health degradation, CPU thermal throttling, partition capacities, and startup bloat.
-- 📊 **Generates Visual HTML Reports**: Automatically creates a modern, responsive HTML report saved directly to your Desktop (`WindowsFixKit-Report.html`).
-- ⚙️ **Executes Idempotent Remediations** targeted specifically at the identified root cause.
-- 🌐 **Features Dual-Engine Compatibility**: Uses modern PowerShell cmdlets on Windows 10/11 while providing rock-solid native CMD batch (`.bat`) fallbacks using `netsh`, `sc`, `ipconfig`, and `wmic` for Windows 7 and 8.1.
-- 📋 **Delivers Transparent Reporting**: Produces a clean summary table detailing detected issues, fixes applied, and reboot requirements.
+1. Download [`WindowsFixKit-latest.zip`](https://github.com/nkdhawan76/WindowsFixKit/releases/latest/download/WindowsFixKit-latest.zip) and extract it.
+2. Double-click **`WindowsFixKit.bat`** (or `run.bat`).
+3. Accept the Administrator prompt (UAC).
+4. Choose an action from the numbered menu:
 
----
-
-## 🖥️ Full System Diagnosis
-
-WindowsFixKit includes an extensive system and hardware audit engine in `scripts/full_system_diagnosis.ps1` and modular diagnostic scripts under `scripts/diagnostics/`.
-
-### What It Audits:
-1. **OS & Hardware Info**: OS Edition, Version, Build Number, Architecture, System Model, Manufacturer, and Uptime via `Get-ComputerInfo` (with CIM fallback for Windows 7/8.1).
-2. **Storage Health & SMART Data**: Storage media type (NVMe, SSD, HDD), Drive Wear %, Operating Temperature, and Uncorrected Read Errors via `Get-StorageReliabilityCounter` and `Get-PhysicalDisk`.
-3. **Physical RAM & Allocation**: RAM stick vendors, clock speeds, capacities via `Win32_PhysicalMemory`, and live buffer headroom via `Get-Counter '\Memory\Available MBytes'` (flags when available memory < 10%).
-4. **Battery Health & Capacity Loss**: Parses `powercfg /batteryreport` for Design Capacity vs Full Charge Capacity, calculating lifetime health % (flags when health < 60%).
-5. **CPU Thermal Sensors**: Reads ACPI thermal zone temperatures via `root/wmi:MSAcpi_ThermalZoneTemperature` (flags when temperatures exceed 80°C/90°C).
-6. **Disk Partition Capacity**: Scans all logical drives and flags any volume exceeding 90% utilization.
-7. **Startup Application Bloat**: Enumerates startup apps via `Win32_StartupCommand` and Registry Run keys, alerting when > 15 autostart apps are active.
-
-### Running Full System Diagnosis:
-```powershell
-# Run complete system diagnosis and automatically open Desktop HTML report
-.\scripts\full_system_diagnosis.ps1
-
-# Run individual diagnostic components independently:
-.\scripts\diagnostics\check_os_info.ps1
-.\scripts\diagnostics\check_disk_health.ps1
-.\scripts\diagnostics\check_ram_health.ps1
-.\scripts\diagnostics\check_battery_health.ps1
-.\scripts\diagnostics\check_cpu_temp.ps1
-.\scripts\diagnostics\check_startup_apps.ps1
-```
-
-### HTML Diagnostic Report Preview:
 ```text
-+-------------------------------------------------------------------------------+
-|  🧰 WindowsFixKit Diagnostic Report                      2026-08-30 23:25:00  |
-+---------------------------------------+---------------------------------------+
-|  🖥️ Operating System & Machine         |  🩺 System Health Executive Summary   |
-|  OS Edition: Windows 11 Pro           |  Storage Integrity : Healthy          |
-|  Build: 22631 (x64)                   |  Memory Status     : Healthy          |
-|  Model: Dell XPS 15 / Intel i7        |  Battery Health    : 92.4% (Healthy)  |
-|  Uptime: 2d 4h 15m                    |  CPU Thermals      : 44.2 °C (Normal) |
-+---------------------------------------+---------------------------------------+
-|  💾 Storage Health & Partitions       |  🧠 Physical Memory (RAM)             |
-|  Disk #0: NVMe SSD 1024 GB (Wear: 4%) |  Total: 32.0 GB | Available: 22.4 GB  |
-|  C: [====================      ] 72%  |  [============                  ] 30% |
-+---------------------------------------+---------------------------------------+
-|  🔋 Battery: 92.4% (Healthy)  |  🌡️ CPU: 44.2 °C  |  🚀 Startup Apps: 8 Items |
-+-------------------------------------------------------------------------------+
+=================================================================
+       WindowsFixKit - Windows Diagnostic & Auto-Repair Toolkit
+      Owner: nkdhawan76 | Supported: Windows 7, 8.1, 10, 11
+=================================================================
+
+  [1] Full Hardware & System Health Diagnosis (HTML Report)
+  [2] Windows Update & Network Diagnostic + Auto-Fix (diagnose.ps1)
+  [3] Scan-Only Mode (Detect issues without making changes)
+  [4] Quick Disk Space Cleanup & Cache Recovery (fix_storage_cleanup)
+  [5] Full Network & DNS Stack Reset (fix_network_reset)
+  [6] Fix Missing Wi-Fi Adapter (fix_wifi_missing)
+  [7] Fix Missing Bluetooth Service (fix_bluetooth_missing)
+  [8] Run Local CI Lint & Test Check (scripts\lint-check.ps1)
+  [9] Exit
+=================================================================
 ```
 
 ---
 
-## ⚡ Quick Start (Developers & Power Users)
+### Option 2: PowerShell Module
 
-### Option 1: Git Clone & Run (Recommended)
-
-1. Open **PowerShell as Administrator** (Right-click PowerShell -> *Run as administrator*).
-2. Clone the repository and navigate to the folder:
-   ```powershell
-   git clone https://github.com/nkdhawan76/WindowsFixKit.git
-   Set-Location WindowsFixKit
-   ```
-3. Run the Windows Update & Network diagnostic engine:
-   ```powershell
-   .\scripts\diagnose.ps1
-   ```
-4. Or run the full hardware & system health diagnostic:
-   ```powershell
-   .\scripts\full_system_diagnosis.ps1
-   ```
-
-### Option 2: Run in Scan-Only Mode (No System Changes)
 ```powershell
-.\scripts\diagnose.ps1 -ScanOnly
+# Install from PowerShell Gallery
+Install-Module -Name WindowsFixKit -Scope CurrentUser
+
+# Run full system diagnostics and export HTML report
+Invoke-WindowsFixKit -DiagnosisType Full
+
+# Run Windows Update and network diagnostics
+Invoke-WindowsFixKit -DiagnosisType UpdateRepair
 ```
 
-### Option 3: Run Individual Targeted Fixes
+---
+
+### Option 3: PowerShell CLI
+
 ```powershell
-# Windows Update permission error
-.\scripts\fix_0x80070005.ps1
+# Clone the repository
+git clone https://github.com/nkdhawan76/WindowsFixKit.git
+Set-Location WindowsFixKit
 
-# Missing Wi-Fi adapter (PowerShell)
-.\scripts\fix_wifi_missing.ps1
+# Run the master diagnostic engine
+.\scripts\diagnose.ps1
 
-# Missing Wi-Fi adapter (Command Prompt / Windows 7 fallback)
-.\scripts\fix_wifi_missing.bat
-
-# Storage cleanup / space recovery
-.\scripts\fix_storage_cleanup.ps1
+# Run full hardware diagnosis and export desktop HTML report
+.\scripts\full_system_diagnosis.ps1
 ```
+
+---
+
+## 📖 What WindowsFixKit Does
+
+WindowsFixKit scans and resolves common Windows Update failures, network drops, driver lockups, and hardware bottlenecks:
+
+- 🔍 **Error Log Harvesting**: Parses `WindowsUpdate.log`, `ReportingEvents.log`, and Event Viewer logs with regex pattern matching to identify active HRESULT / NT error codes.
+- 🩺 **Full System Diagnostics**: Audits hardware specs, disk SMART health counters, RAM buffers, battery degradation, CPU thermals, drive capacities, and startup programs.
+- 📊 **Exportable Reports**: Creates a clean, styled HTML report saved directly to your Desktop (`WindowsFixKit-Report.html`).
+- ⚙️ **Targeted Fixes**: Runs isolated scripts focused specifically on the detected problem, creating backups instead of blindly deleting files.
+- 🌐 **Backward Compatibility**: Uses native PowerShell cmdlets on Windows 10/11 with CMD batch (`.bat`) fallbacks (`netsh`, `sc`, `ipconfig`, `wmic`) for Windows 7 and 8.1.
+- 📋 **Summary Reporting**: Displays a summary table of issues found, actions taken, and reboot requirements.
+
+---
+
+## 🖥️ System Health Diagnostics
+
+Run `scripts/full_system_diagnosis.ps1` to perform a hardware and system health audit, or execute individual diagnostic scripts directly:
+
+| Subsystem | Diagnostic Script | Checks & Metrics |
+| :--- | :--- | :--- |
+| **System Info** | [`check_os_info.ps1`](scripts/diagnostics/check_os_info.ps1) | OS edition, version, build number, architecture, model, manufacturer, and uptime. |
+| **Storage & SMART** | [`check_disk_health.ps1`](scripts/diagnostics/check_disk_health.ps1) | NVMe/SSD/HDD media types, drive wear %, operating temperature, read errors, and partition free space. |
+| **Memory (RAM)** | [`check_ram_health.ps1`](scripts/diagnostics/check_ram_health.ps1) | RAM stick vendors, clock speeds, capacities, and active buffer headroom (flags when free RAM < 10%). |
+| **Battery Health** | [`check_battery_health.ps1`](scripts/diagnostics/check_battery_health.ps1) | Design capacity vs full charge capacity, degradation %, and AC power state (flags when health < 60%). |
+| **CPU Thermals** | [`check_cpu_temp.ps1`](scripts/diagnostics/check_cpu_temp.ps1) | ACPI thermal zone diode temperature readings (flags when temp > 80°C/90°C). |
+| **Startup Apps** | [`check_startup_apps.ps1`](scripts/diagnostics/check_startup_apps.ps1) | Scans autostart applications in registry and WMI (flags when > 15 apps are active). |
 
 ---
 
@@ -138,16 +120,16 @@ WindowsFixKit includes an extensive system and hardware audit engine in `scripts
 
 | Error Code / Category | Subsystem | Description | Fix Script (`.ps1`) | Fallback (`.bat`) | Reboot? |
 | :--- | :--- | :--- | :--- | :--- | :---: |
-| **`0x80070005`** | Windows Update | Access Denied - ACL & permission corruptions on `WinSxS` / `SoftwareDistribution` | [`fix_0x80070005.ps1`](scripts/fix_0x80070005.ps1) | — | Yes |
-| **`0x8024402c`** | Windows Update | Update Server Unreachable - Proxy misconfiguration or junk update cache | [`fix_0x8024402c.ps1`](scripts/fix_0x8024402c.ps1) | — | No |
+| **`0x80070005`** | Windows Update | Access Denied - ACL & permission issues on `WinSxS` / `SoftwareDistribution` | [`fix_0x80070005.ps1`](scripts/fix_0x80070005.ps1) | — | Yes |
+| **`0x8024402c`** | Windows Update | Update Server Unreachable - Proxy misconfiguration or corrupt update cache | [`fix_0x8024402c.ps1`](scripts/fix_0x8024402c.ps1) | — | No |
 | **`0x8024402f`** | Windows Update | Update Install Failure Loop - Corrupted datastore or catalog database | [`fix_0x8024402f.ps1`](scripts/fix_0x8024402f.ps1) | — | Yes |
-| **`0x80072EFD`** | Windows Update | Server Connection Interrupted - TLS protocol mismatch or firewall lock | [`fix_0x80072EFD.ps1`](scripts/fix_0x80072EFD.ps1) | — | No |
-| **`0xc1900101`** | Windows Update | Feature Update Rollback - Incompatible drivers, DISM/SFC corruption | [`fix_0xc1900101.ps1`](scripts/fix_0xc1900101.ps1) | — | Yes |
+| **`0x80072EFD`** | Windows Update | Server Connection Interrupted - TLS protocol mismatch or firewall block | [`fix_0x80072EFD.ps1`](scripts/fix_0x80072EFD.ps1) | — | No |
+| **`0xc1900101`** | Windows Update | Feature Update Rollback - Driver conflicts, DISM/SFC system corruptions | [`fix_0xc1900101.ps1`](scripts/fix_0xc1900101.ps1) | — | Yes |
 | **`0x800f0922`** | Windows Update | SSU / .NET Failure - System Partition (ESP) space limit or active VPN filter | [`fix_0x800f0922.ps1`](scripts/fix_0x800f0922.ps1) | — | Yes |
-| **`wifi_missing_post_update`** | Hardware / Wi-Fi | Wi-Fi adapter/tray icon disappears after a Windows update or sleep cycle | [`fix_wifi_missing.ps1`](scripts/fix_wifi_missing.ps1) | [`fix_wifi_missing.bat`](scripts/fix_wifi_missing.bat) | No |
-| **`bluetooth_missing_post_update`** | Hardware / Bluetooth | Bluetooth toggle/service (`bthserv`) missing or disabled post-update | [`fix_bluetooth_missing.ps1`](scripts/fix_bluetooth_missing.ps1) | [`fix_bluetooth_missing.bat`](scripts/fix_bluetooth_missing.bat) | No |
+| **`wifi_missing_post_update`** | Hardware / Wi-Fi | Wi-Fi adapter or tray icon disappears after an update or sleep cycle | [`fix_wifi_missing.ps1`](scripts/fix_wifi_missing.ps1) | [`fix_wifi_missing.bat`](scripts/fix_wifi_missing.bat) | No |
+| **`bluetooth_missing_post_update`** | Hardware / Bluetooth | Bluetooth service (`bthserv`) disabled or radio device missing post-update | [`fix_bluetooth_missing.ps1`](scripts/fix_bluetooth_missing.ps1) | [`fix_bluetooth_missing.bat`](scripts/fix_bluetooth_missing.bat) | No |
 | **`network_no_internet`** | Networking | Adapter connected to LAN but displays "No Internet Access" | [`fix_network_reset.ps1`](scripts/fix_network_reset.ps1) | [`fix_network_reset.bat`](scripts/fix_network_reset.bat) | Yes |
-| **`dns_not_resolving`** | Networking / DNS | Domain lookups fail, websites do not load, IP ping succeeds | [`fix_dns.ps1`](scripts/fix_dns.ps1) | [`fix_dns.bat`](scripts/fix_dns.bat) | No |
+| **`dns_not_resolving`** | Networking / DNS | Domain lookups fail while direct IP pings succeed | [`fix_dns.ps1`](scripts/fix_dns.ps1) | [`fix_dns.bat`](scripts/fix_dns.bat) | No |
 | **`hdd_ssd_unhealthy`** | Hardware / Storage | Physical disk wear >80%, SMART warnings, or read error spikes | [`fix_disk_errors.ps1`](scripts/fix_disk_errors.ps1) | — | Yes |
 | **`ram_error_detected`** | Hardware / Memory | Available RAM < 10% or memory pool exhaustion | [`fix_ram_cache.ps1`](scripts/fix_ram_cache.ps1) | — | No |
 | **`battery_degraded`** | Hardware / Power | Full charge battery capacity degraded < 60% of original design | [`fix_battery_optimization.ps1`](scripts/fix_battery_optimization.ps1) | — | No |
@@ -168,7 +150,8 @@ WindowsFixKit/
 │   ├── workflows/
 │   │   ├── ci.yml
 │   │   ├── version-bump.yml
-│   │   └── release-zip.yml
+│   │   ├── release-zip.yml
+│   │   └── publish-psgallery.yml
 │   ├── CODEOWNERS
 │   └── PULL_REQUEST_TEMPLATE.md
 ├── docs/
@@ -180,6 +163,7 @@ WindowsFixKit/
 ├── scripts/
 │   ├── full_system_diagnosis.ps1
 │   ├── diagnose.ps1
+│   ├── lint-check.ps1
 │   ├── diagnostics/
 │   │   ├── check_os_info.ps1
 │   │   ├── check_disk_health.ps1
@@ -209,37 +193,54 @@ WindowsFixKit/
 │   └── Validate-ErrorsDb.Tests.ps1
 ├── .all-contributorsrc
 ├── .gitignore
+├── .markdownlint.json
 ├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── README.md
-└── VERSION
+├── run.bat
+├── VERSION
+├── WindowsFixKit.bat
+├── WindowsFixKit.psd1
+└── WindowsFixKit.psm1
 ```
 
 ---
 
-## 🔒 Security & Safety Guarantees
+## 🔒 Safety & Design Principles
 
-1. **100% Native**: Only uses official Windows system binaries (`dism.exe`, `sfc.exe`, `netsh.exe`, `icacls.exe`, `takeown.exe`, `sc.exe`, `pnputil.exe`, `powercfg.exe`).
-2. **Safe Re-Runs**: Every script is written to be strictly idempotent.
-3. **No Blind Deletions**: Corrupt datastores are safely backed up with `.bak` extensions rather than erased without trace.
+1. **Native Binaries Only**: Uses built-in Windows system tools (`dism.exe`, `sfc.exe`, `netsh.exe`, `icacls.exe`, `takeown.exe`, `sc.exe`, `pnputil.exe`, `powercfg.exe`).
+2. **Idempotency**: All scripts can be re-run safely without producing unintended side effects.
+3. **Safe Backups**: Corrupted update folders and cache directories are rotated with `.bak` extensions instead of being deleted.
 
-For an in-depth explanation of diagnostic mechanics and subsystem handling, read [How It Works](docs/how-it-works.md).
+For in-depth architectural details, see [How It Works](docs/how-it-works.md).
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are warmly welcomed! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for branch naming standards, testing requirements, and PR review checklists.
+Contributions and new error code mappings are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting a Pull Request.
 
-To propose a new error code fix, use our [New Error Code Request Template](https://github.com/nkdhawan76/WindowsFixKit/issues/new?template=new_error_request.md).
+Run the local test and lint suite before pushing changes:
+
+```powershell
+.\scripts\lint-check.ps1
+```
+
+---
+
+## 👨‍💻 Maintained by
+
+**Nikil Dhawan**
+- GitHub: [@nkdhawan76](https://github.com/nkdhawan76)
+- Repository: [WindowsFixKit](https://github.com/nkdhawan76/WindowsFixKit)
 
 ---
 
 ## 👥 Contributors
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks to the contributors who have improved WindowsFixKit ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -257,10 +258,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the [MIT License](LICENSE).

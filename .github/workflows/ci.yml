@@ -1,4 +1,4 @@
-name: CI - PSScriptAnalyzer, Pester & Validations
+name: CI - Quality Gate, Linting & Automated Tests
 
 on:
   push:
@@ -7,33 +7,34 @@ on:
     branches: [ '**' ]
 
 jobs:
-  test-and-lint:
-    name: Lint, Test & Validate
+  zero-error-gate:
+    name: Zero-Error Quality Gate (Linter, Pester, Markdown)
     runs-on: windows-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Validate errors_db.json Syntax
+      - name: Validate errors_db.json Schema & Structure
         shell: pwsh
         run: |
-          Write-Host "Checking syntax of errors/errors_db.json..."
+          Write-Host "Validating errors/errors_db.json syntax and integrity..."
           $jsonPath = "./errors/errors_db.json"
           if (-not (Test-Path $jsonPath)) {
-            Write-Error "errors_db.json not found!"
+            Write-Error "errors_db.json is missing!"
             exit 1
           }
           try {
-            $content = Get-Content $jsonPath -Raw | ConvertFrom-Json
-            Write-Host "errors_db.json is valid JSON containing $(($content.PSObject.Properties | Measure-Object).Count) entries."
+            $json = Get-Content $jsonPath -Raw | ConvertFrom-Json
+            $count = ($json.PSObject.Properties | Measure-Object).Count
+            Write-Host "Success: errors_db.json parsed with $count entries."
           }
           catch {
-            Write-Error "JSON syntax error in errors_db.json: $_"
+            Write-Error "JSON validation error: $_"
             exit 1
           }
 
-      - name: Install PSScriptAnalyzer & Pester
+      - name: Install PSScriptAnalyzer & Pester Modules
         shell: pwsh
         run: |
           if (-not (Get-Module -ListAvailable -Name PSScriptAnalyzer)) {
@@ -43,23 +44,28 @@ jobs:
             Install-Module -Name Pester -Force -Scope CurrentUser -Repository PSGallery -SkipPublisherCheck
           }
 
-      - name: Run PSScriptAnalyzer
+      - name: Run Zero-Tolerance PSScriptAnalyzer
         shell: pwsh
         run: |
-          Write-Host "Running PSScriptAnalyzer on all .ps1 scripts..."
+          Write-Host "Running PSScriptAnalyzer (Severity: Error, Warning)..."
           $results = Invoke-ScriptAnalyzer -Path ./scripts -Recurse -Severity Error, Warning
           
           if ($results) {
+            Write-Host "PSScriptAnalyzer findings:" -ForegroundColor Red
             $results | Format-Table -AutoSize
-            $errors = $results | Where-Object { $_.Severity -eq "Error" }
-            if ($errors.Count -gt 0) {
-              Write-Error "PSScriptAnalyzer found $($errors.Count) Error-level issue(s)!"
-              exit 1
-            }
-            Write-Host "PSScriptAnalyzer completed with 0 errors." -ForegroundColor Green
-          } else {
-            Write-Host "All scripts passed PSScriptAnalyzer cleanly!" -ForegroundColor Green
+            Write-Error "Zero-tolerance quality gate failed: $($results.Count) linting finding(s) detected!"
+            exit 1
           }
+          Write-Host "Success: 0 errors and 0 warnings found by PSScriptAnalyzer!" -ForegroundColor Green
+
+      - name: Setup Node.js for Markdown Linting
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run markdownlint-cli2
+        run: |
+          npx -y markdownlint-cli2 "**/*.md" "#node_modules"
 
       - name: Run Pester Automated Tests
         shell: pwsh
@@ -76,7 +82,7 @@ jobs:
         shell: cmd
         run: |
           echo Validating batch scripts existence and header checks...
-          for %%f in (scripts\*.bat) do (
+          for %%f in (scripts\*.bat *.bat) do (
             echo Checking %%f...
             type %%f | findstr /i "WindowsFixKit" >nul || (echo Missing header in %%f && exit /b 1)
           )

@@ -46,7 +46,7 @@ foreach ($svc in $servicesToStop) {
         Write-Host "  [OK] Stopped $svc" -ForegroundColor Green
     }
     catch {
-        Write-Warning "  [!] Could not stop $($svc): $_"
+        Write-Warning "  [!] Could not stop ${svc}: $_"
     }
 }
 
@@ -93,7 +93,7 @@ foreach ($key in $regKeys) {
             Write-Host "  [OK] Access rule updated for $key" -ForegroundColor Green
         }
         catch {
-            Write-Warning "  [-] Skipped setting ACL for $($key): $_"
+            Write-Warning "  [-] Skipped setting ACL for ${key}: $_"
         }
     }
 }
@@ -109,7 +109,7 @@ foreach ($svc in $servicesToStart) {
         Write-Host "  [OK] $svc is now $($runningSvc.Status)" -ForegroundColor Green
     }
     catch {
-        Write-Warning "  [!] Could not start $($svc): $_"
+        Write-Warning "  [!] Could not start ${svc}: $_"
     }
 }
 

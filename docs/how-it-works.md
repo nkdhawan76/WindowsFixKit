@@ -48,22 +48,27 @@ flowchart TD
 The diagnostic engine performs a 5-stage health sweep:
 
 ### Phase 1: Windows Update Log Harvesting & Regex Matching
+
 - **Source Inspection**: Reads the most recent transactions from `%SystemRoot%\SoftwareDistribution\ReportingEvents.log`, the `Microsoft-Windows-WindowsUpdateClient` event log provider, and `Get-WindowsUpdateLog`.
 - **Pattern Extraction**: Scans text streams using regex `0x[0-9A-Fa-f]{8}` for active hexadecimal Windows NT / HRESULT error codes.
 - **Catalog Lookup**: Matches discovered codes against `errors/errors_db.json`.
 
 ### Phase 2: Gateway & IP Reachability
+
 - Performs low-level ICMP ping tests to `8.8.8.8` via `.NET System.Net.NetworkInformation.Ping` to verify whether the packet transmission pipeline is operational without relying on DNS.
 
 ### Phase 3: Wireless Adapter & Service Audit
+
 - Audits Plug and Play (`PnP`) network devices via `Get-PnpDevice -Class Net` and `Get-NetAdapter`.
 - Verifies the state of `WlanSvc` (WLAN AutoConfig). If an adapter is disabled or disconnected due to a driver migration glitch post-update, it flags for remediation.
 
 ### Phase 4: Bluetooth Subsystem Audit
+
 - Checks status and start configuration for `bthserv` (Bluetooth Support Service) and `BTAGService` (Bluetooth Audio Gateway).
 - Validates Bluetooth PnP radios under the `{e0cbf06c-cd8b-4647-bb8a-263b43f0f974}` class GUID.
 
 ### Phase 5: Domain Name Resolution (DNS)
+
 - Performs asynchronous queries against root authority domains (`microsoft.com`, `google.com`) using `.NET System.Net.Dns` and `Resolve-DnsName`.
 
 ---
@@ -88,7 +93,9 @@ All results are formatted into a live console summary table and exported to a re
 ## 3. Remediations & Subsystems
 
 ### Windows Update Subsystem
+
 Windows Update relies on interdependent subsystems that frequently get trapped in corrupted states:
+
 1. **Background Intelligent Transfer Service (BITS)**: Handles background downloads and throttling.
 2. **Windows Update Service (`wuauserv`)**: Evaluates patch applicability and schedules installations.
 3. **Cryptographic Services (`cryptSvc`)**: Validates Authenticode signatures and catalog hashes under `catroot2`.
@@ -115,6 +122,7 @@ Windows Update relies on interdependent subsystems that frequently get trapped i
 ## 4. Idempotency & Safety Guarantees
 
 Every script in WindowsFixKit adheres to strict reliability rules:
+
 1. **Safe to Re-Run**: Executing any script multiple times produces the same stable state without side effects.
 2. **Non-Destructive Backups**: Rather than permanently deleting database folders, components are renamed (`.bak`) to prevent data loss.
 3. **No Unapproved Third-Party Executables**: Relies exclusively on native signed Windows binaries (`dism.exe`, `sfc.exe`, `netsh.exe`, `takeown.exe`, `icacls.exe`, `regsvr32.exe`, `sc.exe`, `powercfg.exe`).

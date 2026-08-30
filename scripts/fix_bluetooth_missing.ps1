@@ -36,7 +36,7 @@ $bluetoothServices = @("bthserv", "BTAGService", "bthHFSrv")
 foreach ($svcName in $bluetoothServices) {
     $svc = Get-Service -Name $svcName -ErrorAction SilentlyContinue
     if ($svc) {
-        Write-Host "  [-] Service $($svcName): current status is $($svc.Status)" -ForegroundColor Gray
+        Write-Host "  [-] Service ${svcName}: current status is $($svc.Status)" -ForegroundColor Gray
         try {
             Set-Service -Name $svcName -StartupType Automatic -ErrorAction SilentlyContinue
             Start-Service -Name $svcName -ErrorAction SilentlyContinue
@@ -44,7 +44,7 @@ foreach ($svcName in $bluetoothServices) {
             Write-Host "  [OK] Service $svcName is now $($svc.Status)" -ForegroundColor Green
         }
         catch {
-            Write-Warning "  [-] Error updating service $($svcName): $_"
+            Write-Warning "  [-] Error updating service ${svcName}: $_"
         }
     }
     else {

@@ -106,7 +106,7 @@ function Invoke-Remediation {
         }
     }
     catch {
-        Write-Error "  [!] Error executing $($FixScriptRelPath): $_"
+        Write-Error "  [!] Error executing ${FixScriptRelPath}: $_"
         $summaryReport.Add([PSCustomObject]@{
             "Issue Found"      = $IssueTitle
             "Fix Applied"      = "Execution Error"

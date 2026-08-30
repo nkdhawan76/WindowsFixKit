@@ -38,7 +38,7 @@ foreach ($svc in $services) {
         Write-Host "  [OK] Stopped service: $svc" -ForegroundColor Green
     }
     catch {
-        Write-Warning "  [-] Could not stop $($svc): $_"
+        Write-Warning "  [-] Could not stop ${svc}: $_"
     }
 }
 
@@ -105,7 +105,7 @@ foreach ($svc in $services) {
         Write-Host "  [OK] Started service: $svc" -ForegroundColor Green
     }
     catch {
-        Write-Warning "  [-] Failed to start $($svc): $_"
+        Write-Warning "  [-] Failed to start ${svc}: $_"
     }
 }
 

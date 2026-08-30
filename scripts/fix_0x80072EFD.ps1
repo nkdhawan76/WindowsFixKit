@@ -75,7 +75,7 @@ foreach ($endpoint in $testEndpoints) {
         }
     }
     catch {
-        Write-Warning "  [-] Failed to resolve $($endpoint): $_"
+        Write-Warning "  [-] Failed to resolve ${endpoint}: $_"
     }
 }
 

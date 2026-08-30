@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.0] - 2026-08-30
 
 ### Added
+
 - **Master Full System Diagnosis Engine (`full_system_diagnosis.ps1`)**:
   - Comprehensive orchestration of hardware telemetry, storage health, RAM buffers, battery degradation, CPU thermals, partition usage, and startup bloat.
   - Automatically exports a styled, responsive HTML report (`WindowsFixKit-Report.html`) with color-coded status badges directly to the user's Desktop.
@@ -32,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2026-08-30
 
 ### Added
+
 - **Diagnostic Engine (`diagnose.ps1`)**:
   - Automated detection of Windows Update error codes via WindowsUpdate.log, ReportingEvents.log, and Windows Event logs.
   - Independent health diagnostic sweeps for Internet connectivity, Wi-Fi adapters, Bluetooth service/radios, and DNS resolution.
