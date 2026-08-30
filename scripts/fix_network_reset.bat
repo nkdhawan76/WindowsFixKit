@@ -1,20 +1,29 @@
 @echo off
 :: ============================================================================
-:: WindowsFixKit - Full Network Reset (CMD/Batch Fallback)
+:: WindowsFixKit - Network Reset Script (CMD/Batch Fallback)
 :: Target: Windows 7, 8.1, 10, 11
 :: ============================================================================
 
-echo =========================================================
-echo  [WindowsFixKit] Full Network Reset (CMD Fallback)
-echo =========================================================
+title WindowsFixKit - Network Reset
+color 0A
 
-:: Check for Administrative Privileges
+:: Ensure working directory is the script directory
+cd /d "%~dp0"
+
+:: Check for Administrator Privileges and Self-Elevate
 net session >nul 2>&1
 if %errorLevel% neq 0 (
-    echo [!] Error: Administrative privileges required.
-    echo Please right-click this script and select 'Run as administrator'.
-    exit /b 1
+    echo.
+    echo =========================================================
+    echo  [!] Requesting Administrator privileges...
+    echo =========================================================
+    powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
+    exit /b
 )
+
+echo =========================================================
+echo  [WindowsFixKit] Resetting Network Stack (CMD Fallback)
+echo =========================================================
 
 echo.
 echo [+] Step 1: Resetting Winsock Catalog...
@@ -24,28 +33,24 @@ echo [OK] Winsock catalog reset.
 echo.
 echo [+] Step 2: Resetting TCP/IP Stack...
 netsh int ip reset >nul 2>&1
-netsh int ipv6 reset >nul 2>&1
-echo [OK] TCP/IP and IPv6 stack reset.
+echo [OK] TCP/IP stack reset.
 
 echo.
-echo [+] Step 3: Purging ARP Cache...
-netsh interface ip delete arpcache >nul 2>&1
-echo [OK] ARP cache purged.
-
-echo.
-echo [+] Step 4: Releasing and Renewing IP Address...
-ipconfig /release >nul 2>&1
-ipconfig /renew >nul 2>&1
-echo [OK] DHCP address renewed.
-
-echo.
-echo [+] Step 5: Flushing and Registering DNS...
+echo [+] Step 3: Flushing and Re-registering DNS...
 ipconfig /flushdns >nul 2>&1
 ipconfig /registerdns >nul 2>&1
-echo [OK] DNS resolver refreshed.
+echo [OK] DNS resolver flushed and re-registered.
+
+echo.
+echo [+] Step 4: Releasing and Renewing DHCP Leases...
+ipconfig /release >nul 2>&1
+ipconfig /renew >nul 2>&1
+echo [OK] DHCP leases refreshed.
 
 echo.
 echo =========================================================
-echo  [STATUS] Network Reset Completed. A reboot is recommended.
+echo  [STATUS] Network Reset Completed. A system restart is recommended.
 echo =========================================================
+echo.
+pause
 exit /b 0

@@ -7,7 +7,10 @@
 title WindowsFixKit - System Diagnostic & Auto-Fix Toolkit
 color 0B
 
-:: Check for Administrator Privileges
+:: Ensure working directory is the script directory
+cd /d "%~dp0"
+
+:: Check for Administrator Privileges and Self-Elevate
 net session >nul 2>&1
 if %errorLevel% neq 0 (
     echo.
@@ -15,12 +18,9 @@ if %errorLevel% neq 0 (
     echo   [!] Administrative Privileges Required
     echo   Requesting User Account Control (UAC) elevation...
     echo =================================================================
-    powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process cmd.exe -ArgumentList '/c \"\"%~f0\"\"' -Verb RunAs"
+    powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
     exit /b
 )
-
-:: Navigate to Script Directory
-cd /d "%~dp0"
 
 :MENU
 cls
@@ -59,7 +59,7 @@ goto MENU
 :FULL_DIAG
 cls
 echo [>>>] Running Full Hardware & System Health Audit...
-powershell -NoProfile -ExecutionPolicy Bypass -File "scripts\full_system_diagnosis.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\full_system_diagnosis.ps1"
 echo.
 pause
 goto MENU
@@ -67,7 +67,7 @@ goto MENU
 :WU_DIAG
 cls
 echo [>>>] Running Windows Update & Network Diagnostic Engine...
-powershell -NoProfile -ExecutionPolicy Bypass -File "scripts\diagnose.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\diagnose.ps1"
 echo.
 pause
 goto MENU
@@ -75,7 +75,7 @@ goto MENU
 :SCAN_ONLY
 cls
 echo [>>>] Running Scan-Only Diagnostic...
-powershell -NoProfile -ExecutionPolicy Bypass -File "scripts\diagnose.ps1" -ScanOnly
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\diagnose.ps1" -ScanOnly
 echo.
 pause
 goto MENU
@@ -83,7 +83,7 @@ goto MENU
 :CLEANUP
 cls
 echo [>>>] Running Storage Cleanup & Cache Recovery...
-powershell -NoProfile -ExecutionPolicy Bypass -File "scripts\fix_storage_cleanup.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_storage_cleanup.ps1"
 echo.
 pause
 goto MENU
@@ -91,7 +91,7 @@ goto MENU
 :NET_RESET
 cls
 echo [>>>] Resetting Network Sockets, TCP/IP & DNS...
-powershell -NoProfile -ExecutionPolicy Bypass -File "scripts\fix_network_reset.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_network_reset.ps1"
 echo.
 pause
 goto MENU
@@ -99,7 +99,7 @@ goto MENU
 :WIFI_FIX
 cls
 echo [>>>] Remediating Wi-Fi Adapters & WLAN Services...
-powershell -NoProfile -ExecutionPolicy Bypass -File "scripts\fix_wifi_missing.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_wifi_missing.ps1"
 echo.
 pause
 goto MENU
@@ -107,7 +107,7 @@ goto MENU
 :BT_FIX
 cls
 echo [>>>] Remediating Bluetooth Support Services & Radios...
-powershell -NoProfile -ExecutionPolicy Bypass -File "scripts\fix_bluetooth_missing.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_bluetooth_missing.ps1"
 echo.
 pause
 goto MENU
@@ -115,7 +115,7 @@ goto MENU
 :LINT_CHECK
 cls
 echo [>>>] Running Quality Gate & Lint Suite...
-powershell -NoProfile -ExecutionPolicy Bypass -File "scripts\lint-check.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\lint-check.ps1"
 echo.
 pause
 goto MENU

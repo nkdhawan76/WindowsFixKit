@@ -4,17 +4,26 @@
 :: Target: Windows 7, 8.1, 10, 11
 :: ============================================================================
 
+title WindowsFixKit - Wi-Fi Fix
+color 0A
+
+:: Ensure working directory is the script directory
+cd /d "%~dp0"
+
+:: Check for Administrator Privileges and Self-Elevate
+net session >nul 2>&1
+if %errorLevel% neq 0 (
+    echo.
+    echo =========================================================
+    echo  [!] Requesting Administrator privileges...
+    echo =========================================================
+    powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
+    exit /b
+)
+
 echo =========================================================
 echo  [WindowsFixKit] Fixing Missing Wi-Fi Adapter (CMD Fallback)
 echo =========================================================
-
-:: Check for Administrative Privileges
-net session >nul 2>&1
-if %errorLevel% neq 0 (
-    echo [!] Error: Administrative privileges required.
-    echo Please right-click this script and select 'Run as administrator'.
-    exit /b 1
-)
 
 echo.
 echo [+] Step 1: Configuring WLAN AutoConfig Service (WlanSvc)...
@@ -48,4 +57,6 @@ echo.
 echo =========================================================
 echo  [STATUS] Wi-Fi Fix Script Execution Completed.
 echo =========================================================
+echo.
+pause
 exit /b 0
