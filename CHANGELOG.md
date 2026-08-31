@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-08-31
+
+### Added
+- **BSOD Crash Dump & BugCheck Analyzer (`fix_bsod_analyzer.ps1` & `check_bsod_dump.ps1`)**:
+  - Scans `C:\Windows\Minidump\*.dmp` and System Event Log (Event ID 1001) for kernel BugChecks.
+  - Automatically identifies crashing kernel drivers (`nvlddmkm.sys`, `rtwlanu.sys`, `ntoskrnl.exe`, etc.) and guides driver rollback / SFC component verification.
+- **Hardware Driver Auto-Repair & Catalog Scan Engine (`fix_driver_updater.ps1`)**:
+  - Inspects Device Manager for PnP devices in error states (Code 10, 28, 43).
+  - Triggers hardware bus rescans via `pnputil.exe /scan-devices` and queries the Microsoft Update Catalog via `USOClient` / `wuauclt`.
+- **Diagnostic Log Bundler & Share Link Assistant (`export_and_share_report.ps1`)**:
+  - Packages HTML diagnostic reports, repair logs, and system specs into a desktop ZIP bundle (`WindowsFixKit_Diagnostic_<timestamp>.zip`).
+  - Prepares direct 1-click Email (`devsparksindia@gmail.com`) and WhatsApp (`+91 9521032268`) support links for DevSparks India technical assistance.
+- **Enhanced Interactive Launcher (`WindowsFixKit.bat`)**:
+  - Expanded master menu to 17 automated diagnostic and repair workflows.
+
 ## [1.3.0] - 2026-08-31
 
 ### Added

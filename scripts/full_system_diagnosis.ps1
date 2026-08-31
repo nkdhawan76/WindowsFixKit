@@ -63,8 +63,12 @@ $batteryResult = & (Join-Path $diagnosticsDir "check_battery_health.ps1") -PassT
 Write-Host "`n[5/6] Auditing CPU Sensor Thermals & ACPI Zones..." -ForegroundColor Yellow
 $cpuResult = & (Join-Path $diagnosticsDir "check_cpu_temp.ps1") -PassThru
 
-Write-Host "`n[6/6] Auditing Autostart Registries & Startup Bloat..." -ForegroundColor Yellow
+Write-Host "`n[6/7] Auditing Autostart Registries & Startup Bloat..." -ForegroundColor Yellow
 $startupResult = & (Join-Path $diagnosticsDir "check_startup_apps.ps1") -PassThru
+
+Write-Host "`n[7/7] Auditing BSOD Kernel Crash Dumps & BugChecks..." -ForegroundColor Yellow
+$bsodScript = Join-Path $diagnosticsDir "check_bsod_dump.ps1"
+$bsodResult = if (Test-Path $bsodScript) { & $bsodScript } else { $null }
 
 # -------------------------------------------------------------------------
 # Compile Master Findings & Console Summary
@@ -136,6 +140,19 @@ $summaryRows.Add([PSCustomObject]@{
 })
 foreach ($rec in $startupResult.Recommendations) {
     $allRecommendations.Add([PSCustomObject]@{ Subsystem = "Startup Apps"; Finding = $rec; FixScript = "scripts/fix_startup_bloat.ps1" })
+}
+
+# 6. BSOD Crash Dumps Summary
+if ($bsodResult) {
+    $bsodStatus = $bsodResult.Status
+    $summaryRows.Add([PSCustomObject]@{
+        Subsystem = "BSOD Crash Logs"
+        Status    = $bsodStatus
+        Details   = if ($bsodResult.CrashCount -gt 0) { "$($bsodResult.CrashCount) Recent Crash Event(s) Detected" } else { "Clean - 0 Recent Kernel Crash Dumps" }
+    })
+    if ($bsodResult.CrashCount -gt 0) {
+        $allRecommendations.Add([PSCustomObject]@{ Subsystem = "Kernel Crash"; Finding = "Discovered $($bsodResult.CrashCount) recent BSOD BugCheck events."; FixScript = "scripts/fix_bsod_analyzer.ps1" })
+    }
 }
 
 # Determine Overall System Status

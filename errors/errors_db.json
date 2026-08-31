@@ -324,5 +324,32 @@
       "Clean broken startup registry entries in HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run.",
       "Use msconfig or Autoruns for advanced autostart service auditing."
     ]
+  },
+  "bsod_crash_detected": {
+    "title": "Windows Kernel BSOD Crash Dump Detected",
+    "description": "Recent Blue Screen of Death (BSOD) memory dump or Event ID 1001 BugCheck detected on system.",
+    "category": "Hardware / Kernel",
+    "fix_script": "scripts/fix_bsod_analyzer.ps1",
+    "fallback_script": null,
+    "restart_required": true,
+    "manual_steps": [
+      "Inspect crashing driver in Minidump report.",
+      "Update or clean reinstall faulty driver.",
+      "Run sfc /scannow and memory diagnostics (mdsched.exe)."
+    ]
+  },
+  "driver_device_error": {
+    "title": "PnP Hardware Device Driver Error (Code 10/28/43)",
+    "description": "One or more hardware devices in Device Manager report a configuration or driver startup failure.",
+    "category": "Hardware / Drivers",
+    "fix_script": "scripts/fix_driver_updater.ps1",
+    "fallback_script": null,
+    "restart_required": true,
+    "manual_steps": [
+      "Open Device Manager (devmgmt.msc).",
+      "Right-click the faulty device and select 'Update driver'.",
+      "Rescan hardware bus via Action -> Scan for hardware changes.",
+      "Check Windows Update optional driver updates."
+    ]
   }
 }

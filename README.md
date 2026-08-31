@@ -23,7 +23,7 @@ Download the portable zip archive for offline troubleshooting without installing
 
 [![Download WindowsFixKit-latest.zip](https://img.shields.io/badge/Download-WindowsFixKit--latest.zip-success?style=for-the-badge&logo=windows)](https://github.com/nkdhawan76/WindowsFixKit/releases/latest/download/WindowsFixKit-latest.zip)
 
-- **Current Release:** [v1.3.0 Release Notes](https://github.com/nkdhawan76/WindowsFixKit/releases/tag/v1.3.0)
+- **Current Release:** [v1.4.0 Release Notes](https://github.com/nkdhawan76/WindowsFixKit/releases/tag/v1.4.0)
 - **Full Release History:** [GitHub Releases](https://github.com/nkdhawan76/WindowsFixKit/releases)
 
 ---
@@ -61,17 +61,20 @@ If you are facing an unusual Windows error, driver failure, or need custom techn
   [1]  Full Hardware and System Health Diagnosis (Desktop HTML Report)
   [2]  Windows Update and Network Diagnostic + Auto-Fix (diagnose.ps1)
   [3]  Fix Windows Update Stuck at 0% (fix_update_stuck)
-  [4]  Windows 10/11 Upgrade Rollback Resolver (fix_upgrade_rollback)
-  [5]  Safe Performance Debloat (fix_performance_debloat)
-  [6]  Telemetry & Privacy Registry Hardener (fix_telemetry_privacy)
-  [7]  .NET Framework & App Install Repair Tool (fix_dotnet_repair)
-  [8]  Deep Junk & Temp Files Cleanup (%TEMP%, Prefetch, Recycle Bin)
-  [9]  Deep RAM Cache & Memory Optimizer (Empty Working Sets)
-  [10] Full Network and DNS Stack Reset (fix_network_reset)
-  [11] Fix Missing Wi-Fi Adapter (fix_wifi_missing)
-  [12] Fix Missing Bluetooth Service (fix_bluetooth_missing)
-  [13] Run Local CI Lint and Test Check (scripts\lint-check.ps1)
-  [14] Exit
+  [4]  BSOD Crash Dump & BugCheck Analyzer (fix_bsod_analyzer)
+  [5]  Hardware Driver Auto-Repair & Catalog Scan (fix_driver_updater)
+  [6]  Windows 10/11 Upgrade Rollback Resolver (fix_upgrade_rollback)
+  [7]  Safe Performance Debloat (fix_performance_debloat)
+  [8]  Telemetry & Privacy Registry Hardener (fix_telemetry_privacy)
+  [9]  .NET Framework & App Install Repair Tool (fix_dotnet_repair)
+  [10] Deep Junk & Temp Files Cleanup (%TEMP%, Prefetch, Recycle Bin)
+  [11] Deep RAM Cache & Memory Optimizer (Empty Working Sets)
+  [12] Full Network and DNS Stack Reset (fix_network_reset)
+  [13] Fix Missing Wi-Fi Adapter (fix_wifi_missing)
+  [14] Fix Missing Bluetooth Service (fix_bluetooth_missing)
+  [15] Package Diagnostic Logs & Share with DevSparks India (export_and_share_report)
+  [16] Run Local CI Lint and Test Check (scripts\lint-check.ps1)
+  [17] Exit
 =================================================================
 ```
 
@@ -114,6 +117,9 @@ WindowsFixKit scans and resolves common Windows Update failures, network drops, 
 
 - 🔍 **Error Log Harvesting**: Parses `WindowsUpdate.log`, `ReportingEvents.log`, and Event Viewer logs with regex pattern matching to identify active HRESULT / NT error codes.
 - 🩺 **Full System Diagnostics**: Audits hardware specs, disk SMART health counters, RAM buffers, battery degradation, CPU thermals, drive capacities, and startup programs.
+- 💥 **BSOD Crash Dump Analysis**: Parses `C:\Windows\Minidump\*.dmp` and Event ID 1001 to pinpoint faulty drivers (`nvlddmkm.sys`, `rtwlanu.sys`) and stop codes.
+- 🔄 **Driver Auto-Repair**: Rescans PnP bus via `pnputil` and queries Microsoft Update Catalog for missing/corrupted drivers.
+- 📦 **1-Click Support Bundling**: Packages HTML reports, telemetry, and repair logs into a desktop ZIP with instant Email/WhatsApp escalation.
 - 📊 **Exportable Reports**: Creates a clean, styled HTML report saved directly to your Desktop (`WindowsFixKit-Report.html`).
 - ⚙️ **Targeted Fixes**: Runs isolated scripts focused specifically on the detected problem, creating backups instead of blindly deleting files.
 - 🌐 **Backward Compatibility**: Uses native PowerShell cmdlets on Windows 10/11 with CMD batch (`.bat`) fallbacks (`netsh`, `sc`, `ipconfig`, `wmic`) for Windows 7 and 8.1.
@@ -133,6 +139,7 @@ Run `scripts/full_system_diagnosis.ps1` to perform a hardware and system health 
 | **Battery Health** | [`check_battery_health.ps1`](scripts/diagnostics/check_battery_health.ps1) | Design capacity vs full charge capacity, degradation %, and AC power state (flags when health < 60%). |
 | **CPU Thermals** | [`check_cpu_temp.ps1`](scripts/diagnostics/check_cpu_temp.ps1) | ACPI thermal zone diode temperature readings (flags when temp > 80°C/90°C). |
 | **Startup Apps** | [`check_startup_apps.ps1`](scripts/diagnostics/check_startup_apps.ps1) | Scans autostart applications in registry and WMI (flags when > 15 apps are active). |
+| **BSOD Crash Dumps** | [`check_bsod_dump.ps1`](scripts/diagnostics/check_bsod_dump.ps1) | Scans Minidumps and Event ID 1001 for BugChecks, crash stop codes, and culprit `.sys` drivers. |
 
 ---
 
@@ -153,6 +160,8 @@ Run `scripts/full_system_diagnosis.ps1` to perform a hardware and system health 
 | **`0xC1900200`** | windows_upgrade | `MOSETUP_E_COMPAT_SYSREQ_NOT_MET` - TPM 2.0, Secure Boot, or CPU requirement | [`fix_upgrade_rollback.ps1`](scripts/fix_upgrade_rollback.ps1) | — | No |
 | **`0xC190020E`** | windows_upgrade | `MOSETUP_E_COMPAT_DISKSPACE_BLOCK` - Insufficient partition storage space | [`fix_storage_cleanup.ps1`](scripts/fix_storage_cleanup.ps1) | — | No |
 | **`third_party_install_badimageformat`** | App Install | System.BadImageFormatException referencing PresentationFramework / .NET | [`fix_dotnet_repair.ps1`](scripts/fix_dotnet_repair.ps1) | — | No |
+| **`bsod_crash_detected`** | Hardware / Kernel | Recent Blue Screen of Death memory dump or BugCheck event detected | [`fix_bsod_analyzer.ps1`](scripts/fix_bsod_analyzer.ps1) | — | Yes |
+| **`driver_device_error`** | Hardware / Drivers | PnP Hardware Device Driver Error (Code 10/28/43) in Device Manager | [`fix_driver_updater.ps1`](scripts/fix_driver_updater.ps1) | — | Yes |
 | **`wifi_missing_post_update`** | Hardware / Wi-Fi | Wi-Fi adapter or tray icon disappears after an update or sleep cycle | [`fix_wifi_missing.ps1`](scripts/fix_wifi_missing.ps1) | [`fix_wifi_missing.bat`](scripts/fix_wifi_missing.bat) | No |
 | **`bluetooth_missing_post_update`** | Hardware / Bluetooth | Bluetooth service (`bthserv`) disabled or radio device missing post-update | [`fix_bluetooth_missing.ps1`](scripts/fix_bluetooth_missing.ps1) | [`fix_bluetooth_missing.bat`](scripts/fix_bluetooth_missing.bat) | No |
 | **`network_no_internet`** | Networking | Adapter connected to LAN but displays "No Internet Access" | [`fix_network_reset.ps1`](scripts/fix_network_reset.ps1) | [`fix_network_reset.bat`](scripts/fix_network_reset.bat) | Yes |
