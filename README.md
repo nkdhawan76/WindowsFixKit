@@ -231,38 +231,58 @@ Run the local test and lint suite before pushing changes:
 
 ---
 
-## 👨‍💻 Maintained by & Support
+---
 
-**Nikil Dhawan & DevSparks India**
-- 🌐 Website: [devsparksindia.com](https://devsparksindia.com/)
-- 📞 Phone / WhatsApp: [+91 9521032268](tel:+919521032268)
-- ✉️ Email: [devsparksindia@gmail.com](mailto:devsparksindia@gmail.com)
-- 🐙 GitHub: [@nkdhawan76](https://github.com/nkdhawan76)
-- 🧰 Repository: [WindowsFixKit](https://github.com/nkdhawan76/WindowsFixKit)
+## 👨‍💻 Project Lead & Creator
+
+<div align="center">
+
+<table style="border: none; background: transparent;">
+  <tr>
+    <td align="center" style="border: none; padding: 20px;">
+      <a href="https://github.com/nkdhawan76">
+        <img src="https://avatars.githubusercontent.com/nkdhawan76" width="130px" style="border-radius: 50%; box-shadow: 0 8px 24px rgba(37,99,235,0.3); border: 3px solid #3b82f6;" alt="Nikil Dhawan"/>
+      </a>
+      <br/><br/>
+      <h3 style="margin: 0; font-size: 20px;"><b>Nikil Dhawan</b></h3>
+      <p style="color: #64748b; margin: 4px 0 12px 0; font-size: 14px;">Founder & Lead Engineer &bull; <b>DevSparks India</b></p>
+      
+      <div>
+        <a href="https://github.com/nkdhawan76"><img src="https://img.shields.io/badge/GitHub-nkdhawan76-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
+        <a href="https://devsparksindia.com/"><img src="https://img.shields.io/badge/Website-devsparksindia.com-2563eb?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website"/></a>
+        <a href="mailto:devsparksindia@gmail.com"><img src="https://img.shields.io/badge/Email-devsparksindia@gmail.com-ea4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
+        <a href="tel:+919521032268"><img src="https://img.shields.io/badge/Phone-+91_9521032268-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp / Phone"/></a>
+      </div>
+      <br/>
+      <div>
+        <img src="https://img.shields.io/badge/Role-Creator_%26_Architect-blue?style=flat-square" alt="Role"/>
+        <img src="https://img.shields.io/badge/Contributions-Core_Engine_%7C_PowerShell_%7C_Batch_%7C_CI%2FCD-059669?style=flat-square" alt="Contributions"/>
+        <img src="https://img.shields.io/badge/Status-Active_Maintainer-10b981?style=flat-square" alt="Status"/>
+      </div>
+    </td>
+  </tr>
+</table>
+
+</div>
 
 ---
 
-## 👥 Contributors
+## 👥 Community & Contributions
 
-Thanks to the contributors who have improved WindowsFixKit ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+We welcome contributions from the community to help make **WindowsFixKit** the most reliable diagnostic toolkit for Windows.
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tbody>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/nkdhawan76"><img src="https://avatars.githubusercontent.com/nkdhawan76" width="100px;" alt="Nikil Dhawan"/><br /><sub><b>Nikil Dhawan</b></sub></a><br /><a href="https://github.com/nkdhawan76/WindowsFixKit/commits?author=nkdhawan76" title="Code">💻</a> <a href="https://github.com/nkdhawan76/WindowsFixKit/commits?author=nkdhawan76" title="Documentation">📖</a> <a href="#maintenance-nkdhawan76" title="Maintenance">🚧</a> <a href="#infra-nkdhawan76" title="Infrastructure">🚇</a></td>
-    </tr>
-  </tbody>
-</table>
+<div align="center">
 
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
+[![Issues Welcome](https://img.shields.io/badge/Issues-Report_Bug_or_Feature-blue?style=for-the-badge&logo=github)](https://github.com/nkdhawan76/WindowsFixKit/issues)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge&logo=git)](https://github.com/nkdhawan76/WindowsFixKit/pulls)
+[![Star on GitHub](https://img.shields.io/badge/Star_Repo-%E2%AD%90-yellow?style=for-the-badge&logo=github)](https://github.com/nkdhawan76/WindowsFixKit)
 
-<!-- ALL-CONTRIBUTORS-LIST:END -->
+</div>
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.
+### How to Contribute:
+1. 💡 **Suggest New Fixes**: Have an error code or PowerShell fix? Open a [Feature Request](https://github.com/nkdhawan76/WindowsFixKit/issues/new).
+2. 🐛 **Report a Bug**: Encountered an issue on a specific Windows build? Submit a [Bug Report](https://github.com/nkdhawan76/WindowsFixKit/issues/new).
+3. 🛠️ **Submit Pull Requests**: Check out [CONTRIBUTING.md](CONTRIBUTING.md) and run `.\scripts\lint-check.ps1` before submitting.
 
 ---
 
