@@ -58,23 +58,36 @@ If you are facing an unusual Windows error, driver failure, or need custom techn
       DevSparks India | https://devsparksindia.com | 9521032268
 =================================================================
 
+  --- SYSTEM HEALTH & DIAGNOSTICS ---
   [1]  Full Hardware and System Health Diagnosis (Desktop HTML Report)
   [2]  Windows Update and Network Diagnostic + Auto-Fix (diagnose.ps1)
-  [3]  Fix Windows Update Stuck at 0% (fix_update_stuck)
-  [4]  BSOD Crash Dump & BugCheck Analyzer (fix_bsod_analyzer)
-  [5]  Hardware Driver Auto-Repair & Catalog Scan (fix_driver_updater)
-  [6]  Windows 10/11 Upgrade Rollback Resolver (fix_upgrade_rollback)
-  [7]  Safe Performance Debloat (fix_performance_debloat)
-  [8]  Telemetry & Privacy Registry Hardener (fix_telemetry_privacy)
-  [9]  .NET Framework & App Install Repair Tool (fix_dotnet_repair)
-  [10] Deep Junk & Temp Files Cleanup (%TEMP%, Prefetch, Recycle Bin)
-  [11] Deep RAM Cache & Memory Optimizer (Empty Working Sets)
-  [12] Full Network and DNS Stack Reset (fix_network_reset)
-  [13] Fix Missing Wi-Fi Adapter (fix_wifi_missing)
-  [14] Fix Missing Bluetooth Service (fix_bluetooth_missing)
-  [15] Package Diagnostic Logs & Share with DevSparks India (export_and_share_report)
-  [16] Run Local CI Lint and Test Check (scripts\lint-check.ps1)
-  [17] Exit
+  [3]  Genuine Licensing, ESU & Security Baseline Audit (check_licensing_health)
+  [4]  Windows Edition & Servicing Readiness Diagnostics (fix_edition_diagnostics)
+  [5]  BSOD Crash Dump & BugCheck Analyzer (fix_bsod_analyzer)
+
+  --- CORE SUBSYSTEM & APPLICATION REPAIRS ---
+  [6]  WMI Repository & Core Windows Services Repair (fix_wmi_services)
+  [7]  Deep DISM Component Store & SFC File Repair (fix_sfc_dism_deep)
+  [8]  Microsoft Office C2R & MSI Diagnostic / Repair (fix_office_repair)
+  [9]  Windows Script Host (WSH) & PATH Environment Fixer (fix_wsh_environment)
+  [10] Fix Windows Update Stuck at 0% (fix_update_stuck)
+  [11] Hardware Driver Auto-Repair & Catalog Scan (fix_driver_updater)
+  [12] Windows 10/11 Upgrade Rollback Resolver (fix_upgrade_rollback)
+  [13] .NET Framework & App Install Repair Tool (fix_dotnet_repair)
+
+  --- OPTIMIZATION, NETWORK & MAINTENANCE ---
+  [14] Safe Performance Debloat (fix_performance_debloat)
+  [15] Telemetry & Privacy Registry Hardener (fix_telemetry_privacy)
+  [16] Deep Junk & Temp Files Cleanup (%TEMP%, Prefetch, Recycle Bin)
+  [17] Deep RAM Cache & Memory Optimizer (Empty Working Sets)
+  [18] Full Network and DNS Stack Reset (fix_network_reset)
+  [19] Fix Missing Wi-Fi Adapter (fix_wifi_missing)
+  [20] Fix Missing Bluetooth Service (fix_bluetooth_missing)
+
+  --- SUPPORT & QUALITY ASSURANCE ---
+  [21] Package Diagnostic Logs & Share with DevSparks India (export_and_share_report)
+  [22] Run Local CI Lint and Test Check (scripts\lint-check.ps1)
+  [23] Exit
 =================================================================
 ```
 
@@ -121,11 +134,15 @@ WindowsFixKit scans and resolves common Windows Update failures, network drops, 
 - 🔍 **Error Log Harvesting**: Parses `WindowsUpdate.log`, `ReportingEvents.log`, and Event Viewer logs with regex pattern matching to identify active HRESULT / NT error codes.
 - 🩺 **Full System Diagnostics**: Audits hardware specs, disk SMART health counters, RAM buffers, battery degradation, CPU thermals, drive capacities, and startup programs.
 - 💥 **BSOD Crash Dump Analysis**: Parses `C:\Windows\Minidump\*.dmp` and Event ID 1001 to pinpoint faulty drivers (`nvlddmkm.sys`, `rtwlanu.sys`) and stop codes.
+- 🛠️ **WMI & Core Services Recovery**: Remediates WMI database corruption, unblocks `SuppressRulesEngine`, verifies Null driver, and recovers vital background services (`sppsvc`, `ClipSVC`, `KeyIso`, `BITS`, `CryptSvc`, `TrustedInstaller`, `wuauserv`).
+- 🏬 **Deep DISM & SFC Servicing**: Executes `/RestoreHealth` component store repairs and packages large servicing logs into a timestamped Desktop `.zip` bundle.
+- 📑 **Office Diagnostic & C2R Repair**: Detects Office suites (2016-2024, Microsoft 365), executes 1-click Quick/Online Repairs, cleans stale identity residues, and sets resiliency policies.
+- 📜 **WSH & PATH Environment Restorer**: Re-enables Windows Script Host in registry, fixes broken System `%PATH%`, and unblocks downloaded scripts via `Unblock-File`.
 - 🔄 **Driver Auto-Repair**: Rescans PnP bus via `pnputil` and queries Microsoft Update Catalog for missing/corrupted drivers.
 - 📦 **1-Click Support Bundling**: Packages HTML reports, telemetry, and repair logs into a desktop ZIP with instant Email/WhatsApp escalation.
 - 📊 **Exportable Reports**: Creates a clean, styled HTML report saved directly to your Desktop (`WindowsFixKit-Report.html`).
 - ⚙️ **Targeted Fixes**: Runs isolated scripts focused specifically on the detected problem, creating backups instead of blindly deleting files.
-- 🌐 **Backward Compatibility**: Uses native PowerShell cmdlets on Windows 10/11 with CMD batch (`.bat`) fallbacks (`netsh`, `sc`, `ipconfig`, `wmic`) for Windows 7 and 8.1.
+- 🌐 **Backward Compatibility**: Uses native PowerShell cmdlets on Windows 10/11 with CMD batch (`.bat`) fallbacks (`netsh`, `sc`, `ipconfig`) for Windows 7 and 8.1.
 - 📋 **Summary Reporting**: Displays a summary table of issues found, actions taken, and reboot requirements.
 
 ---
@@ -137,6 +154,7 @@ Run `scripts/full_system_diagnosis.ps1` to perform a hardware and system health 
 | Subsystem | Diagnostic Script | Checks & Metrics |
 | :--- | :--- | :--- |
 | **System Info** | [`check_os_info.ps1`](scripts/diagnostics/check_os_info.ps1) | OS edition, version, build number, architecture, model, manufacturer, and uptime. |
+| **Licensing & Security** | [`check_licensing_health.ps1`](scripts/diagnostics/check_licensing_health.ps1) | Genuine Windows/Office licensing state, partial key, ESU eligibility, Smart App Control (SAC), and Defender baseline. |
 | **Storage & SMART** | [`check_disk_health.ps1`](scripts/diagnostics/check_disk_health.ps1) | NVMe/SSD/HDD media types, drive wear %, operating temperature, read errors, and partition free space. |
 | **Memory (RAM)** | [`check_ram_health.ps1`](scripts/diagnostics/check_ram_health.ps1) | RAM stick vendors, clock speeds, capacities, and active buffer headroom (flags when free RAM < 10%). |
 | **Battery Health** | [`check_battery_health.ps1`](scripts/diagnostics/check_battery_health.ps1) | Design capacity vs full charge capacity, degradation %, and AC power state (flags when health < 60%). |
@@ -156,6 +174,12 @@ Run `scripts/full_system_diagnosis.ps1` to perform a hardware and system health 
 | **`0x80072EFD`** | Windows Update | Server Connection Interrupted - TLS protocol mismatch or firewall block | [`fix_0x80072EFD.ps1`](scripts/fix_0x80072EFD.ps1) | — | No |
 | **`0x800f0922`** | Windows Update | SSU / .NET Failure - System Partition (ESP) space limit or active VPN filter | [`fix_0x800f0922.ps1`](scripts/fix_0x800f0922.ps1) | — | Yes |
 | **`windows_update_stuck_zero_percent`** | Windows Update | Update download stuck at 0% or hangs at "Checking for updates" | [`fix_update_stuck.ps1`](scripts/fix_update_stuck.ps1) | — | Yes |
+| **`wmi_repository_corrupt`** | System / Core Services | WMI repository database corruption / inconsistent repository | [`fix_wmi_services.ps1`](scripts/fix_wmi_services.ps1) | [`fix_wmi_services.bat`](scripts/fix_wmi_services.bat) | Yes |
+| **`wsh_script_host_disabled`** | System / Environment | Windows Script Host disabled in registry policy | [`fix_wsh_environment.ps1`](scripts/fix_wsh_environment.ps1) | — | No |
+| **`office_c2r_licensing_issue`** | Applications / Office | Office C2R configuration corruption or stale vNext tokens | [`fix_office_repair.ps1`](scripts/fix_office_repair.ps1) | — | No |
+| **`dism_component_store_corrupt`** | Servicing / Component Store | Corrupted CBS component store packages or payload files | [`fix_sfc_dism_deep.ps1`](scripts/fix_sfc_dism_deep.ps1) | — | Yes |
+| **`pending_reboot_blocking_servicing`** | Servicing / Upgrades | Unfinished reboot flags in CBS or Windows Update blocking servicing | [`fix_edition_diagnostics.ps1`](scripts/fix_edition_diagnostics.ps1) | — | Yes |
+| **`licensing_service_degraded`** | Licensing / Security | Software Protection Platform (sppsvc/ClipSVC) service failure | [`fix_wmi_services.ps1`](scripts/fix_wmi_services.ps1) | [`fix_wmi_services.bat`](scripts/fix_wmi_services.bat) | Yes |
 | **`0xC1900101`** | windows_upgrade | Generic Upgrade Rollback - Device driver conflicts & DISM errors | [`fix_upgrade_rollback.ps1`](scripts/fix_upgrade_rollback.ps1) | — | Yes |
 | **`0xC1900210`** | windows_upgrade | `MOSETUP_E_COMPAT_SCANONLY_NO_ISSUES` - Compatibility scan passed | [`fix_upgrade_rollback.ps1`](scripts/fix_upgrade_rollback.ps1) | — | No |
 | **`0xC1900208`** | windows_upgrade | `MOSETUP_E_COMPAT_APPS_BLOCK` - Incompatible applications blocking upgrade | [`fix_upgrade_rollback.ps1`](scripts/fix_upgrade_rollback.ps1) | — | Yes |

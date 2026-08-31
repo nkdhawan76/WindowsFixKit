@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+## [1.5.0] - 2026-08-31
+
+### Added
+- **WMI Repository & Core Services Auto-Repair (`fix_wmi_services.ps1` & `fix_wmi_services.bat`)**:
+  - Remediates WMI repository corruption via `winmgmt /salvagerepository` and `/resetrepository`.
+  - Verifies and recovers essential Windows background services (`sppsvc`, `ClipSVC`, `KeyIso`, `BITS`, `CryptSvc`, `TrustedInstaller`, `wuauserv`, `RpcSs`, `DcomLaunch`).
+  - Audits and fixes corrupted `Null` driver startup type to prevent command shell and system process aborts.
+  - Clears `SuppressRulesEngine` registry policies that block servicing and licensing task triggers.
+- **Deep DISM Component Store & SFC File Repair (`fix_sfc_dism_deep.ps1`)**:
+  - Comprehensive DISM Component Store verification (`CheckHealth`, `ScanHealth`, `RestoreHealth`) paired with System File Checker (`sfc /scannow`).
+  - Automatically packages and compresses large servicing logs (`CBS.log`, `dism.log`) into a timestamped Desktop `.zip` bundle (`WindowsFixKit_CBS_Logs_<timestamp>.zip`).
+- **Microsoft Office C2R & MSI Suite Diagnostic / Auto-Repair (`fix_office_repair.ps1`)**:
+  - Detects Office architectures (x86, x64, ARM64) and release versions (2016, 2019, 2021, 2024, Microsoft 365 / Apps for Enterprise).
+  - Triggers 1-click Click-To-Run Quick Repair and Online Repair (`OfficeClickToRun.exe`).
+  - Cleans stale vNext, OEM, and identity registry tokens, and applies Resiliency registry policies.
+- **Windows Script Host (WSH) & PATH Environment Fixer (`fix_wsh_environment.ps1`)**:
+  - Audits and re-enables Windows Script Host (`wscript`/`cscript`) in registry (`HKLM` / `HKCU`).
+  - Validates and restores core system directories in System and User `%PATH%` environment variables.
+  - Unblocks downloaded scripts by stripping `Zone.Identifier` alternative data streams (`Unblock-File`).
+- **Windows Edition Upgrade Readiness & Servicing Diagnostics (`fix_edition_diagnostics.ps1`)**:
+  - Queries OS edition, target upgrade editions via DISM, and detects evaluation / container / sandbox environments.
+  - Audits and clears pending reboot flags in CBS and Windows Update that block package installations.
+- **Genuine Licensing, ESU & Security Baseline Inspector (`scripts/diagnostics/check_licensing_health.ps1`)**:
+  - Pure CIM/WMI licensing inspection reporting genuine activation state and ESU readiness.
+  - Audits Smart App Control (SAC) and Microsoft Defender real-time protection baseline.
+- **Console Robustness & QuickEdit Prevention**:
+  - PowerShell-based QuickEdit mode disabler integrated into `WindowsFixKit.bat` to eliminate accidental console pauses on mouse click.
+  - Master interactive launcher expanded to 23 comprehensive maintenance and diagnostic workflows.
 
 ## [1.4.3] - 2026-08-31
 

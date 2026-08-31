@@ -13,6 +13,7 @@ Describe "Modular Diagnostics Subsystem Verification" {
         ($names -contains "check_cpu_temp.ps1") | Should Be $true
         ($names -contains "check_startup_apps.ps1") | Should Be $true
         ($names -contains "check_bsod_dump.ps1") | Should Be $true
+        ($names -contains "check_licensing_health.ps1") | Should Be $true
     }
 
     foreach ($diag in $diagScripts) {

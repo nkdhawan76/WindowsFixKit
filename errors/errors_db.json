@@ -351,5 +351,90 @@
       "Rescan hardware bus via Action -> Scan for hardware changes.",
       "Check Windows Update optional driver updates."
     ]
+  },
+  "wmi_repository_corrupt": {
+    "title": "WMI Repository Corruption / Inconsistent Repository",
+    "description": "Windows Management Instrumentation database is corrupted or inconsistent, causing system diagnostic tools and installers to fail.",
+    "category": "System / Core Services",
+    "fix_script": "scripts/fix_wmi_services.ps1",
+    "fallback_script": "scripts/fix_wmi_services.bat",
+    "restart_required": true,
+    "manual_steps": [
+      "Open elevated Command Prompt (Run as Administrator).",
+      "Run: winmgmt /verifyrepository",
+      "If inconsistent, run: winmgmt /salvagerepository",
+      "If salvage fails, execute: winmgmt /resetrepository",
+      "Re-register core WMI binaries with regsvr32 and mofcomp."
+    ]
+  },
+  "wsh_script_host_disabled": {
+    "title": "Windows Script Host (WSH) Execution Blocked",
+    "description": "Windows Script Host is disabled in registry policy, preventing .vbs, .js, or administrative script execution.",
+    "category": "System / Environment",
+    "fix_script": "scripts/fix_wsh_environment.ps1",
+    "fallback_script": null,
+    "restart_required": false,
+    "manual_steps": [
+      "Open Regedit as Administrator.",
+      "Navigate to HKLM\\SOFTWARE\\Microsoft\\Windows Script Host\\Settings.",
+      "Set the 'Enabled' DWORD value to 1.",
+      "Repeat for HKCU\\Software\\Microsoft\\Windows Script Host\\Settings.",
+      "Verify system PATH environment variables."
+    ]
+  },
+  "office_c2r_licensing_issue": {
+    "title": "Microsoft Office Click-To-Run & Licensing Degradation",
+    "description": "Office Click-To-Run configuration corruption, stale vNext identity tokens, or broken banner notifications.",
+    "category": "Applications / Office",
+    "fix_script": "scripts/fix_office_repair.ps1",
+    "fallback_script": null,
+    "restart_required": false,
+    "manual_steps": [
+      "Save all open Office documents and close Office apps.",
+      "Open Windows Settings -> Apps -> Installed Apps -> Microsoft 365 / Office.",
+      "Select Modify -> Quick Repair or Online Repair.",
+      "Clean stale licensing registry keys and restart Office."
+    ]
+  },
+  "dism_component_store_corrupt": {
+    "title": "Windows Component Store Manifest Corruption",
+    "description": "Corrupted CBS component store packages or payload files preventing update installation and system servicing.",
+    "category": "Servicing / Component Store",
+    "fix_script": "scripts/fix_sfc_dism_deep.ps1",
+    "fallback_script": null,
+    "restart_required": true,
+    "manual_steps": [
+      "Open elevated Command Prompt (Run as Administrator).",
+      "Run: DISM.exe /Online /Cleanup-Image /RestoreHealth",
+      "Run: sfc /scannow",
+      "Check CBS.log in C:\\Windows\\Logs\\CBS for unrepairable files."
+    ]
+  },
+  "pending_reboot_blocking_servicing": {
+    "title": "Pending System Reboot Blocking Servicing & Upgrades",
+    "description": "Unfinished reboot flags in Component Based Servicing (CBS) or Windows Update preventing driver and package installations.",
+    "category": "Servicing / Upgrades",
+    "fix_script": "scripts/fix_edition_diagnostics.ps1",
+    "fallback_script": null,
+    "restart_required": true,
+    "manual_steps": [
+      "Save current work and restart the computer to complete pending file operations.",
+      "If reboot flag persists, clear RebootPending registry key in CBS.",
+      "Re-run WindowsFixKit diagnostic."
+    ]
+  },
+  "licensing_service_degraded": {
+    "title": "Software Protection Platform Service Degraded",
+    "description": "sppsvc or ClipSVC service failure or permission issue in C:\\Windows\\System32\\spp\\store preventing licensing validation.",
+    "category": "Licensing / Security",
+    "fix_script": "scripts/fix_wmi_services.ps1",
+    "fallback_script": "scripts/fix_wmi_services.bat",
+    "restart_required": true,
+    "manual_steps": [
+      "Verify Software Protection service (sppsvc) is set to Automatic.",
+      "Clear SuppressRulesEngine registry blocks.",
+      "Ensure NT AUTHORITY\\NETWORK SERVICE has Full Control permissions on spp store.",
+      "Restart sppsvc service."
+    ]
   }
 }
