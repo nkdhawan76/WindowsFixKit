@@ -23,7 +23,7 @@ Download the portable zip archive for offline troubleshooting without installing
 
 [![Download WindowsFixKit-latest.zip](https://img.shields.io/badge/Download-WindowsFixKit--latest.zip-success?style=for-the-badge&logo=windows)](https://github.com/nkdhawan76/WindowsFixKit/releases/latest/download/WindowsFixKit-latest.zip)
 
-- **Current Release:** [v1.0.0 Release Notes](https://github.com/nkdhawan76/WindowsFixKit/releases/latest)
+- **Current Release:** [v1.2.0 Release Notes](https://github.com/nkdhawan76/WindowsFixKit/releases/tag/v1.2.0)
 - **Full Release History:** [GitHub Releases](https://github.com/nkdhawan76/WindowsFixKit/releases)
 
 ---
@@ -39,19 +39,20 @@ Download the portable zip archive for offline troubleshooting without installing
 
 ```text
 =================================================================
-       WindowsFixKit - Windows Diagnostic & Auto-Repair Toolkit
-      Owner: nkdhawan76 | Supported: Windows 7, 8.1, 10, 11
+        WindowsFixKit - Windows Diagnostic and Auto-Repair
+      DevSparks India | https://devsparksindia.com | 9521032268
 =================================================================
 
-  [1] Full Hardware & System Health Diagnosis (HTML Report)
-  [2] Windows Update & Network Diagnostic + Auto-Fix (diagnose.ps1)
-  [3] Scan-Only Mode (Detect issues without making changes)
-  [4] Quick Disk Space Cleanup & Cache Recovery (fix_storage_cleanup)
-  [5] Full Network & DNS Stack Reset (fix_network_reset)
-  [6] Fix Missing Wi-Fi Adapter (fix_wifi_missing)
-  [7] Fix Missing Bluetooth Service (fix_bluetooth_missing)
-  [8] Run Local CI Lint & Test Check (scripts\lint-check.ps1)
-  [9] Exit
+  [1]  Full Hardware and System Health Diagnosis (Desktop HTML Report)
+  [2]  Windows Update and Network Diagnostic + Auto-Fix (diagnose.ps1)
+  [3]  Scan-Only Mode (Detect issues without making changes)
+  [4]  Deep Junk & Temp Files Cleanup (%TEMP%, Prefetch, Recycle Bin, Cleanmgr)
+  [5]  Deep RAM Cache & Memory Optimizer (Empty Working Sets, Trim Cache)
+  [6]  Full Network and DNS Stack Reset (fix_network_reset)
+  [7]  Fix Missing Wi-Fi Adapter (fix_wifi_missing)
+  [8]  Fix Missing Bluetooth Service (fix_bluetooth_missing)
+  [9]  Run Local CI Lint and Test Check (scripts\lint-check.ps1)
+  [10] Exit
 =================================================================
 ```
 
@@ -230,11 +231,14 @@ Run the local test and lint suite before pushing changes:
 
 ---
 
-## 👨‍💻 Maintained by
+## 👨‍💻 Maintained by & Support
 
-**Nikil Dhawan**
-- GitHub: [@nkdhawan76](https://github.com/nkdhawan76)
-- Repository: [WindowsFixKit](https://github.com/nkdhawan76/WindowsFixKit)
+**Nikil Dhawan & DevSparks India**
+- 🌐 Website: [devsparksindia.com](https://devsparksindia.com/)
+- 📞 Phone / WhatsApp: [+91 9521032268](tel:+919521032268)
+- ✉️ Email: [devsparksindia@gmail.com](mailto:devsparksindia@gmail.com)
+- 🐙 GitHub: [@nkdhawan76](https://github.com/nkdhawan76)
+- 🧰 Repository: [WindowsFixKit](https://github.com/nkdhawan76/WindowsFixKit)
 
 ---
 
