@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
+## [1.4.1] - 2026-08-31
+
+### Changes
+System.Object[]
+
 ## [1.4.0] - 2026-08-31
 
 ### Added
@@ -19,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Prepares direct 1-click Email (`devsparksindia@gmail.com`) and WhatsApp (`+91 9521032268`) support links for DevSparks India technical assistance.
 - **Enhanced Interactive Launcher (`WindowsFixKit.bat`)**:
   - Expanded master menu to 17 automated diagnostic and repair workflows.
+
+
+## [1.4.1] - 2026-08-31
+
+### Changes
+System.Object[]
 
 ## [1.3.0] - 2026-08-31
 
@@ -36,6 +48,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **.NET Framework & App Install Resolver (`fix_dotnet_repair.ps1`)**:
   - Resolves `System.BadImageFormatException` and PresentationFramework crashes via registry audit, DISM health repairs, and official Microsoft runtime guidance.
 
+
+## [1.4.1] - 2026-08-31
+
+### Changes
+System.Object[]
+
 ## [1.2.0] - 2026-08-31
 
 ### Added
@@ -46,6 +64,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Native RAM Cache & Memory Buffer Optimizer (`fix_ram_cache.ps1`)**:
   - Integrated native `psapi.dll` `EmptyWorkingSet` API to trim process memory across 200+ running processes, force multi-generational Garbage Collection, and reclaim free RAM buffers.
 
+
+## [1.4.1] - 2026-08-31
+
+### Changes
+System.Object[]
+
 ## [1.1.3] - 2026-08-31
 
 ### Added
@@ -54,10 +78,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Vector SVG Icons**: Replaced raw unicode emojis with crisp inline SVG icons, eliminating broken encoding and mojibake characters.
 - **Report Actions**: Added one-click Print / Save PDF functionality.
 
+
+## [1.4.1] - 2026-08-31
+
+### Changes
+System.Object[]
+
 ## [1.1.2] - 2026-08-31
 
 ### Fixed
 - **Batch Redirection Syntax Error (`> was unexpected at this time`)**: Replaced unescaped `echo [>>>]` banner messages with clean, safe `echo [INFO]` across all option handlers in `WindowsFixKit.bat`, eliminating instant CMD process termination when selecting any menu option.
+
+
+## [1.4.1] - 2026-08-31
+
+### Changes
+System.Object[]
 
 ## [1.1.1] - 2026-08-31
 
@@ -65,6 +101,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Launcher Elevation & Path Space Bug**: Fixed CMD crash when launcher path contains spaces (`Start-Process -FilePath '%~f0' -Verb RunAs`) across `WindowsFixKit.bat` and all fallback `.bat` scripts.
 - **Menu Option 1 Crash & Window Flash**: Fixed `full_system_diagnosis.ps1` premature termination and detached window spawn, allowing full diagnostics and HTML report generation to execute inline seamlessly.
 - **Report Parameter Handling**: Standardized `-NoOpenReport` switch and added robust error handling for browser launch.
+
+
+## [1.4.1] - 2026-08-31
+
+### Changes
+System.Object[]
 
 ## [1.1.0] - 2026-08-30
 
@@ -90,6 +132,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `fix_battery_optimization.ps1`: Battery saver thresholds and sleep/standby timeout alignment.
 - **Expanded Error Catalog (`errors/errors_db.json`)**:
   - Added mappings for `hdd_ssd_unhealthy`, `ram_error_detected`, `battery_degraded`, `cpu_overheating`, `storage_almost_full`, and `startup_bloat`.
+
+
+## [1.4.1] - 2026-08-31
+
+### Changes
+System.Object[]
 
 ## [1.0.0] - 2026-08-30
 
@@ -119,3 +167,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - GitHub Actions workflow running `PSScriptAnalyzer` linting and syntax validations.
   - Issue templates for bug reports and new error requests.
   - Comprehensive documentation (`README.md`, `docs/how-it-works.md`, `CONTRIBUTING.md`).
+
