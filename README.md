@@ -23,7 +23,7 @@ Download the portable zip archive for offline troubleshooting without installing
 
 [![Download WindowsFixKit-latest.zip](https://img.shields.io/badge/Download-WindowsFixKit--latest.zip-success?style=for-the-badge&logo=windows)](https://github.com/nkdhawan76/WindowsFixKit/releases/latest/download/WindowsFixKit-latest.zip)
 
-- **Current Release:** [v1.4.0 Release Notes](https://github.com/nkdhawan76/WindowsFixKit/releases/tag/v1.4.0)
+- **Current Release:** [v1.6.0 Release Notes](https://github.com/nkdhawan76/WindowsFixKit/releases/tag/v1.6.0)
 - **Full Release History:** [GitHub Releases](https://github.com/nkdhawan76/WindowsFixKit/releases)
 
 ---
