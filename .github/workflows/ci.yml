@@ -8,7 +8,7 @@ on:
 
 jobs:
   zero-error-gate:
-    name: Zero-Error Quality Gate (Linter, Pester, Markdown)
+    name: Zero-Error Quality Gate (Linter, Pester, Manifest, Template)
     runs-on: windows-latest
 
     steps:
@@ -16,6 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Validate errors_db.json Schema & Structure
+        id: validate_json
         shell: pwsh
         run: |
           Write-Host "Validating errors/errors_db.json syntax and integrity..."
@@ -28,13 +29,87 @@ jobs:
             $json = Get-Content $jsonPath -Raw | ConvertFrom-Json
             $count = ($json.PSObject.Properties | Measure-Object).Count
             Write-Host "Success: errors_db.json parsed with $count entries."
+            "ERROR_DB_COUNT=$count" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
           catch {
             Write-Error "JSON validation error: $_"
             exit 1
           }
 
-      - name: Install PSScriptAnalyzer & Pester Modules
+      - name: Validate HTML Report Template Placeholders
+        shell: pwsh
+        run: |
+          Write-Host "Validating reports/report_template.html placeholders..."
+          $templatePath = "./reports/report_template.html"
+          if (-not (Test-Path $templatePath)) {
+            Write-Error "report_template.html is missing!"
+            exit 1
+          }
+          $templateContent = Get-Content $templatePath -Raw
+          $requiredPlaceholders = @(
+            "{{GENERATED_DATE}}",
+            "{{OVERALL_STATUS_BADGE}}",
+            "{{OS_NAME}}",
+            "{{OS_VERSION}}",
+            "{{STORAGE_DETAILS_HTML}}",
+            "{{RAM_DETAILS_HTML}}",
+            "{{BATTERY_DETAILS_HTML}}",
+            "{{CPU_DETAILS_HTML}}",
+            "{{STARTUP_DETAILS_HTML}}",
+            "{{RECOMMENDATIONS_TABLE_HTML}}"
+          )
+          $missing = @()
+          foreach ($ph in $requiredPlaceholders) {
+            if (-not $templateContent.Contains($ph)) {
+              $missing += $ph
+            }
+          }
+          if ($missing.Count -gt 0) {
+            Write-Error "Missing required placeholders in report template: $($missing -join ', ')"
+            exit 1
+          }
+          Write-Host "Success: All $($requiredPlaceholders.Count) required template placeholders verified." -ForegroundColor Green
+
+      - name: Validate PowerShell Script AST Syntax
+        shell: pwsh
+        run: |
+          Write-Host "Validating AST syntax for all PowerShell scripts..."
+          $scripts = Get-ChildItem -Path . -Filter *.ps1 -Recurse | Where-Object { $_.FullName -notmatch "\\.git\\" }
+          $astErrors = @()
+          foreach ($s in $scripts) {
+            $tokens = $null
+            $errors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile($s.FullName, [ref]$tokens, [ref]$errors) | Out-Null
+            if ($errors.Count -gt 0) {
+              $astErrors += "$($s.Name): $($errors.Message -join '; ')"
+            }
+          }
+          if ($astErrors.Count -gt 0) {
+            Write-Error "AST Syntax Errors detected:`n$($astErrors -join "`n")"
+            exit 1
+          }
+          Write-Host "Success: $($scripts.Count) PowerShell scripts parsed with 0 syntax errors." -ForegroundColor Green
+
+      - name: Validate PowerShell Module Manifest
+        shell: pwsh
+        run: |
+          Write-Host "Validating WindowsFixKit.psd1 module manifest..."
+          if (Test-Path "WindowsFixKit.psd1") {
+            $manifest = Test-ModuleManifest -Path "WindowsFixKit.psd1" -ErrorAction Stop
+            Write-Host "Success: Module Manifest valid. Version: $($manifest.Version), Module: $($manifest.Name)" -ForegroundColor Green
+          }
+
+      - name: Cache PowerShell Modules
+        id: ps-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~\Documents\PowerShell\Modules
+            ~\Documents\WindowsPowerShell\Modules
+          key: ${{ runner.os }}-psmodules-psanalyzer-pester-v1
+
+      - name: Install PSScriptAnalyzer & Pester Modules (if not cached)
+        if: steps.ps-cache.outputs.cache-hit != 'true'
         shell: pwsh
         run: |
           if (-not (Get-Module -ListAvailable -Name PSScriptAnalyzer)) {
@@ -67,16 +142,41 @@ jobs:
         run: |
           npx -y markdownlint-cli2 "**/*.md" "#node_modules"
 
-      - name: Run Pester Automated Tests
+      - name: Run Pester Automated Tests & Generate Summary
         shell: pwsh
         run: |
           Write-Host "Invoking Pester Automated Test Suite..."
           $pesterResult = Invoke-Pester -Path ./tests -PassThru
-          if ($pesterResult.FailedCount -gt 0) {
-            Write-Error "Pester failed with $($pesterResult.FailedCount) test failure(s)!"
+          
+          $passed = $pesterResult.PassedCount
+          $failed = $pesterResult.FailedCount
+          $total = $pesterResult.TotalCount
+          $time = [math]::Round($pesterResult.Time.TotalSeconds, 2)
+          
+          # Publish GitHub Actions Step Summary
+          $summaryContent = @(
+            "## 🧪 WindowsFixKit CI Test & Quality Gate Summary",
+            "",
+            "| Metric | Value |",
+            "| :--- | :--- |",
+            "| 🟢 **Passed Tests** | $passed |",
+            "| 🔴 **Failed Tests** | $failed |",
+            "| 📦 **Total Tests** | $total |",
+            "| ⏱️ **Execution Time** | ${time}s |",
+            "| 📋 **Error Database Entries** | $env:ERROR_DB_COUNT |",
+            "",
+            "> **Quality Gate Status**: " + $(if ($failed -eq 0) { "✅ **PASSED (Zero-Defect)**" } else { "❌ **FAILED**" })
+          ) -join "`n"
+
+          if ($env:GITHUB_STEP_SUMMARY) {
+            $summaryContent | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding UTF8
+          }
+
+          if ($failed -gt 0) {
+            Write-Error "Pester failed with $failed test failure(s)!"
             exit 1
           }
-          Write-Host "All $($pesterResult.PassedCount) Pester tests PASSED!" -ForegroundColor Green
+          Write-Host "All $passed Pester tests PASSED!" -ForegroundColor Green
 
       - name: Validate Batch Scripts
         shell: cmd
