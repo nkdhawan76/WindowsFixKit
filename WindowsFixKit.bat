@@ -15,7 +15,7 @@ if %errorlevel% neq 0 (
     echo   [!] Administrative Privileges Required
     echo   Requesting User Account Control elevation...
     echo =================================================================
-    powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath \"$env:ComSpec\" -ArgumentList '/k \"\"%~f0\"\"' -Verb RunAs"
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
     exit /b
 )
 

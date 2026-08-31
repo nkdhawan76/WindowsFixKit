@@ -13,7 +13,7 @@
 [CmdletBinding()]
 param(
     [string]$OutputHtmlPath = "$([Environment]::GetFolderPath('Desktop'))\WindowsFixKit-Report.html",
-    [bool]$OpenReport = $true
+    [switch]$NoOpenReport
 )
 
 function Test-IsAdmin {
@@ -22,13 +22,7 @@ function Test-IsAdmin {
 }
 
 if (-not (Test-IsAdmin)) {
-    Write-Host "`n[!] Requesting Administrator Elevation (UAC)..." -ForegroundColor Yellow
-    $thisScript = if ($PSCommandPath) { $PSCommandPath } elseif ($MyInvocation.MyCommand.Path) { $MyInvocation.MyCommand.Path } else { "$PSScriptRoot\full_system_diagnosis.ps1" }
-    if (Test-Path $thisScript) {
-        $argList = "-NoProfile -ExecutionPolicy Bypass -File `"$thisScript`""
-        Start-Process powershell.exe -ArgumentList $argList -Verb RunAs
-        exit 0
-    }
+    Write-Host "[!] Notice: Running in standard user mode. Some deep hardware counters will use standard fallbacks.`n" -ForegroundColor Yellow
 }
 
 Clear-Host -ErrorAction SilentlyContinue
@@ -294,8 +288,12 @@ if (Test-Path -Path $templatePath) {
     Set-Content -Path $OutputHtmlPath -Value $html -Encoding UTF8
     Write-Host "  [OK] HTML Report generated successfully: $OutputHtmlPath" -ForegroundColor Green
 
-    if ($OpenReport -and (Test-Path -Path $OutputHtmlPath)) {
-        Start-Process $OutputHtmlPath
+    if (-not $NoOpenReport -and (Test-Path -Path $OutputHtmlPath)) {
+        try {
+            Start-Process $OutputHtmlPath -ErrorAction SilentlyContinue
+        } catch {
+            Write-Verbose "[-] Could not automatically open browser: $_"
+        }
     }
 }
 
