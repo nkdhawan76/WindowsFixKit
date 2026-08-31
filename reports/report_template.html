@@ -1,67 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WindowsFixKit - System Diagnostic Report</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-primary: #0b0f19;
-      --bg-secondary: #111827;
-      --bg-card: rgba(17, 24, 39, 0.85);
-      --border-color: rgba(255, 255, 255, 0.08);
-      --border-glow: rgba(59, 130, 246, 0.2);
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
-      --accent-blue: #3b82f6;
+      /* Light Theme (Default) */
+      --bg-body: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-card: #ffffff;
+      --bg-card-subtle: #f1f5f9;
+      --border-main: #e2e8f0;
+      --border-subtle: #edf2f7;
+      --border-accent: rgba(59, 130, 246, 0.25);
+      
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-subtle: #94a3b8;
+      
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-light: #eff6ff;
+      --primary-border: #bfdbfe;
+      
+      --accent-cyan: #0891b2;
+      --accent-purple: #7c3aed;
+      
+      --status-healthy: #16a34a;
+      --status-healthy-bg: #f0fdf4;
+      --status-healthy-border: #bbf7d0;
+      
+      --status-warning: #d97706;
+      --status-warning-bg: #fffbeb;
+      --status-warning-border: #fde68a;
+      
+      --status-critical: #dc2626;
+      --status-critical-bg: #fef2f2;
+      --status-critical-border: #fecaca;
+      
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+    }
+
+    [data-theme="dark"] {
+      --bg-body: #0b0f19;
+      --bg-surface: #111827;
+      --bg-card: rgba(17, 24, 39, 0.9);
+      --bg-card-subtle: #1e293b;
+      --border-main: rgba(255, 255, 255, 0.09);
+      --border-subtle: rgba(255, 255, 255, 0.05);
+      --border-accent: rgba(59, 130, 246, 0.3);
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-subtle: #64748b;
+      
+      --primary: #3b82f6;
+      --primary-hover: #60a5fa;
+      --primary-light: rgba(59, 130, 246, 0.15);
+      --primary-border: rgba(59, 130, 246, 0.3);
+      
       --accent-cyan: #06b6d4;
+      --accent-purple: #a855f7;
+      
       --status-healthy: #10b981;
+      --status-healthy-bg: rgba(16, 185, 129, 0.15);
+      --status-healthy-border: rgba(16, 185, 129, 0.3);
+      
       --status-warning: #f59e0b;
+      --status-warning-bg: rgba(245, 158, 11, 0.15);
+      --status-warning-border: rgba(245, 158, 11, 0.3);
+      
       --status-critical: #ef4444;
-      --badge-healthy-bg: rgba(16, 185, 129, 0.15);
-      --badge-warning-bg: rgba(245, 158, 11, 0.15);
-      --badge-critical-bg: rgba(239, 68, 68, 0.15);
+      --status-critical-bg: rgba(239, 68, 68, 0.15);
+      --status-critical-border: rgba(239, 68, 68, 0.3);
+      
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+      --shadow-xl: 0 16px 36px rgba(0, 0, 0, 0.6);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg-primary);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-body);
       color: var(--text-main);
-      line-height: 1.5;
+      line-height: 1.6;
       padding: 32px 16px;
       min-height: 100vh;
       background-image: 
-        radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.08) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.08) 0px, transparent 50%);
+        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(8, 145, 178, 0.05) 0px, transparent 50%);
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1140px;
       margin: 0 auto;
     }
 
+    /* Header Styling */
     header {
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      backdrop-filter: blur(12px);
-      border-radius: 16px;
-      padding: 28px 32px;
+      border: 1px solid var(--border-main);
+      border-radius: 20px;
+      padding: 24px 32px;
       margin-bottom: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 16px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      box-shadow: var(--shadow-md);
     }
 
     .header-brand {
@@ -71,116 +133,262 @@
     }
 
     .header-logo {
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, #3b82f6, #06b6d4);
-      border-radius: 12px;
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
-      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+      color: #ffffff;
+      box-shadow: 0 8px 16px rgba(37, 99, 235, 0.25);
+    }
+
+    .header-logo svg {
+      width: 28px;
+      height: 28px;
     }
 
     h1 {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      color: var(--text-main);
     }
 
     .header-sub {
       font-size: 13px;
       color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border-main);
+      background: var(--bg-card-subtle);
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+
+    .btn-action:hover {
+      background: var(--primary-light);
+      border-color: var(--primary-border);
+      color: var(--primary);
+      transform: translateY(-1px);
     }
 
     .timestamp-badge {
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-color);
-      padding: 6px 14px;
-      border-radius: 9999px;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-main);
+      padding: 8px 16px;
+      border-radius: 10px;
       color: var(--text-muted);
+      font-weight: 500;
     }
 
+    /* System Flow Pipeline */
+    .flow-pipeline-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-main);
+      border-radius: 20px;
+      padding: 24px 30px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .flow-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .flow-title {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      position: relative;
+    }
+
+    @media (max-width: 860px) {
+      .flow-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .flow-step-card {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+    }
+
+    .flow-step-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .flow-step-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+
+    .flow-step-icon svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .flow-step-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .flow-step-status {
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* Grids & Cards */
     .grid-2 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
       margin-bottom: 24px;
     }
 
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
       margin-bottom: 24px;
     }
 
     .card {
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 22px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      border: 1px solid var(--border-main);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
     }
 
     .card:hover {
-      border-color: var(--border-glow);
-      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--border-accent);
     }
 
     .card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 12px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 14px;
     }
 
     .card-title {
-      font-size: 15px;
-      font-weight: 600;
+      font-size: 16px;
+      font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      color: var(--text-main);
+      letter-spacing: -0.2px;
     }
 
+    .card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Badges */
     .badge {
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 9999px;
       letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .badge-healthy {
-      background: var(--badge-healthy-bg);
+      background: var(--status-healthy-bg);
       color: var(--status-healthy);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      border: 1px solid var(--status-healthy-border);
     }
 
     .badge-warning {
-      background: var(--badge-warning-bg);
+      background: var(--status-warning-bg);
       color: var(--status-warning);
-      border: 1px solid rgba(245, 158, 11, 0.3);
+      border: 1px solid var(--status-warning-border);
     }
 
     .badge-critical {
-      background: var(--badge-critical-bg);
+      background: var(--status-critical-bg);
       color: var(--status-critical);
-      border: 1px solid rgba(239, 68, 68, 0.3);
+      border: 1px solid var(--status-critical-border);
     }
 
+    /* Metrics Rows */
     .metric-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-subtle);
       font-size: 13px;
     }
 
@@ -190,18 +398,22 @@
 
     .metric-label {
       color: var(--text-muted);
+      font-weight: 500;
     }
 
     .metric-value {
       font-weight: 600;
       color: var(--text-main);
       font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
     }
 
+    /* Progress & Meters */
     .progress-bar-container {
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 8px;
-      height: 8px;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      height: 10px;
       width: 100%;
       overflow: hidden;
       margin-top: 8px;
@@ -209,77 +421,256 @@
 
     .progress-bar {
       height: 100%;
-      border-radius: 8px;
-      transition: width 0.4s ease;
+      border-radius: 10px;
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .progress-healthy { background: var(--status-healthy); }
-    .progress-warning { background: var(--status-warning); }
-    .progress-critical { background: var(--status-critical); }
+    .progress-healthy { background: linear-gradient(90deg, #10b981, #059669); }
+    .progress-warning { background: linear-gradient(90deg, #f59e0b, #d97706); }
+    .progress-critical { background: linear-gradient(90deg, #ef4444, #dc2626); }
 
+    /* Visual Chart Container */
+    .chart-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 0;
+      gap: 20px;
+    }
+
+    .gauge-circle {
+      position: relative;
+      width: 100px;
+      height: 100px;
+    }
+
+    .gauge-circle svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .gauge-bg {
+      fill: none;
+      stroke: var(--bg-card-subtle);
+      stroke-width: 8;
+    }
+
+    .gauge-bar {
+      fill: none;
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke: var(--primary);
+      transition: stroke-dashoffset 0.8s ease;
+    }
+
+    .gauge-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-main);
+    }
+
+    /* Recommendations Table */
     table {
       width: 100%;
       border-collapse: collapse;
       font-size: 13px;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
     th {
       text-align: left;
       color: var(--text-muted);
-      font-weight: 600;
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--border-color);
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-main);
+      background: var(--bg-card-subtle);
     }
 
     td {
-      padding: 10px 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-main);
     }
 
     tr:last-child td {
       border-bottom: none;
     }
 
-    .action-table td:nth-child(1) {
-      font-weight: 600;
-      color: var(--accent-cyan);
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: var(--primary);
     }
 
+    /* Footer */
     footer {
       text-align: center;
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-muted);
-      margin-top: 32px;
-      padding: 16px;
+      margin-top: 36px;
+      padding: 20px;
     }
 
     footer a {
-      color: var(--accent-blue);
+      color: var(--primary);
       text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        color: #000000;
+        padding: 0;
+      }
+      .btn-action, .timestamp-badge {
+        display: none;
+      }
+      .card, header, .flow-pipeline-container {
+        box-shadow: none;
+        border: 1px solid #ddd;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- Header -->
     <header>
       <div class="header-brand">
-        <div class="header-logo">🧰</div>
+        <div class="header-logo">
+          <!-- Wrench / Tool SVG Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
         <div>
           <h1>WindowsFixKit Diagnostic Report</h1>
           <div class="header-sub">Automated System Health & Hardware Telemetry Audit</div>
         </div>
       </div>
-      <div>
+      <div class="header-actions">
+        <button class="btn-action" onclick="toggleTheme()" id="themeBtn" title="Toggle Light/Dark Theme">
+          <svg id="themeIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <span id="themeText">Theme</span>
+        </button>
+        <button class="btn-action" onclick="window.print()" title="Print or Save PDF">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          Print PDF
+        </button>
         <span class="timestamp-badge">{{GENERATED_DATE}}</span>
       </div>
     </header>
 
+    <!-- Subsystem Health Flow Diagram -->
+    <div class="flow-pipeline-container">
+      <div class="flow-header">
+        <div class="flow-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+          Subsystem Diagnostic Flow Architecture
+        </div>
+        <div>
+          {{OVERALL_STATUS_BADGE}}
+        </div>
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step-card">
+          <div class="flow-step-header">
+            <div class="flow-step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <span class="badge badge-healthy">OK</span>
+          </div>
+          <span class="flow-step-name">1. OS & Firmware</span>
+          <span class="flow-step-status" style="color: var(--status-healthy)">Operational</span>
+        </div>
+        <div class="flow-step-card">
+          <div class="flow-step-header">
+            <div class="flow-step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+            </div>
+            {{STORAGE_BADGE}}
+          </div>
+          <span class="flow-step-name">2. Storage & Disks</span>
+          <span class="flow-step-status">{{STORAGE_SUMMARY_STATUS}}</span>
+        </div>
+        <div class="flow-step-card">
+          <div class="flow-step-header">
+            <div class="flow-step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+            </div>
+            {{RAM_BADGE}}
+          </div>
+          <span class="flow-step-name">3. Physical Memory</span>
+          <span class="flow-step-status">{{RAM_SUMMARY_STATUS}}</span>
+        </div>
+        <div class="flow-step-card">
+          <div class="flow-step-header">
+            <div class="flow-step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2"></rect><line x1="23" y1="13" x2="23" y2="11"></line></svg>
+            </div>
+            {{BATTERY_BADGE}}
+          </div>
+          <span class="flow-step-name">4. Battery & Power</span>
+          <span class="flow-step-status">{{BATTERY_SUMMARY_STATUS}}</span>
+        </div>
+        <div class="flow-step-card">
+          <div class="flow-step-header">
+            <div class="flow-step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
+            </div>
+            {{THERMAL_BADGE}}
+          </div>
+          <span class="flow-step-name">5. CPU Thermals</span>
+          <span class="flow-step-status">{{CPU_SUMMARY_STATUS}}</span>
+        </div>
+      </div>
+    </div>
+
     <!-- System Overview & Overall Status -->
     <div class="grid-2">
+      <!-- Machine Specs -->
       <div class="card">
         <div class="card-header">
-          <div class="card-title">🖥️ Operating System & Machine</div>
+          <div class="card-title">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            Operating System & Machine
+          </div>
           <span class="badge badge-healthy">Verified</span>
         </div>
         <div class="metric-row"><span class="metric-label">OS Edition</span><span class="metric-value">{{OS_NAME}}</span></div>
@@ -290,9 +681,15 @@
         <div class="metric-row"><span class="metric-label">System Uptime</span><span class="metric-value">{{SYSTEM_UPTIME}}</span></div>
       </div>
 
+      <!-- Executive Summary -->
       <div class="card">
         <div class="card-header">
-          <div class="card-title">🩺 System Health Executive Summary</div>
+          <div class="card-title">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+            </div>
+            System Health Executive Summary
+          </div>
           {{OVERALL_STATUS_BADGE}}
         </div>
         <div class="metric-row"><span class="metric-label">Storage Integrity</span><span class="metric-value">{{STORAGE_SUMMARY_STATUS}}</span></div>
@@ -305,17 +702,29 @@
 
     <!-- Storage & RAM -->
     <div class="grid-2">
+      <!-- Storage Health -->
       <div class="card">
         <div class="card-header">
-          <div class="card-title">💾 Storage Health & Partitions</div>
+          <div class="card-title">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+            </div>
+            Storage Health & Partitions
+          </div>
           {{STORAGE_BADGE}}
         </div>
         {{STORAGE_DETAILS_HTML}}
       </div>
 
+      <!-- Physical Memory -->
       <div class="card">
         <div class="card-header">
-          <div class="card-title">🧠 Physical Memory (RAM)</div>
+          <div class="card-title">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+            </div>
+            Physical Memory (RAM)
+          </div>
           {{RAM_BADGE}}
         </div>
         {{RAM_DETAILS_HTML}}
@@ -324,25 +733,43 @@
 
     <!-- Battery, CPU Thermals & Startup Load -->
     <div class="grid-3">
+      <!-- Battery -->
       <div class="card">
         <div class="card-header">
-          <div class="card-title">🔋 Battery Health</div>
+          <div class="card-title">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2"></rect><line x1="23" y1="13" x2="23" y2="11"></line></svg>
+            </div>
+            Battery Health
+          </div>
           {{BATTERY_BADGE}}
         </div>
         {{BATTERY_DETAILS_HTML}}
       </div>
 
+      <!-- CPU Thermals -->
       <div class="card">
         <div class="card-header">
-          <div class="card-title">🌡️ CPU Thermals</div>
+          <div class="card-title">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
+            </div>
+            CPU Thermals
+          </div>
           {{THERMAL_BADGE}}
         </div>
         {{THERMAL_DETAILS_HTML}}
       </div>
 
+      <!-- Startup Programs -->
       <div class="card">
         <div class="card-header">
-          <div class="card-title">🚀 Startup Programs</div>
+          <div class="card-title">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            Startup Programs
+          </div>
           {{STARTUP_BADGE}}
         </div>
         {{STARTUP_DETAILS_HTML}}
@@ -352,7 +779,12 @@
     <!-- Actionable Recommendations Table -->
     <div class="card">
       <div class="card-header">
-        <div class="card-title">🛠️ Remediation & Optimization Recommendations</div>
+        <div class="card-title">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          Remediation & Optimization Recommendations
+        </div>
       </div>
       <table class="action-table">
         <thead>
@@ -368,9 +800,38 @@
       </table>
     </div>
 
+    <!-- Footer -->
     <footer>
       Generated automatically by <strong>WindowsFixKit</strong> &bull; <a href="https://github.com/nkdhawan76/WindowsFixKit" target="_blank">GitHub Repository</a>
     </footer>
   </div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('wfk-theme', next);
+      updateThemeIcon(next);
+    }
+
+    function updateThemeIcon(theme) {
+      const icon = document.getElementById('themeIcon');
+      const text = document.getElementById('themeText');
+      if (theme === 'dark') {
+        text.textContent = 'Light';
+        icon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+      } else {
+        text.textContent = 'Dark';
+        icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+      }
+    }
+
+    // Set initial theme
+    const savedTheme = localStorage.getItem('wfk-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+  </script>
 </body>
 </html>

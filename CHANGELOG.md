@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.3] - 2026-08-31
+
+### Added
+- **Modern Light Theme & Theme Switcher**: Redesigned HTML diagnostic report with clean modern light aesthetics (Plus Jakarta Sans, Inter, JetBrains Mono) and an instant Light/Dark mode toggle switch.
+- **Subsystem Diagnostic Flow Architecture**: Integrated visual pipeline flow nodes showcasing real-time status across OS, Storage, Memory, Battery, and CPU thermals.
+- **Vector SVG Icons**: Replaced raw unicode emojis with crisp inline SVG icons, eliminating broken encoding and mojibake characters.
+- **Report Actions**: Added one-click Print / Save PDF functionality.
+
 ## [1.1.2] - 2026-08-31
 
 ### Fixed
