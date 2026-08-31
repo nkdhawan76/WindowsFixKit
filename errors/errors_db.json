@@ -59,11 +59,11 @@
       "Restart BITS and Windows Update services."
     ]
   },
-  "0xc1900101": {
-    "title": "Feature Update Rollback / Driver Conflict",
-    "description": "Feature update rollback caused by third-party filter drivers, disk corruption, or incompatible hardware drivers.",
-    "category": "Windows Update",
-    "fix_script": "scripts/fix_0xc1900101.ps1",
+  "0xC1900101": {
+    "title": "Windows 10/11 Upgrade Rollback / Driver Conflict",
+    "description": "Upgrade rollback caused by third-party filter drivers, disk corruption, or incompatible hardware drivers.",
+    "category": "windows_upgrade",
+    "fix_script": "scripts/fix_upgrade_rollback.ps1",
     "fallback_script": null,
     "restart_required": true,
     "manual_steps": [
@@ -72,6 +72,72 @@
       "Execute Component Store repair: DISM.exe /Online /Cleanup-image /Restorehealth",
       "Clean staging drivers and update graphics / chipset drivers from vendor.",
       "Perform clean boot before initiating feature upgrade."
+    ]
+  },
+  "0xC1900210": {
+    "title": "Upgrade Compatibility Scan Complete (No Blockers)",
+    "description": "MOSETUP_E_COMPAT_SCANONLY_NO_ISSUES: Compatibility scan succeeded with no actionable blocking issues detected.",
+    "category": "windows_upgrade",
+    "fix_script": "scripts/fix_upgrade_rollback.ps1",
+    "fallback_script": null,
+    "restart_required": false,
+    "manual_steps": [
+      "Verify Windows Setup media integrity.",
+      "Check setup logs in C:\\$WINDOWS.~BT\\Sources\\Panther for silent process terminations.",
+      "Retry upgrade with clean boot."
+    ]
+  },
+  "0xC1900208": {
+    "title": "Incompatible Application Blocking Upgrade",
+    "description": "MOSETUP_E_COMPAT_APPS_BLOCK: Incompatible software, security tool, or legacy utility blocking the Windows 10/11 upgrade.",
+    "category": "windows_upgrade",
+    "fix_script": "scripts/fix_upgrade_rollback.ps1",
+    "fallback_script": null,
+    "restart_required": true,
+    "manual_steps": [
+      "Review incompatible application list in Windows Setup or Panther logs.",
+      "Uninstall conflicting legacy apps (e.g. outdated virtual drives, third-party firewalls, obsolete utility tools).",
+      "Reboot and restart upgrade setup."
+    ]
+  },
+  "0xC1900204": {
+    "title": "Selected Edition Not Eligible for Upgrade",
+    "description": "MOSETUP_E_COMPAT_MIG_CHOICE_NO_DEFAULT: Selected Windows edition or architecture does not support direct in-place migration.",
+    "category": "windows_upgrade",
+    "fix_script": "scripts/fix_upgrade_rollback.ps1",
+    "fallback_script": null,
+    "restart_required": false,
+    "manual_steps": [
+      "Ensure installation media matches current OS architecture (x64 to x64, not x86).",
+      "Verify Windows Edition upgrade path (e.g., Home to Pro, not Enterprise to Home).",
+      "Use official Media Creation Tool to generate matching edition ISO."
+    ]
+  },
+  "0xC1900200": {
+    "title": "System Hardware Requirements Not Met",
+    "description": "MOSETUP_E_COMPAT_SYSREQ_NOT_MET: Machine does not meet minimum hardware requirements (TPM 2.0, Secure Boot, RAM, or supported CPU).",
+    "category": "windows_upgrade",
+    "fix_script": "scripts/fix_upgrade_rollback.ps1",
+    "fallback_script": null,
+    "restart_required": false,
+    "manual_steps": [
+      "Check TPM 2.0 status in tpm.msc and enable in UEFI BIOS if available.",
+      "Verify Secure Boot is enabled in BIOS/UEFI.",
+      "Ensure at least 4GB RAM and 64GB storage available.",
+      "Run PC Health Check app from Microsoft."
+    ]
+  },
+  "0xC190020E": {
+    "title": "Insufficient Disk Space for Upgrade",
+    "description": "MOSETUP_E_COMPAT_DISKSPACE_BLOCK: System partition has insufficient free space to unpack and stage upgrade files.",
+    "category": "windows_upgrade",
+    "fix_script": "scripts/fix_storage_cleanup.ps1",
+    "fallback_script": null,
+    "restart_required": false,
+    "manual_steps": [
+      "Free at least 20-30GB of space on primary drive C:.",
+      "Run WindowsFixKit Storage Cleanup (Option 4).",
+      "Attach an external USB drive with 32GB+ free to provide staging storage during setup."
     ]
   },
   "0x800f0922": {
@@ -87,6 +153,34 @@
       "Enable or repair .NET Framework 3.5 and 4.x via DISM /Online /Enable-Feature.",
       "Clear corrupted CBS servicing logs under C:\\Windows\\Logs\\CBS.",
       "Re-run Windows Update."
+    ]
+  },
+  "windows_update_stuck_zero_percent": {
+    "title": "Windows Update Stuck at 0% / Checking for Updates Hang",
+    "description": "Update download stuck at 0% or hangs at Checking for updates screen",
+    "category": "Windows Update",
+    "fix_script": "scripts/fix_update_stuck.ps1",
+    "fallback_script": null,
+    "restart_required": true,
+    "manual_steps": [
+      "Check disk space (need 15GB+ free)",
+      "Temporarily disable third-party antivirus",
+      "Verify internet connection",
+      "Restart and retry"
+    ]
+  },
+  "third_party_install_badimageformat": {
+    "title": ".NET BadImageFormatException / PresentationFramework Crash",
+    "description": "App installer fails with System.BadImageFormatException referencing PresentationFramework or similar .NET assembly - usually a corrupt or missing .NET Framework installation",
+    "category": "Application Installation",
+    "fix_script": "scripts/fix_dotnet_repair.ps1",
+    "fallback_script": null,
+    "restart_required": false,
+    "manual_steps": [
+      "Run .NET Framework Repair Tool from Microsoft",
+      "Reinstall .NET Framework 4.x",
+      "Check Windows Update for optional .NET updates",
+      "Retry installer as administrator"
     ]
   },
   "wifi_missing_post_update": {

@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-08-31
+
+### Added
+- **Safe Performance Debloat Module (`fix_performance_debloat.ps1`)**:
+  - Safely disables non-critical background services (`DiagTrack`, `dmwappushservice`, `Fax`, and user-confirmed Xbox services, Print Spooler, and OneDrive autostart) while strictly safeguarding Windows Defender and core security subsystems.
+- **Telemetry & Privacy Registry Hardener (`fix_telemetry_privacy.ps1`)**:
+  - Implements privacy-enhancing group policies and registry hardening with automatic timestamped `.reg` backup stored safely in `WindowsFixKit-Backup`.
+- **Windows 10/11 Upgrade Rollback Resolver (`fix_upgrade_rollback.ps1`)**:
+  - Audits third-party device drivers via `Get-WindowsDriver` and inspects Panther upgrade error logs.
+  - Added upgrade result and extend code decoder (`Resolve-WindowsUpgradeCode`) in `diagnose.ps1` for codes like `0xC1900101-0x4000D`.
+  - Added new `windows_upgrade` error mappings for `0xC1900101`, `0xC1900210`, `0xC1900208`, `0xC1900204`, `0xC1900200`, and `0xC190020E`.
+- **Windows Update Stuck at 0% Resolver (`fix_update_stuck.ps1`)**:
+  - Safely stops services, rotates `SoftwareDistribution` and `Catroot2` folders to timestamped `.bak` archives, restarts services, and logs to `repair_log.txt`.
+- **.NET Framework & App Install Resolver (`fix_dotnet_repair.ps1`)**:
+  - Resolves `System.BadImageFormatException` and PresentationFramework crashes via registry audit, DISM health repairs, and official Microsoft runtime guidance.
+
 ## [1.2.0] - 2026-08-31
 
 ### Added

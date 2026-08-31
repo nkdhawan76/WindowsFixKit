@@ -23,7 +23,7 @@ Download the portable zip archive for offline troubleshooting without installing
 
 [![Download WindowsFixKit-latest.zip](https://img.shields.io/badge/Download-WindowsFixKit--latest.zip-success?style=for-the-badge&logo=windows)](https://github.com/nkdhawan76/WindowsFixKit/releases/latest/download/WindowsFixKit-latest.zip)
 
-- **Current Release:** [v1.2.0 Release Notes](https://github.com/nkdhawan76/WindowsFixKit/releases/tag/v1.2.0)
+- **Current Release:** [v1.3.0 Release Notes](https://github.com/nkdhawan76/WindowsFixKit/releases/tag/v1.3.0)
 - **Full Release History:** [GitHub Releases](https://github.com/nkdhawan76/WindowsFixKit/releases)
 
 ---
@@ -45,14 +45,18 @@ Download the portable zip archive for offline troubleshooting without installing
 
   [1]  Full Hardware and System Health Diagnosis (Desktop HTML Report)
   [2]  Windows Update and Network Diagnostic + Auto-Fix (diagnose.ps1)
-  [3]  Scan-Only Mode (Detect issues without making changes)
-  [4]  Deep Junk & Temp Files Cleanup (%TEMP%, Prefetch, Recycle Bin, Cleanmgr)
-  [5]  Deep RAM Cache & Memory Optimizer (Empty Working Sets, Trim Cache)
-  [6]  Full Network and DNS Stack Reset (fix_network_reset)
-  [7]  Fix Missing Wi-Fi Adapter (fix_wifi_missing)
-  [8]  Fix Missing Bluetooth Service (fix_bluetooth_missing)
-  [9]  Run Local CI Lint and Test Check (scripts\lint-check.ps1)
-  [10] Exit
+  [3]  Fix Windows Update Stuck at 0% (fix_update_stuck)
+  [4]  Windows 10/11 Upgrade Rollback Resolver (fix_upgrade_rollback)
+  [5]  Safe Performance Debloat (fix_performance_debloat)
+  [6]  Telemetry & Privacy Registry Hardener (fix_telemetry_privacy)
+  [7]  .NET Framework & App Install Repair Tool (fix_dotnet_repair)
+  [8]  Deep Junk & Temp Files Cleanup (%TEMP%, Prefetch, Recycle Bin)
+  [9]  Deep RAM Cache & Memory Optimizer (Empty Working Sets)
+  [10] Full Network and DNS Stack Reset (fix_network_reset)
+  [11] Fix Missing Wi-Fi Adapter (fix_wifi_missing)
+  [12] Fix Missing Bluetooth Service (fix_bluetooth_missing)
+  [13] Run Local CI Lint and Test Check (scripts\lint-check.ps1)
+  [14] Exit
 =================================================================
 ```
 
@@ -125,8 +129,15 @@ Run `scripts/full_system_diagnosis.ps1` to perform a hardware and system health 
 | **`0x8024402c`** | Windows Update | Update Server Unreachable - Proxy misconfiguration or corrupt update cache | [`fix_0x8024402c.ps1`](scripts/fix_0x8024402c.ps1) | — | No |
 | **`0x8024402f`** | Windows Update | Update Install Failure Loop - Corrupted datastore or catalog database | [`fix_0x8024402f.ps1`](scripts/fix_0x8024402f.ps1) | — | Yes |
 | **`0x80072EFD`** | Windows Update | Server Connection Interrupted - TLS protocol mismatch or firewall block | [`fix_0x80072EFD.ps1`](scripts/fix_0x80072EFD.ps1) | — | No |
-| **`0xc1900101`** | Windows Update | Feature Update Rollback - Driver conflicts, DISM/SFC system corruptions | [`fix_0xc1900101.ps1`](scripts/fix_0xc1900101.ps1) | — | Yes |
 | **`0x800f0922`** | Windows Update | SSU / .NET Failure - System Partition (ESP) space limit or active VPN filter | [`fix_0x800f0922.ps1`](scripts/fix_0x800f0922.ps1) | — | Yes |
+| **`windows_update_stuck_zero_percent`** | Windows Update | Update download stuck at 0% or hangs at "Checking for updates" | [`fix_update_stuck.ps1`](scripts/fix_update_stuck.ps1) | — | Yes |
+| **`0xC1900101`** | windows_upgrade | Generic Upgrade Rollback - Device driver conflicts & DISM errors | [`fix_upgrade_rollback.ps1`](scripts/fix_upgrade_rollback.ps1) | — | Yes |
+| **`0xC1900210`** | windows_upgrade | `MOSETUP_E_COMPAT_SCANONLY_NO_ISSUES` - Compatibility scan passed | [`fix_upgrade_rollback.ps1`](scripts/fix_upgrade_rollback.ps1) | — | No |
+| **`0xC1900208`** | windows_upgrade | `MOSETUP_E_COMPAT_APPS_BLOCK` - Incompatible applications blocking upgrade | [`fix_upgrade_rollback.ps1`](scripts/fix_upgrade_rollback.ps1) | — | Yes |
+| **`0xC1900204`** | windows_upgrade | `MOSETUP_E_COMPAT_MIG_CHOICE_NO_DEFAULT` - Architecture/Edition ineligible | [`fix_upgrade_rollback.ps1`](scripts/fix_upgrade_rollback.ps1) | — | No |
+| **`0xC1900200`** | windows_upgrade | `MOSETUP_E_COMPAT_SYSREQ_NOT_MET` - TPM 2.0, Secure Boot, or CPU requirement | [`fix_upgrade_rollback.ps1`](scripts/fix_upgrade_rollback.ps1) | — | No |
+| **`0xC190020E`** | windows_upgrade | `MOSETUP_E_COMPAT_DISKSPACE_BLOCK` - Insufficient partition storage space | [`fix_storage_cleanup.ps1`](scripts/fix_storage_cleanup.ps1) | — | No |
+| **`third_party_install_badimageformat`** | App Install | System.BadImageFormatException referencing PresentationFramework / .NET | [`fix_dotnet_repair.ps1`](scripts/fix_dotnet_repair.ps1) | — | No |
 | **`wifi_missing_post_update`** | Hardware / Wi-Fi | Wi-Fi adapter or tray icon disappears after an update or sleep cycle | [`fix_wifi_missing.ps1`](scripts/fix_wifi_missing.ps1) | [`fix_wifi_missing.bat`](scripts/fix_wifi_missing.bat) | No |
 | **`bluetooth_missing_post_update`** | Hardware / Bluetooth | Bluetooth service (`bthserv`) disabled or radio device missing post-update | [`fix_bluetooth_missing.ps1`](scripts/fix_bluetooth_missing.ps1) | [`fix_bluetooth_missing.bat`](scripts/fix_bluetooth_missing.bat) | No |
 | **`network_no_internet`** | Networking | Adapter connected to LAN but displays "No Internet Access" | [`fix_network_reset.ps1`](scripts/fix_network_reset.ps1) | [`fix_network_reset.bat`](scripts/fix_network_reset.bat) | Yes |

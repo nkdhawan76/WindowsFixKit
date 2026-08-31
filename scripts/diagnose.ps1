@@ -124,6 +124,81 @@ function Invoke-Remediation {
     }
 }
 
+function Resolve-WindowsUpgradeCode {
+    <#
+    .SYNOPSIS
+        Decodes combined Windows 10/11 upgrade Result and Extend codes.
+    #>
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$CombinedCode
+    )
+
+    $phaseTable = @{
+        "1" = "SP_EXECUTION_DOWNLEVEL (Phase 1: Downlevel host OS preparation before reboot)"
+        "2" = "SP_EXECUTION_SAFE_OS (Phase 2: SafeOS / WinPE installation & drivers environment)"
+        "3" = "SP_EXECUTION_FIRST_BOOT (Phase 3: First boot phase applying system updates & hardware boot)"
+        "4" = "SP_EXECUTION_OOBE_BOOT (Phase 4: Second boot / OOBE user profile & settings migration)"
+    }
+
+    $opTable = @{
+        "04" = "SP_EXECUTION_OP_DISM (Component store servicing)"
+        "06" = "SP_EXECUTION_OP_BOOT (Setting up boot configuration / BCD)"
+        "07" = "SP_EXECUTION_OP_REPLICATE_OC (Replicating optional components)"
+        "08" = "SP_EXECUTION_OP_ENSURE_WINPE_DRIVERS (Ensuring WinPE staging drivers)"
+        "0A" = "SP_EXECUTION_OP_PREPARE_SAFE_OS (Preparing SafeOS environment)"
+        "0C" = "SP_EXECUTION_OP_MIGRATE_DRIVERS (Migrating device drivers)"
+        "0D" = "SP_EXECUTION_OP_MIGRATE_DATA (Migrating user data and accounts)"
+        "17" = "SP_EXECUTION_OP_DRIVER_INSTALL (Installing hardware device drivers)"
+        "18" = "SP_EXECUTION_OP_SYS_PREP (Executing Sysprep operations)"
+        "19" = "SP_EXECUTION_OP_POST_SYS_PREP (Executing post-Sysprep operations)"
+        "20" = "SP_EXECUTION_OP_FIRST_BOOT (Executing first boot setup routines)"
+        "21" = "SP_EXECUTION_OP_POST_FIRST_BOOT (Post-first-boot cleanup operations)"
+    }
+
+    $resultTable = @{
+        "0xC1900101" = "Generic upgrade rollback - typically incompatible filter or hardware drivers."
+        "0xC1900210" = "MOSETUP_E_COMPAT_SCANONLY_NO_ISSUES - No blocking compatibility issues found during scan."
+        "0xC1900208" = "MOSETUP_E_COMPAT_APPS_BLOCK - Incompatible applications or antivirus blocking upgrade."
+        "0xC1900204" = "MOSETUP_E_COMPAT_MIG_CHOICE_NO_DEFAULT - Selected edition or architecture not eligible."
+        "0xC1900200" = "MOSETUP_E_COMPAT_SYSREQ_NOT_MET - Hardware does not meet minimum Windows requirements."
+        "0xC190020E" = "MOSETUP_E_COMPAT_DISKSPACE_BLOCK - Insufficient disk partition space to complete installation."
+    }
+
+    $parts = $CombinedCode.Trim() -split "-"
+    $resultCode = $parts[0].Trim()
+    $extendCode = if ($parts.Count -gt 1) { $parts[1].Trim() } else { "" }
+
+    $resultDesc = if ($resultTable.ContainsKey($resultCode)) { $resultTable[$resultCode] } else { "Windows Upgrade Status Code ($resultCode)" }
+    $phaseDesc = "Unknown Phase"
+    $opDesc = "Unknown Operation"
+
+    if ($extendCode -match "0x([1-4])([0-9A-Fa-f]{2,4})") {
+        $phaseDigit = $matches[1]
+        $opHex = $matches[2].PadLeft(2, '0').ToUpper()
+        if ($phaseTable.ContainsKey($phaseDigit)) { $phaseDesc = $phaseTable[$phaseDigit] }
+        if ($opTable.ContainsKey($opHex)) { $opDesc = $opTable[$opHex] }
+    }
+
+    Write-Host "`n[Windows Upgrade Code Analyzer] Decoded: $CombinedCode" -ForegroundColor Cyan
+    Write-Host "  [-] Result Code : $resultCode - $resultDesc" -ForegroundColor Yellow
+    if ($extendCode) {
+        Write-Host "  [-] Extend Code : $extendCode" -ForegroundColor Gray
+        Write-Host "  [-] Phase       : $phaseDesc" -ForegroundColor Green
+        Write-Host "  [-] Operation   : $opDesc" -ForegroundColor Green
+    }
+
+    return [PSCustomObject]@{
+        CombinedCode      = $CombinedCode
+        ResultCode        = $resultCode
+        ExtendCode        = $extendCode
+        ResultDescription = $resultDesc
+        Phase             = $phaseDesc
+        Operation         = $opDesc
+    }
+}
+
 # -------------------------------------------------------------------------
 # 3. Check Windows Update Logs for Error Codes
 # -------------------------------------------------------------------------

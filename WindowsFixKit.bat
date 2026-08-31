@@ -32,30 +32,38 @@ echo =================================================================
 echo.
 echo   [1]  Full Hardware and System Health Diagnosis (Desktop HTML Report)
 echo   [2]  Windows Update and Network Diagnostic + Auto-Fix (diagnose.ps1)
-echo   [3]  Scan-Only Mode (Detect issues without making changes)
-echo   [4]  Deep Junk & Temp Files Cleanup (%%TEMP%%, Prefetch, Recycle Bin, Cleanmgr)
-echo   [5]  Deep RAM Cache & Memory Optimizer (Empty Working Sets, Trim Cache)
-echo   [6]  Full Network and DNS Stack Reset (fix_network_reset)
-echo   [7]  Fix Missing Wi-Fi Adapter (fix_wifi_missing)
-echo   [8]  Fix Missing Bluetooth Service (fix_bluetooth_missing)
-echo   [9]  Run Local CI Lint and Test Check (scripts\lint-check.ps1)
-echo   [10] Exit
+echo   [3]  Fix Windows Update Stuck at 0%% (fix_update_stuck)
+echo   [4]  Windows 10/11 Upgrade Rollback Resolver (fix_upgrade_rollback)
+echo   [5]  Safe Performance Debloat (fix_performance_debloat)
+echo   [6]  Telemetry & Privacy Registry Hardener (fix_telemetry_privacy)
+echo   [7]  .NET Framework & App Install Repair Tool (fix_dotnet_repair)
+echo   [8]  Deep Junk & Temp Files Cleanup (%%TEMP%%, Prefetch, Recycle Bin)
+echo   [9]  Deep RAM Cache & Memory Optimizer (Empty Working Sets)
+echo   [10] Full Network and DNS Stack Reset (fix_network_reset)
+echo   [11] Fix Missing Wi-Fi Adapter (fix_wifi_missing)
+echo   [12] Fix Missing Bluetooth Service (fix_bluetooth_missing)
+echo   [13] Run Local CI Lint and Test Check (scripts\lint-check.ps1)
+echo   [14] Exit
 echo.
 echo =================================================================
-set /p CHOICE="  Select an option [1-10]: "
+set /p CHOICE="  Select an option [1-14]: "
 
 if "%CHOICE%"=="1" goto FULL_DIAG
 if "%CHOICE%"=="2" goto WU_DIAG
-if "%CHOICE%"=="3" goto SCAN_ONLY
-if "%CHOICE%"=="4" goto CLEANUP
-if "%CHOICE%"=="5" goto RAM_CLEANUP
-if "%CHOICE%"=="6" goto NET_RESET
-if "%CHOICE%"=="7" goto WIFI_FIX
-if "%CHOICE%"=="8" goto BT_FIX
-if "%CHOICE%"=="9" goto LINT_CHECK
-if "%CHOICE%"=="10" goto EXIT
+if "%CHOICE%"=="3" goto WU_STUCK
+if "%CHOICE%"=="4" goto UPGRADE_FIX
+if "%CHOICE%"=="5" goto DEBLOAT
+if "%CHOICE%"=="6" goto PRIVACY
+if "%CHOICE%"=="7" goto DOTNET_FIX
+if "%CHOICE%"=="8" goto CLEANUP
+if "%CHOICE%"=="9" goto RAM_CLEANUP
+if "%CHOICE%"=="10" goto NET_RESET
+if "%CHOICE%"=="11" goto WIFI_FIX
+if "%CHOICE%"=="12" goto BT_FIX
+if "%CHOICE%"=="13" goto LINT_CHECK
+if "%CHOICE%"=="14" goto EXIT
 
-echo [!] Invalid selection. Please choose 1 to 10.
+echo [!] Invalid selection. Please choose 1 to 14.
 timeout /t 2 >nul
 goto MENU
 
@@ -77,10 +85,46 @@ echo Press any key to return to menu...
 pause >nul
 goto MENU
 
-:SCAN_ONLY
+:WU_STUCK
 cls
-echo [INFO] Running Scan-Only Diagnostic...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\diagnose.ps1" -ScanOnly
+echo [INFO] Remediating Windows Update Stuck at 0%% / Download Hangs...
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_update_stuck.ps1"
+echo.
+echo Press any key to return to menu...
+pause >nul
+goto MENU
+
+:UPGRADE_FIX
+cls
+echo [INFO] Diagnosing Windows 10/11 Upgrade Rollbacks & Drivers...
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_upgrade_rollback.ps1"
+echo.
+echo Press any key to return to menu...
+pause >nul
+goto MENU
+
+:DEBLOAT
+cls
+echo [INFO] Running Safe Performance Debloat Module...
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_performance_debloat.ps1"
+echo.
+echo Press any key to return to menu...
+pause >nul
+goto MENU
+
+:PRIVACY
+cls
+echo [INFO] Applying Telemetry & Privacy Registry Hardening...
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_telemetry_privacy.ps1"
+echo.
+echo Press any key to return to menu...
+pause >nul
+goto MENU
+
+:DOTNET_FIX
+cls
+echo [INFO] Diagnosing .NET Framework & BadImageFormatException...
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_dotnet_repair.ps1"
 echo.
 echo Press any key to return to menu...
 pause >nul
