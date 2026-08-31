@@ -237,31 +237,21 @@ Run the local test and lint suite before pushing changes:
 
 <div align="center">
 
-<table style="border: none; background: transparent;">
-  <tr>
-    <td align="center" style="border: none; padding: 20px;">
-      <a href="https://github.com/nkdhawan76">
-        <img src="https://avatars.githubusercontent.com/nkdhawan76" width="130px" style="border-radius: 50%; box-shadow: 0 8px 24px rgba(37,99,235,0.3); border: 3px solid #3b82f6;" alt="Nikil Dhawan"/>
-      </a>
-      <br/><br/>
-      <h3 style="margin: 0; font-size: 20px;"><b>Nikil Dhawan</b></h3>
-      <p style="color: #64748b; margin: 4px 0 12px 0; font-size: 14px;">Founder & Lead Engineer &bull; <b>DevSparks India</b></p>
-      
-      <div>
-        <a href="https://github.com/nkdhawan76"><img src="https://img.shields.io/badge/GitHub-nkdhawan76-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
-        <a href="https://devsparksindia.com/"><img src="https://img.shields.io/badge/Website-devsparksindia.com-2563eb?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website"/></a>
-        <a href="mailto:devsparksindia@gmail.com"><img src="https://img.shields.io/badge/Email-devsparksindia@gmail.com-ea4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
-        <a href="tel:+919521032268"><img src="https://img.shields.io/badge/Phone-+91_9521032268-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp / Phone"/></a>
-      </div>
-      <br/>
-      <div>
-        <img src="https://img.shields.io/badge/Role-Creator_%26_Architect-blue?style=flat-square" alt="Role"/>
-        <img src="https://img.shields.io/badge/Contributions-Core_Engine_%7C_PowerShell_%7C_Batch_%7C_CI%2FCD-059669?style=flat-square" alt="Contributions"/>
-        <img src="https://img.shields.io/badge/Status-Active_Maintainer-10b981?style=flat-square" alt="Status"/>
-      </div>
-    </td>
-  </tr>
-</table>
+<a href="https://github.com/nkdhawan76">
+<img src="https://avatars.githubusercontent.com/nkdhawan76" width="125" style="border-radius:50%;border:3px solid #3b82f6;" alt="Nikil Dhawan"/>
+</a>
+
+### **Nikil Dhawan**
+*Founder & Lead Engineer &bull; **DevSparks India***
+
+[![GitHub](https://img.shields.io/badge/GitHub-nkdhawan76-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/nkdhawan76)
+[![Website](https://img.shields.io/badge/Website-devsparksindia.com-2563eb?style=for-the-badge&logo=google-chrome&logoColor=white)](https://devsparksindia.com/)
+[![Email](https://img.shields.io/badge/Email-devsparksindia@gmail.com-ea4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:devsparksindia@gmail.com)
+[![WhatsApp / Phone](https://img.shields.io/badge/Phone-+91_9521032268-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](tel:+919521032268)
+
+![Role](https://img.shields.io/badge/Role-Creator_%26_Architect-blue?style=flat-square)
+![Contributions](https://img.shields.io/badge/Contributions-Core_Engine_%7C_PowerShell_%7C_Batch_%7C_CI%2FCD-059669?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Active_Maintainer-10b981?style=flat-square)
 
 </div>
 
