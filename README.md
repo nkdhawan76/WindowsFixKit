@@ -28,6 +28,21 @@ Download the portable zip archive for offline troubleshooting without installing
 
 ---
 
+## 🆘 Need Help with a Custom PC Issue or Error?
+
+If you are facing an unusual Windows error, driver failure, or need custom technical support for your business, we are here to help! Reach out directly via Call, WhatsApp, or Email:
+
+<div align="center">
+
+[![Call Support](https://img.shields.io/badge/Call_Support-+91_9521032268-2563eb?style=for-the-badge&logo=phone&logoColor=white)](tel:+919521032268)
+[![WhatsApp Support](https://img.shields.io/badge/WhatsApp-+91_9521032268-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/919521032268?text=Hi%20DevSparks%20India,%20I%20need%20help%20with%20WindowsFixKit%20or%20a%20PC%20issue.)
+[![Email Support](https://img.shields.io/badge/Email_Support-devsparksindia@gmail.com-ea4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:devsparksindia@gmail.com?subject=WindowsFixKit%20Support%20Request)
+[![Visit DevSparks India](https://img.shields.io/badge/Official_Website-devsparksindia.com-0891b2?style=for-the-badge&logo=google-chrome&logoColor=white)](https://devsparksindia.com/)
+
+</div>
+
+---
+
 ## ⚡ Quick Start
 
 ### Option 1: One-Click Menu (Recommended for Most Users)
