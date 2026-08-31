@@ -43,3 +43,8 @@ ReportingEvents.log
 netsh_report.txt
 dism.log
 cbs.log
+
+# Agent local configuration and rules
+.agents/
+.gemini/
+
