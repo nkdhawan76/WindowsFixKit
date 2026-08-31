@@ -74,45 +74,57 @@ jobs:
           # 1. Update VERSION file
           Set-Content -Path "VERSION" -Value $nextVersion -NoNewline
 
-          # 2. Extract commit logs for release notes
+          # 2. Update WindowsFixKit.psd1 module manifest
+          if (Test-Path "WindowsFixKit.psd1") {
+            (Get-Content "WindowsFixKit.psd1") -replace "ModuleVersion\s*=\s*'[^']*'", "ModuleVersion = '$nextVersion'" | Set-Content "WindowsFixKit.psd1"
+          }
+
+          # 3. Extract commit logs for release notes
           $latestTag = git describe --tags --abbrev=0 2>$null
           $commitList = if ($latestTag) { git log "$latestTag..HEAD" --pretty=format:"* %s (%h)" } else { git log -n 10 --pretty=format:"* %s (%h)" }
 
-          # 3. Update CHANGELOG.md
+          # 4. Update CHANGELOG.md
           $changelogPath = "CHANGELOG.md"
-          $newChangelogEntry = @"
-          
-## [$nextVersion] - $today
+          $newChangelogEntry = @(
+            "",
+            "## [$nextVersion] - $today",
+            "",
+            "### Changes",
+            $commitList
+          ) -join "`n"
 
-### Changes
-$commitList
-"@
           if (Test-Path $changelogPath) {
             $existing = Get-Content $changelogPath -Raw
-            $updated = $existing -replace "## \[(.*?)\]", "$newChangelogEntry`n`n## [`$1]"
+            $updated = $existing -replace "## \[(.*?)\]", ($newChangelogEntry + "`n`n## [`$1]")
             Set-Content -Path $changelogPath -Value $updated
           }
 
-          # 4. Save Release Body to file
-          $releaseNotes = @"
-### WindowsFixKit $nextTag Release Notes ($today)
+          # 5. Save Release Body to file
+          $releaseNotes = @(
+            "### WindowsFixKit $nextTag Release Notes ($today)",
+            "",
+            $commitList,
+            "",
+            "#### Direct Download",
+            "- [WindowsFixKit-$nextTag.zip](https://github.com/nkdhawan76/WindowsFixKit/releases/download/$nextTag/WindowsFixKit-$nextTag.zip)",
+            "- [WindowsFixKit-latest.zip](https://github.com/nkdhawan76/WindowsFixKit/releases/latest/download/WindowsFixKit-latest.zip)"
+          ) -join "`n"
 
-$commitList
-
-#### Direct Download
-- [WindowsFixKit-$nextTag.zip](https://github.com/nkdhawan76/WindowsFixKit/releases/download/$nextTag/WindowsFixKit-$nextTag.zip)
-- [WindowsFixKit-latest.zip](https://github.com/nkdhawan76/WindowsFixKit/releases/latest/download/WindowsFixKit-latest.zip)
-"@
-          Set-Content -Path "release_notes.md" -Value $releaseNotes
+          Set-Content -Path "release_notes.md" -Value $releaseNotes -Encoding UTF8
 
       - name: Commit & Push Version Updates
         shell: pwsh
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add VERSION CHANGELOG.md
-          git commit -m "chore(release): bump version to ${{ steps.semver.outputs.NEXT_TAG }} [skip ci]" || Write-Host "No files changed"
-          git push origin main
+          git add VERSION CHANGELOG.md WindowsFixKit.psd1
+          git diff --quiet --cached
+          if ($LASTEXITCODE -ne 0) {
+            git commit -m "chore(release): bump version to ${{ steps.semver.outputs.NEXT_TAG }} [skip ci]"
+            git push origin main
+          } else {
+            Write-Host "No version metadata changes to commit."
+          }
           
           # Create and push git tag
           git tag -a "${{ steps.semver.outputs.NEXT_TAG }}" -m "Release ${{ steps.semver.outputs.NEXT_TAG }}"
