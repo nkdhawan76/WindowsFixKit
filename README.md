@@ -83,10 +83,13 @@ If you are facing an unusual Windows error, driver failure, or need custom techn
 ### Option 2: PowerShell Module
 
 ```powershell
-# Install from PowerShell Gallery
-Install-Module -Name WindowsFixKit -Scope CurrentUser
+# Navigate to WindowsFixKit folder
+Set-Location "$HOME\Desktop\WindowsFixKit"
 
-# Run full system diagnostics and export HTML report
+# Import Module locally
+Import-Module .\WindowsFixKit.psd1 -Force
+
+# Run full system diagnostics and export Desktop HTML report
 Invoke-WindowsFixKit -DiagnosisType Full
 
 # Run Windows Update and network diagnostics
