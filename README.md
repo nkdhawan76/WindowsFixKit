@@ -294,7 +294,7 @@ Run the local test and lint suite before pushing changes:
 
 ## 👥 Community & Contributions
 
-We welcome contributions from the community to help make **WindowsFixKit** the most reliable diagnostic toolkit for Windows.
+We welcome contributions from the community to help make **WindowsFixKit** the most reliable diagnostic toolkit for Windows. Want to unlock GitHub badges while contributing? Check out our [GitHub Profile Achievements Roadmap](docs/GITHUB_ACHIEVEMENTS_GUIDE.md)!
 
 <div align="center">
 
