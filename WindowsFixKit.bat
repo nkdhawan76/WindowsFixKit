@@ -2,6 +2,7 @@
 :: ============================================================================
 ::  WindowsFixKit - Master One-Click Launcher
 ::  Target: Windows 7, 8.1, 10, 11
+::  DevSparks India | https://devsparksindia.com | 9521032268
 :: ============================================================================
 
 title WindowsFixKit - System Diagnostic and Repair Toolkit
@@ -26,33 +27,35 @@ cd /d "%~dp0"
 cls
 echo =================================================================
 echo        WindowsFixKit - Windows Diagnostic and Auto-Repair
-echo       Owner: nkdhawan76 ^| Supported: Windows 7, 8.1, 10, 11
+echo      DevSparks India ^| https://devsparksindia.com ^| 9521032268
 echo =================================================================
 echo.
-echo   [1] Full Hardware and System Health Diagnosis (Desktop HTML Report)
-echo   [2] Windows Update and Network Diagnostic + Auto-Fix (diagnose.ps1)
-echo   [3] Scan-Only Mode (Detect issues without making changes)
-echo   [4] Quick Disk Space Cleanup and Cache Recovery (fix_storage_cleanup)
-echo   [5] Full Network and DNS Stack Reset (fix_network_reset)
-echo   [6] Fix Missing Wi-Fi Adapter (fix_wifi_missing)
-echo   [7] Fix Missing Bluetooth Service (fix_bluetooth_missing)
-echo   [8] Run Local CI Lint and Test Check (scripts\lint-check.ps1)
-echo   [9] Exit
+echo   [1]  Full Hardware and System Health Diagnosis (Desktop HTML Report)
+echo   [2]  Windows Update and Network Diagnostic + Auto-Fix (diagnose.ps1)
+echo   [3]  Scan-Only Mode (Detect issues without making changes)
+echo   [4]  Deep Junk & Temp Files Cleanup (%%TEMP%%, Prefetch, Recycle Bin, Cleanmgr)
+echo   [5]  Deep RAM Cache & Memory Optimizer (Empty Working Sets, Trim Cache)
+echo   [6]  Full Network and DNS Stack Reset (fix_network_reset)
+echo   [7]  Fix Missing Wi-Fi Adapter (fix_wifi_missing)
+echo   [8]  Fix Missing Bluetooth Service (fix_bluetooth_missing)
+echo   [9]  Run Local CI Lint and Test Check (scripts\lint-check.ps1)
+echo   [10] Exit
 echo.
 echo =================================================================
-set /p CHOICE="  Select an option [1-9]: "
+set /p CHOICE="  Select an option [1-10]: "
 
 if "%CHOICE%"=="1" goto FULL_DIAG
 if "%CHOICE%"=="2" goto WU_DIAG
 if "%CHOICE%"=="3" goto SCAN_ONLY
 if "%CHOICE%"=="4" goto CLEANUP
-if "%CHOICE%"=="5" goto NET_RESET
-if "%CHOICE%"=="6" goto WIFI_FIX
-if "%CHOICE%"=="7" goto BT_FIX
-if "%CHOICE%"=="8" goto LINT_CHECK
-if "%CHOICE%"=="9" goto EXIT
+if "%CHOICE%"=="5" goto RAM_CLEANUP
+if "%CHOICE%"=="6" goto NET_RESET
+if "%CHOICE%"=="7" goto WIFI_FIX
+if "%CHOICE%"=="8" goto BT_FIX
+if "%CHOICE%"=="9" goto LINT_CHECK
+if "%CHOICE%"=="10" goto EXIT
 
-echo [!] Invalid selection. Please choose 1 to 9.
+echo [!] Invalid selection. Please choose 1 to 10.
 timeout /t 2 >nul
 goto MENU
 
@@ -85,8 +88,17 @@ goto MENU
 
 :CLEANUP
 cls
-echo [INFO] Running Storage Cleanup and Cache Recovery...
+echo [INFO] Running Deep Temp, Trash & Storage Cleanup Engine...
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_storage_cleanup.ps1"
+echo.
+echo Press any key to return to menu...
+pause >nul
+goto MENU
+
+:RAM_CLEANUP
+cls
+echo [INFO] Running Deep RAM Cache & Memory Buffer Optimizer...
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\fix_ram_cache.ps1"
 echo.
 echo Press any key to return to menu...
 pause >nul

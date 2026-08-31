@@ -28,7 +28,7 @@ if (-not (Test-IsAdmin)) {
 Clear-Host -ErrorAction SilentlyContinue
 Write-Host "=================================================================" -ForegroundColor Cyan
 Write-Host "         WindowsFixKit - Master Full System Diagnosis            " -ForegroundColor Cyan
-Write-Host "       Owner: nkdhawan76 | Hardware & Subsystem Health Audit    " -ForegroundColor Cyan
+Write-Host "      DevSparks India | https://devsparksindia.com | 9521032268   " -ForegroundColor Cyan
 Write-Host "=================================================================`n" -ForegroundColor Cyan
 
 $scriptDir = if ($PSScriptRoot) { $PSScriptRoot } elseif ($MyInvocation.MyCommand.Path) { Split-Path -Parent $MyInvocation.MyCommand.Path } else { (Get-Location).Path }

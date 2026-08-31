@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-08-31
+
+### Added
+- **DevSparks India Official Branding & Support Channels**:
+  - Integrated direct support links: Phone (`+91 9521032268`), Email (`devsparksindia@gmail.com`), and Website (`https://devsparksindia.com/`) in HTML report header, banner, and footer.
+- **Deep Trashed & Temp Files Cleanup Engine (`fix_storage_cleanup.ps1`)**:
+  - Automated deep multi-user purge of `%TEMP%`, `C:\Windows\Temp`, `Prefetch`, crash dumps, Delivery Optimization, WER queues, browser caches, Recycle Bin, and cleanmgr with exact reclaimed MB/GB space calculation.
+- **Native RAM Cache & Memory Buffer Optimizer (`fix_ram_cache.ps1`)**:
+  - Integrated native `psapi.dll` `EmptyWorkingSet` API to trim process memory across 200+ running processes, force multi-generational Garbage Collection, and reclaim free RAM buffers.
+
 ## [1.1.3] - 2026-08-31
 
 ### Added

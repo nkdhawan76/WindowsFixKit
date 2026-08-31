@@ -54,7 +54,7 @@ $errorsDbPath = Join-Path $rootDir "errors\errors_db.json"
 Clear-Host -ErrorAction SilentlyContinue
 Write-Host "=================================================================" -ForegroundColor Cyan
 Write-Host "       WindowsFixKit - System Diagnostic & Auto-Fix Engine       " -ForegroundColor Cyan
-Write-Host "       Owner: nkdhawan76 | Supported: Windows 7, 8.1, 10, 11    " -ForegroundColor Cyan
+Write-Host "      DevSparks India | https://devsparksindia.com | 9521032268   " -ForegroundColor Cyan
 Write-Host "=================================================================`n" -ForegroundColor Cyan
 
 if (-not (Test-Path -Path $errorsDbPath)) {
