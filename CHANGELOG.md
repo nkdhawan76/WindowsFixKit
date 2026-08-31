@@ -6,10 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+
+## [1.4.2] - 2026-08-31
+
+### Changes
+* ci: enhance quality gate with module caching, manifest test, template validator and step summary (2e4fbf1)
+
 ## [1.4.1] - 2026-08-31
 
 ### Changes
 System.Object[]
+
+
+## [1.4.2] - 2026-08-31
+
+### Changes
+* ci: enhance quality gate with module caching, manifest test, template validator and step summary (2e4fbf1)
 
 ## [1.4.0] - 2026-08-31
 
@@ -27,10 +39,22 @@ System.Object[]
   - Expanded master menu to 17 automated diagnostic and repair workflows.
 
 
+
+## [1.4.2] - 2026-08-31
+
+### Changes
+* ci: enhance quality gate with module caching, manifest test, template validator and step summary (2e4fbf1)
+
 ## [1.4.1] - 2026-08-31
 
 ### Changes
 System.Object[]
+
+
+## [1.4.2] - 2026-08-31
+
+### Changes
+* ci: enhance quality gate with module caching, manifest test, template validator and step summary (2e4fbf1)
 
 ## [1.3.0] - 2026-08-31
 
@@ -49,10 +73,22 @@ System.Object[]
   - Resolves `System.BadImageFormatException` and PresentationFramework crashes via registry audit, DISM health repairs, and official Microsoft runtime guidance.
 
 
+
+## [1.4.2] - 2026-08-31
+
+### Changes
+* ci: enhance quality gate with module caching, manifest test, template validator and step summary (2e4fbf1)
+
 ## [1.4.1] - 2026-08-31
 
 ### Changes
 System.Object[]
+
+
+## [1.4.2] - 2026-08-31
+
+### Changes
+* ci: enhance quality gate with module caching, manifest test, template validator and step summary (2e4fbf1)
 
 ## [1.2.0] - 2026-08-31
 
@@ -65,10 +101,22 @@ System.Object[]
   - Integrated native `psapi.dll` `EmptyWorkingSet` API to trim process memory across 200+ running processes, force multi-generational Garbage Collection, and reclaim free RAM buffers.
 
 
+
+## [1.4.2] - 2026-08-31
+
+### Changes
+* ci: enhance quality gate with module caching, manifest test, template validator and step summary (2e4fbf1)
+
 ## [1.4.1] - 2026-08-31
 
 ### Changes
 System.Object[]
+
+
+## [1.4.2] - 2026-08-31
+
+### Changes
+* ci: enhance quality gate with module caching, manifest test, template validator and step summary (2e4fbf1)
 
 ## [1.1.3] - 2026-08-31
 
@@ -79,10 +127,22 @@ System.Object[]
 - **Report Actions**: Added one-click Print / Save PDF functionality.
 
 
+
+## [1.4.2] - 2026-08-31
+
+### Changes
+* ci: enhance quality gate with module caching, manifest test, template validator and step summary (2e4fbf1)
+
 ## [1.4.1] - 2026-08-31
 
 ### Changes
 System.Object[]
+
+
+## [1.4.2] - 2026-08-31
+
+### Changes
+* ci: enhance quality gate with module caching, manifest test, template validator and step summary (2e4fbf1)
 
 ## [1.1.2] - 2026-08-31
 
@@ -90,10 +150,22 @@ System.Object[]
 - **Batch Redirection Syntax Error (`> was unexpected at this time`)**: Replaced unescaped `echo [>>>]` banner messages with clean, safe `echo [INFO]` across all option handlers in `WindowsFixKit.bat`, eliminating instant CMD process termination when selecting any menu option.
 
 
+
+## [1.4.2] - 2026-08-31
+
+### Changes
+* ci: enhance quality gate with module caching, manifest test, template validator and step summary (2e4fbf1)
+
 ## [1.4.1] - 2026-08-31
 
 ### Changes
 System.Object[]
+
+
+## [1.4.2] - 2026-08-31
+
+### Changes
+* ci: enhance quality gate with module caching, manifest test, template validator and step summary (2e4fbf1)
 
 ## [1.1.1] - 2026-08-31
 
@@ -103,10 +175,22 @@ System.Object[]
 - **Report Parameter Handling**: Standardized `-NoOpenReport` switch and added robust error handling for browser launch.
 
 
+
+## [1.4.2] - 2026-08-31
+
+### Changes
+* ci: enhance quality gate with module caching, manifest test, template validator and step summary (2e4fbf1)
+
 ## [1.4.1] - 2026-08-31
 
 ### Changes
 System.Object[]
+
+
+## [1.4.2] - 2026-08-31
+
+### Changes
+* ci: enhance quality gate with module caching, manifest test, template validator and step summary (2e4fbf1)
 
 ## [1.1.0] - 2026-08-30
 
@@ -134,10 +218,22 @@ System.Object[]
   - Added mappings for `hdd_ssd_unhealthy`, `ram_error_detected`, `battery_degraded`, `cpu_overheating`, `storage_almost_full`, and `startup_bloat`.
 
 
+
+## [1.4.2] - 2026-08-31
+
+### Changes
+* ci: enhance quality gate with module caching, manifest test, template validator and step summary (2e4fbf1)
+
 ## [1.4.1] - 2026-08-31
 
 ### Changes
 System.Object[]
+
+
+## [1.4.2] - 2026-08-31
+
+### Changes
+* ci: enhance quality gate with module caching, manifest test, template validator and step summary (2e4fbf1)
 
 ## [1.0.0] - 2026-08-30
 
@@ -167,4 +263,5 @@ System.Object[]
   - GitHub Actions workflow running `PSScriptAnalyzer` linting and syntax validations.
   - Issue templates for bug reports and new error requests.
   - Comprehensive documentation (`README.md`, `docs/how-it-works.md`, `CONTRIBUTING.md`).
+
 
