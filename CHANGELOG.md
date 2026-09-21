@@ -9,10 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -20,10 +32,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.5.0] - 2026-08-31
 
@@ -56,10 +80,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -67,10 +103,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -79,10 +127,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -90,10 +150,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.2] - 2026-08-31
 
@@ -103,10 +175,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -114,10 +198,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -126,10 +222,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -137,10 +245,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.1] - 2026-08-31
 
@@ -151,10 +271,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -162,10 +294,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -174,10 +318,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -185,10 +341,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.2] - 2026-08-31
 
@@ -198,10 +366,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -209,10 +389,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -221,10 +413,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -232,10 +436,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.0] - 2026-08-31
 
@@ -257,10 +473,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -268,10 +496,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -280,10 +520,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -291,10 +543,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.2] - 2026-08-31
 
@@ -304,10 +568,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -315,10 +591,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -327,10 +615,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -338,10 +638,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.1] - 2026-08-31
 
@@ -352,10 +664,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -363,10 +687,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -375,10 +711,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -386,10 +734,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.2] - 2026-08-31
 
@@ -399,10 +759,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -410,10 +782,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -422,10 +806,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -433,10 +829,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.3.0] - 2026-08-31
 
@@ -459,10 +867,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -470,10 +890,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -482,10 +914,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -493,10 +937,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.2] - 2026-08-31
 
@@ -506,10 +962,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -517,10 +985,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -529,10 +1009,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -540,10 +1032,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.1] - 2026-08-31
 
@@ -554,10 +1058,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -565,10 +1081,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -577,10 +1105,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -588,10 +1128,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.2] - 2026-08-31
 
@@ -601,10 +1153,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -612,10 +1176,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -624,10 +1200,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -635,10 +1223,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.2.0] - 2026-08-31
 
@@ -655,10 +1255,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -666,10 +1278,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -678,10 +1302,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -689,10 +1325,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.2] - 2026-08-31
 
@@ -702,10 +1350,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -713,10 +1373,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -725,10 +1397,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -736,10 +1420,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.1] - 2026-08-31
 
@@ -750,10 +1446,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -761,10 +1469,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -773,10 +1493,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -784,10 +1516,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.2] - 2026-08-31
 
@@ -797,10 +1541,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -808,10 +1564,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -820,10 +1588,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -831,10 +1611,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.1.3] - 2026-08-31
 
@@ -849,10 +1641,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -860,10 +1664,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -872,10 +1688,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -883,10 +1711,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.2] - 2026-08-31
 
@@ -896,10 +1736,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -907,10 +1759,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -919,10 +1783,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -930,10 +1806,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.1] - 2026-08-31
 
@@ -944,10 +1832,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -955,10 +1855,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -967,10 +1879,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -978,10 +1902,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.2] - 2026-08-31
 
@@ -991,10 +1927,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1002,10 +1950,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -1014,10 +1974,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1025,10 +1997,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.1.2] - 2026-08-31
 
@@ -1040,10 +2024,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1051,10 +2047,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -1063,10 +2071,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1074,10 +2094,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.2] - 2026-08-31
 
@@ -1087,10 +2119,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1098,10 +2142,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -1110,10 +2166,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1121,10 +2189,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.1] - 2026-08-31
 
@@ -1135,10 +2215,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1146,10 +2238,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -1158,10 +2262,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1169,10 +2285,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.2] - 2026-08-31
 
@@ -1182,10 +2310,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1193,10 +2333,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -1205,10 +2357,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1216,10 +2380,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.1.1] - 2026-08-31
 
@@ -1233,10 +2409,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1244,10 +2432,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -1256,10 +2456,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1267,10 +2479,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.2] - 2026-08-31
 
@@ -1280,10 +2504,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1291,10 +2527,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -1303,10 +2551,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1314,10 +2574,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.1] - 2026-08-31
 
@@ -1328,10 +2600,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1339,10 +2623,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -1351,10 +2647,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1362,10 +2670,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.2] - 2026-08-31
 
@@ -1375,10 +2695,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1386,10 +2718,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -1398,10 +2742,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1409,10 +2765,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.1.0] - 2026-08-30
 
@@ -1444,10 +2812,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1455,10 +2835,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -1467,10 +2859,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1478,10 +2882,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.2] - 2026-08-31
 
@@ -1491,10 +2907,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1502,10 +2930,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -1514,10 +2954,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1525,10 +2977,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.1] - 2026-08-31
 
@@ -1539,10 +3003,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1550,10 +3026,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -1562,10 +3050,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1573,10 +3073,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.2] - 2026-08-31
 
@@ -1586,10 +3098,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1597,10 +3121,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.4.3] - 2026-08-31
 
@@ -1609,10 +3145,22 @@ System.Object[]
 
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.6.0] - 2026-08-31
 
@@ -1620,10 +3168,22 @@ System.Object[]
 * feat: add WMI repair, Office C2R diagnostics, WSH fixer, deep DISM/SFC, and licensing audit (v1.5.0) (f5dc185)
 
 
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
+
 ## [1.6.1] - 2026-08-31
 
 ### Changes
 * docs: update current release link to v1.6.0 in README (938d32f)
+
+
+## [1.6.2] - 2026-09-21
+
+### Changes
+* docs: verify PowerShell 7 and Windows 11 compatibility matrix (#4) (caf47d1)
 
 ## [1.0.0] - 2026-08-30
 
@@ -1653,6 +3213,7 @@ System.Object[]
   - GitHub Actions workflow running `PSScriptAnalyzer` linting and syntax validations.
   - Issue templates for bug reports and new error requests.
   - Comprehensive documentation (`README.md`, `docs/how-it-works.md`, `CONTRIBUTING.md`).
+
 
 
 
